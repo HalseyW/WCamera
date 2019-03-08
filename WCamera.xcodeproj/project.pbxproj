@@ -15,6 +15,12 @@
 		772CABED22325C0A00829892 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABEB22325C0A00829892 /* LaunchScreen.storyboard */; };
 		772CABF822325C0A00829892 /* WCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABF722325C0A00829892 /* WCameraTests.swift */; };
 		772CAC0322325C0A00829892 /* WCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC0222325C0A00829892 /* WCameraUITests.swift */; };
+		772CAC1A22325D9900829892 /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1422325D9800829892 /* PermissionType.swift */; };
+		772CAC1B22325D9900829892 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1522325D9800829892 /* Permission.swift */; };
+		772CAC1C22325D9900829892 /* PermissionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1622325D9800829892 /* PermissionStatus.swift */; };
+		772CAC1D22325D9900829892 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1722325D9800829892 /* Other.swift */; };
+		772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1822325D9900829892 /* PermissionAlert.swift */; };
+		772CAC1F22325D9900829892 /* Permission+request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1922325D9900829892 /* Permission+request.swift */; };
 		9EA78571354CE299852D4016 /* Pods_WCameraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4167648D023181A8C0A28E1B /* Pods_WCameraUITests.framework */; };
 		CDE0DDA9E07A20E1FE89C8FC /* Pods_WCameraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +60,12 @@
 		772CABFE22325C0A00829892 /* WCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CAC0222325C0A00829892 /* WCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCameraUITests.swift; sourceTree = "<group>"; };
 		772CAC0422325C0A00829892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		772CAC1422325D9800829892 /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
+		772CAC1522325D9800829892 /* Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		772CAC1622325D9800829892 /* PermissionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionStatus.swift; sourceTree = "<group>"; };
+		772CAC1722325D9800829892 /* Other.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
+		772CAC1822325D9900829892 /* PermissionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionAlert.swift; sourceTree = "<group>"; };
+		772CAC1922325D9900829892 /* Permission+request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Permission+request.swift"; sourceTree = "<group>"; };
 		895BD7B5CBF0791318D17845 /* Pods-WCameraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACAE6E3A4F929377A17569FA /* Pods-WCameraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.release.xcconfig"; sourceTree = "<group>"; };
 		C1491FA37353E86F43D0591A /* Pods-WCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCamera/Pods-WCamera.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,8 +139,9 @@
 		772CABE122325C0900829892 /* WCamera */ = {
 			isa = PBXGroup;
 			children = (
+				772CAC1322325D5C00829892 /* Module */,
+				772CAC1022325D3E00829892 /* Utils */,
 				772CABE222325C0900829892 /* AppDelegate.swift */,
-				772CABE422325C0900829892 /* ViewController.swift */,
 				772CABE622325C0900829892 /* Main.storyboard */,
 				772CABE922325C0A00829892 /* Assets.xcassets */,
 				772CABEB22325C0A00829892 /* LaunchScreen.storyboard */,
@@ -153,6 +166,35 @@
 				772CAC0422325C0A00829892 /* Info.plist */,
 			);
 			path = WCameraUITests;
+			sourceTree = "<group>";
+		};
+		772CAC1022325D3E00829892 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				772CAC1122325D4600829892 /* Permission */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		772CAC1122325D4600829892 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				772CAC1522325D9800829892 /* Permission.swift */,
+				772CAC1922325D9900829892 /* Permission+request.swift */,
+				772CAC1822325D9900829892 /* PermissionAlert.swift */,
+				772CAC1622325D9800829892 /* PermissionStatus.swift */,
+				772CAC1422325D9800829892 /* PermissionType.swift */,
+				772CAC1722325D9800829892 /* Other.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		772CAC1322325D5C00829892 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				772CABE422325C0900829892 /* ViewController.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		952CF5DEDE20AD9CE2C5D136 /* Frameworks */ = {
@@ -356,7 +398,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772CAC1D22325D9900829892 /* Other.swift in Sources */,
+				772CAC1C22325D9900829892 /* PermissionStatus.swift in Sources */,
+				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
+				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
+				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
 				772CABE522325C0900829892 /* ViewController.swift in Sources */,
+				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				772CABE322325C0900829892 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
