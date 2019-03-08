@@ -15,7 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //如果相机/麦克风/相册权限全部获取，则进入CameraViewController，否则进入PermissionViewController
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        
+        let cameraPermissionStatus = Permission.init(type: .Camera).permissionStatus
+        let micPermissionStatus = Permission.init(type: .Mic).permissionStatus
+        let photoPermissionStatus = Permission.init(type: .Photo).permissionStatus
+        
+        if cameraPermissionStatus != .authorized || micPermissionStatus != .authorized || photoPermissionStatus != .authorized {
+            self.window?.rootViewController = PermissionViewController.init()
+        } else {
+            self.window?.rootViewController = CameraViewController.init()
+        }
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

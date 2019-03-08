@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C315EC4D29FF5F4E2A1BA08 /* Pods_WCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E784D12F5DA990FF1942DE37 /* Pods_WCamera.framework */; };
 		772CABE322325C0900829892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE222325C0900829892 /* AppDelegate.swift */; };
-		772CABE522325C0900829892 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* ViewController.swift */; };
+		772CABE522325C0900829892 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* PermissionViewController.swift */; };
 		772CABE822325C0900829892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE622325C0900829892 /* Main.storyboard */; };
 		772CABEA22325C0A00829892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE922325C0A00829892 /* Assets.xcassets */; };
 		772CABED22325C0A00829892 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABEB22325C0A00829892 /* LaunchScreen.storyboard */; };
@@ -21,6 +21,7 @@
 		772CAC1D22325D9900829892 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1722325D9800829892 /* Other.swift */; };
 		772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1822325D9900829892 /* PermissionAlert.swift */; };
 		772CAC1F22325D9900829892 /* Permission+request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1922325D9900829892 /* Permission+request.swift */; };
+		772CAC212232641500829892 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC202232641500829892 /* CameraViewController.swift */; };
 		9EA78571354CE299852D4016 /* Pods_WCameraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4167648D023181A8C0A28E1B /* Pods_WCameraUITests.framework */; };
 		CDE0DDA9E07A20E1FE89C8FC /* Pods_WCameraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +50,7 @@
 		58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WCameraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABDF22325C0900829892 /* WCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABE222325C0900829892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		772CABE422325C0900829892 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		772CABE422325C0900829892 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		772CABE722325C0900829892 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		772CABE922325C0A00829892 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		772CABEC22325C0A00829892 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		772CAC1722325D9800829892 /* Other.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		772CAC1822325D9900829892 /* PermissionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionAlert.swift; sourceTree = "<group>"; };
 		772CAC1922325D9900829892 /* Permission+request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Permission+request.swift"; sourceTree = "<group>"; };
+		772CAC202232641500829892 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		895BD7B5CBF0791318D17845 /* Pods-WCameraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACAE6E3A4F929377A17569FA /* Pods-WCameraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.release.xcconfig"; sourceTree = "<group>"; };
 		C1491FA37353E86F43D0591A /* Pods-WCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCamera/Pods-WCamera.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,9 +194,26 @@
 		772CAC1322325D5C00829892 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				772CABE422325C0900829892 /* ViewController.swift */,
+				772CAC23223269B000829892 /* Main */,
+				772CAC22223269A700829892 /* Permission */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		772CAC22223269A700829892 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				772CABE422325C0900829892 /* PermissionViewController.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		772CAC23223269B000829892 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				772CAC202232641500829892 /* CameraViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		952CF5DEDE20AD9CE2C5D136 /* Frameworks */ = {
@@ -218,6 +237,7 @@
 				772CABDB22325C0900829892 /* Sources */,
 				772CABDC22325C0900829892 /* Frameworks */,
 				772CABDD22325C0900829892 /* Resources */,
+				B204E5127E38373EAD79D8AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,6 +357,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B204E5127E38373EAD79D8AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WCamera/Pods-WCamera-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WCamera/Pods-WCamera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E1BA5753FF522DF81DA3BC7A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,9 +441,10 @@
 				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
 				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
 				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
-				772CABE522325C0900829892 /* ViewController.swift in Sources */,
+				772CABE522325C0900829892 /* PermissionViewController.swift in Sources */,
 				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				772CABE322325C0900829892 /* AppDelegate.swift in Sources */,
+				772CAC212232641500829892 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

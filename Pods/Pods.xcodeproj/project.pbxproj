@@ -7,15 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06E298FE266C3ED8936B3C3CA83DD61D /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1278B464D7736D1CBB0D68B4D1628107 /* Pods-WCameraTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E4867796569A277B276B44D2019165 /* Pods-WCameraTests-dummy.m */; };
-		299F4009E09A320C109A1E5E56292857 /* Pods-WCamera-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C13BCAEB88FB76B1DD4F68B3A45032D5 /* Pods-WCamera-dummy.m */; };
+		1455D0FDC96513DD351FEC0578C91A3E /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */; };
+		187C122B277310C26279747C9AEDA526 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */; };
+		19BF5E507C79AEA657B563531CF7C534 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */; };
 		29DF1E9EBA7922698EF38781FD66BAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		30B07B5BD325929650B63A9F66A6B704 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */; };
+		380F1AADA3BBEF776EF651C319609734 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */; };
+		3B4B1ECECD3D373A008A5DAD0C7332DA /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */; };
+		3DD34CE858CC5769437BF8ADCDC19EC4 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */; };
+		4E7E258890BEF4333A68B370B945E153 /* Pods-WCamera-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C13BCAEB88FB76B1DD4F68B3A45032D5 /* Pods-WCamera-dummy.m */; };
+		54B7516DDD28C63120D1E2F3FFC3D115 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */; };
 		55B2863168DCD11AEB9932F7728AA378 /* Pods-WCameraUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E62345016F67233874FF7898DB91A557 /* Pods-WCameraUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BFDCEDDEDEC67C8FB77572D0854F10C /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */; };
+		614B6201DC2FEB70E22FDA0D3B73098C /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */; };
+		61B043227AA37EB3F88382D980A13CF7 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */; };
+		64AC3F87B96D3DABE7FBABC4A0E405B2 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */; };
 		71A05E97FF2A6E2043F506931FE961ED /* Pods-WCameraTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 071C3CBE9898EA82AFB0446738F8BFE3 /* Pods-WCameraTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73097539E28398973AD19E9F1C3BA2C7 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */; };
+		793310CEE02F687BD9E9E082B2A48765 /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */; };
+		7A319839CB1A226366E40AFF2C657A92 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */; };
+		7C1D49FCDE776571CEADFB39FE3868EA /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */; };
+		7F51A8B40B9E60AB4DBD4B2AEBE78973 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */; };
+		8453E9D900D92E92AD5CD367DB3F9DCC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		873ADCEA2E75EED1625ED7568CEF9880 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */; };
 		8B7BB11D1C5F8B3CB99E3EE01425C2FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		8D00FA42E34B2A4647D1D76D1A12A986 /* Pods-WCameraUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AACF6C5E459F432537099D66AA9089 /* Pods-WCameraUITests-dummy.m */; };
-		C84E8379C2131FD3E388D42DD3107A0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		FA4F28098BDAD338500CD7A9684D1579 /* Pods-WCamera-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9004E1E2094080B3BE5F7163E8715F4 /* Pods-WCamera-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		916FFE994B6B94B19DDC827F54889502 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */; };
+		940E2262AC8660BAD07A0F110E72DD76 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */; };
+		953698215EC0838B119D43B09B9A2010 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */; };
+		A299BD2282782FF00A69FFAC159441FE /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */; };
+		C36CF915E229C7260A4CCBFE296FFF37 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */; };
+		C4F626DB7B0B541E4135D013BEBB5F4A /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */; };
+		CDFD19702E314F986DD166FCDAB5A3A8 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */; };
+		D7B5DF6E6DA658728464AE2EBD124128 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */; };
+		D8A2003F0947B64155BBC51AE22CAA4C /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */; };
+		E01B5A36304D11082FF7E8DBF92882F3 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */; };
+		E9F94868B3BC050B60743E2567850EAB /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */; };
+		EA40CC3DC2C2554E0EEEA3A66EFD12E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		ECED63BF756482541E7E53D3ED20C274 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */; };
+		F1E07C98C613A1E13C6EB7033C0F18C3 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */; };
+		F22C3C75D6343986FA58A4F2BE78524C /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */; };
+		F4CCC06A0CE2CC6403931EFBC1F2D6CE /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */; };
+		F57A1AE6330272C5D5064C4618FAF29F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */; };
+		FA9FE0D2F0FE916C4CACAC58A3A0A452 /* Pods-WCamera-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9004E1E2094080B3BE5F7163E8715F4 /* Pods-WCamera-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD8E6B7CAF948563C90FC53105233F79 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,62 +60,110 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 87D32F626A7E5788836883CCEA51023E;
+			remoteGlobalIDString = 02655D15A3CB7A83C05628CDE895A935;
 			remoteInfo = "Pods-WCamera";
 		};
 		2A73E814302547A3F89724D921B1836B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 87D32F626A7E5788836883CCEA51023E;
+			remoteGlobalIDString = 02655D15A3CB7A83C05628CDE895A935;
 			remoteInfo = "Pods-WCamera";
+		};
+		7792106DF12615F25C5D5B093409260E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D72DA954606C0962FFAF2DAF91F14D6;
+			remoteInfo = SnapKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		01CF7D08BEC85FE12D1F628541A8016A /* Pods-WCameraUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCameraUITests-frameworks.sh"; sourceTree = "<group>"; };
 		02993853E6AD05697108103CB855AA9A /* Pods-WCameraUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WCameraUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		071C3CBE9898EA82AFB0446738F8BFE3 /* Pods-WCameraTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WCameraTests-umbrella.h"; sourceTree = "<group>"; };
+		0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		0B020CEFEF781A2FA1FB58D624A2749B /* Pods-WCamera-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WCamera-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0BF1FB2A2B9D7325C841C7859F058461 /* Pods-WCameraTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WCameraTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		0E82406EB4773C1EC5567DCE093C3E77 /* Pods-WCamera-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WCamera-acknowledgements.plist"; sourceTree = "<group>"; };
+		11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
+		1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
+		155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		18D84337E6AC8D5773C68CF592806A31 /* Pods_WCameraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCameraUITests.framework; path = "Pods-WCameraUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		1D4BA8B6AA78827E118F207F8F3EFCB5 /* Pods-WCameraUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCameraUITests-resources.sh"; sourceTree = "<group>"; };
+		2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
+		23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		245A6DDEA960462949B53BBB7C7CACB4 /* Pods-WCameraUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCameraUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		25E4867796569A277B276B44D2019165 /* Pods-WCameraTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WCameraTests-dummy.m"; sourceTree = "<group>"; };
 		2615951DEF71B2A62484F3C13FBCDD7B /* Pods-WCameraTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WCameraTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		30DDCFC7E5009238EC465C7AE8326093 /* Pods_WCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCamera.framework; path = "Pods-WCamera.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
+		35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		38AACF6C5E459F432537099D66AA9089 /* Pods-WCameraUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WCameraUITests-dummy.m"; sourceTree = "<group>"; };
+		3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
+		3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		3D48905D612E938FE1DD761D12039B61 /* Pods-WCamera-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCamera-resources.sh"; sourceTree = "<group>"; };
+		45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
+		48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
+		5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
 		57D74C27BCA5E9F3FDE9E74D03BE602C /* Pods-WCameraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCameraTests.release.xcconfig"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5E9C2EC0CCD73EC8CEAA53276D02E771 /* Pods-WCameraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCameraTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
+		618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		633016247858F2D7D06B205A852C62F3 /* Pods-WCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCamera.release.xcconfig"; sourceTree = "<group>"; };
+		645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		6A4FE5D90438202DA95E7EA4A1922CFD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BF8EE7B4BBC21A1D23ABFE5DEE9876E /* Pods-WCameraUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WCameraUITests.modulemap"; sourceTree = "<group>"; };
 		794D6F66C2B5AB6B8934BB14F5D4BCB2 /* Pods-WCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCamera.debug.xcconfig"; sourceTree = "<group>"; };
+		8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
+		9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
+		92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		940092FCFA8C8F70711B9E10960D37FA /* Pods_WCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCamera.framework; path = "Pods-WCamera.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85A33390EAE5D4A59D07D81C7ADC100 /* Pods-WCameraTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCameraTests-resources.sh"; sourceTree = "<group>"; };
+		AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
+		B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		B0728533EFCD12F275EF93D0A0BB6A3B /* Pods-WCamera-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCamera-frameworks.sh"; sourceTree = "<group>"; };
-		BD898F2F12FE67B375D16ADE2AD9BE14 /* Pods_WCameraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCameraUITests.framework; path = "Pods-WCameraUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C9CEB30AA71EB58B5CD53321954DE0 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
+		B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		C13BCAEB88FB76B1DD4F68B3A45032D5 /* Pods-WCamera-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WCamera-dummy.m"; sourceTree = "<group>"; };
 		C49218D5BE262B46456FBA58BB0969D9 /* Pods-WCameraUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WCameraUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C8EB3CE5972541117DB3A81E95D877DD /* Pods-WCamera.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WCamera.modulemap"; sourceTree = "<group>"; };
+		D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
+		D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
+		D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
+		D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
+		D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		D6E7CA3AD2CE50F8886517C2A13A8A02 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
+		DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
+		DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		DE06ADFFC67E6C0D0E11C0D3F5629BBE /* Pods-WCameraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WCameraUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E62345016F67233874FF7898DB91A557 /* Pods-WCameraUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WCameraUITests-umbrella.h"; sourceTree = "<group>"; };
+		E82C26155C95B64BD9A621E356176C73 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9004E1E2094080B3BE5F7163E8715F4 /* Pods-WCamera-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WCamera-umbrella.h"; sourceTree = "<group>"; };
+		E9D36B9B5871509DBD0C66E5D0ED6AFB /* Pods_WCameraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCameraTests.framework; path = "Pods-WCameraTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
+		EEC1C0925B7A75C47F90DA4CD473E0A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E38E7AD621C53184BFD27F3B5C1DF7 /* Pods-WCameraTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WCameraTests.modulemap"; sourceTree = "<group>"; };
+		F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		F69784B086A71A8858BEFB682814701A /* Pods-WCameraTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WCameraTests-frameworks.sh"; sourceTree = "<group>"; };
-		FA82E9D7B0CBC6BC76579BA9DC576333 /* Pods_WCameraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WCameraTests.framework; path = "Pods-WCameraTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
 		FFC6444EEF5B74DC633C49326E23040E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4323D5A19E7231033D42FC8E416AB236 /* Frameworks */ = {
+		3F16B73EA8C34BC5D820D1CE5FB67DB0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C84E8379C2131FD3E388D42DD3107A0F /* Foundation.framework in Frameworks */,
+				8453E9D900D92E92AD5CD367DB3F9DCC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +183,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3EACCD6262D2523DF5B03ABC53E3F0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA40CC3DC2C2554E0EEEA3A66EFD12E4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F14D01B37C684095099AE8C8376D636 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACE3CBBE2C7163F9C96209ED44FA75D0 /* SnapKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		432313F4618A6E0D54282078B6A48A1B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEC1C0925B7A75C47F90DA4CD473E0A9 /* Info.plist */,
+				2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */,
+				11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */,
+				55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */,
+				B5C9CEB30AA71EB58B5CD53321954DE0 /* SnapKit-prefix.pch */,
+				B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SnapKit";
+			sourceTree = "<group>";
+		};
 		4EDF3ECBBD4373FB36D9D909BEE59C5C /* Pods-WCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +270,17 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		6D5331B59404B95563ECF57B2E40C84C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				940092FCFA8C8F70711B9E10960D37FA /* Pods_WCamera.framework */,
+				E9D36B9B5871509DBD0C66E5D0ED6AFB /* Pods_WCameraTests.framework */,
+				18D84337E6AC8D5773C68CF592806A31 /* Pods_WCameraUITests.framework */,
+				E82C26155C95B64BD9A621E356176C73 /* SnapKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		711935238752833BD66AEF1F00A7AA1E /* Pods-WCameraUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,19 +304,53 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				8888A9D87F5FAC6520ACB638C23BF05B /* Products */,
+				0F14D01B37C684095099AE8C8376D636 /* Pods */,
+				6D5331B59404B95563ECF57B2E40C84C /* Products */,
 				5914653E5739A0EC1F05A7019E69618C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8888A9D87F5FAC6520ACB638C23BF05B /* Products */ = {
+		ACE3CBBE2C7163F9C96209ED44FA75D0 /* SnapKit */ = {
 			isa = PBXGroup;
 			children = (
-				30DDCFC7E5009238EC465C7AE8326093 /* Pods_WCamera.framework */,
-				FA82E9D7B0CBC6BC76579BA9DC576333 /* Pods_WCameraTests.framework */,
-				BD898F2F12FE67B375D16ADE2AD9BE14 /* Pods_WCameraUITests.framework */,
+				2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */,
+				0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */,
+				23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */,
+				155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */,
+				3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */,
+				645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */,
+				9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */,
+				5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */,
+				DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */,
+				AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */,
+				1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */,
+				068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */,
+				DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */,
+				92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */,
+				FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */,
+				48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */,
+				D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */,
+				F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */,
+				8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */,
+				D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */,
+				618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */,
+				D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */,
+				1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */,
+				5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */,
+				EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */,
+				DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */,
+				35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */,
+				B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */,
+				B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */,
+				D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */,
+				465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */,
+				D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */,
+				3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */,
+				45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */,
+				432313F4618A6E0D54282078B6A48A1B /* Support Files */,
 			);
-			name = Products;
+			name = SnapKit;
+			path = SnapKit;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -220,17 +380,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96E0742C7720AD5EC756BA5A00A029B8 /* Headers */ = {
+		B56FA62432C17A81EBF3793A2BE03DE8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA4F28098BDAD338500CD7A9684D1579 /* Pods-WCamera-umbrella.h in Headers */,
+				06E298FE266C3ED8936B3C3CA83DD61D /* SnapKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB9ED2394501CB9A777F61AD9EC553FF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9FE0D2F0FE916C4CACAC58A3A0A452 /* Pods-WCamera-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		02655D15A3CB7A83C05628CDE895A935 /* Pods-WCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E178B2B557032E529EF65562DB8D08A /* Build configuration list for PBXNativeTarget "Pods-WCamera" */;
+			buildPhases = (
+				3EE03E2DB1D331DA76B1CCAAC2400500 /* Sources */,
+				3F16B73EA8C34BC5D820D1CE5FB67DB0 /* Frameworks */,
+				BB9ED2394501CB9A777F61AD9EC553FF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CACD9A84382ABCEA0B716C2194806AE /* PBXTargetDependency */,
+			);
+			name = "Pods-WCamera";
+			productName = "Pods-WCamera";
+			productReference = 940092FCFA8C8F70711B9E10960D37FA /* Pods_WCamera.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		31DC95E3FEBA5B519CDB0306B45E304F /* Pods-WCameraTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 579A2E15E79D4CCB8971AC522C2A072E /* Build configuration list for PBXNativeTarget "Pods-WCameraTests" */;
@@ -246,24 +432,24 @@
 			);
 			name = "Pods-WCameraTests";
 			productName = "Pods-WCameraTests";
-			productReference = FA82E9D7B0CBC6BC76579BA9DC576333 /* Pods_WCameraTests.framework */;
+			productReference = E9D36B9B5871509DBD0C66E5D0ED6AFB /* Pods_WCameraTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		87D32F626A7E5788836883CCEA51023E /* Pods-WCamera */ = {
+		4D72DA954606C0962FFAF2DAF91F14D6 /* SnapKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F741B8B18D7815FB46C429BE3AC090B /* Build configuration list for PBXNativeTarget "Pods-WCamera" */;
+			buildConfigurationList = 930AA33A1B029DC7306904DAEE8E09BC /* Build configuration list for PBXNativeTarget "SnapKit" */;
 			buildPhases = (
-				033E612C9DA27028D54296F345E0E1BC /* Sources */,
-				4323D5A19E7231033D42FC8E416AB236 /* Frameworks */,
-				96E0742C7720AD5EC756BA5A00A029B8 /* Headers */,
+				88D05DA651B351EC62B03E43C93FCC0B /* Sources */,
+				B3EACCD6262D2523DF5B03ABC53E3F0C /* Frameworks */,
+				B56FA62432C17A81EBF3793A2BE03DE8 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-WCamera";
-			productName = "Pods-WCamera";
-			productReference = 30DDCFC7E5009238EC465C7AE8326093 /* Pods_WCamera.framework */;
+			name = SnapKit;
+			productName = SnapKit;
+			productReference = E82C26155C95B64BD9A621E356176C73 /* SnapKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DBD57DCC1874558FC9239FBF5455468A /* Pods-WCameraUITests */ = {
@@ -281,7 +467,7 @@
 			);
 			name = "Pods-WCameraUITests";
 			productName = "Pods-WCameraUITests";
-			productReference = BD898F2F12FE67B375D16ADE2AD9BE14 /* Pods_WCameraUITests.framework */;
+			productReference = 18D84337E6AC8D5773C68CF592806A31 /* Pods_WCameraUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -301,23 +487,24 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 8888A9D87F5FAC6520ACB638C23BF05B /* Products */;
+			productRefGroup = 6D5331B59404B95563ECF57B2E40C84C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				87D32F626A7E5788836883CCEA51023E /* Pods-WCamera */,
+				02655D15A3CB7A83C05628CDE895A935 /* Pods-WCamera */,
 				31DC95E3FEBA5B519CDB0306B45E304F /* Pods-WCameraTests */,
 				DBD57DCC1874558FC9239FBF5455468A /* Pods-WCameraUITests */,
+				4D72DA954606C0962FFAF2DAF91F14D6 /* SnapKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		033E612C9DA27028D54296F345E0E1BC /* Sources */ = {
+		3EE03E2DB1D331DA76B1CCAAC2400500 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				299F4009E09A320C109A1E5E56292857 /* Pods-WCamera-dummy.m in Sources */,
+				4E7E258890BEF4333A68B370B945E153 /* Pods-WCamera-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +513,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				1278B464D7736D1CBB0D68B4D1628107 /* Pods-WCameraTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88D05DA651B351EC62B03E43C93FCC0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F57A1AE6330272C5D5064C4618FAF29F /* Constraint.swift in Sources */,
+				F22C3C75D6343986FA58A4F2BE78524C /* ConstraintAttributes.swift in Sources */,
+				E01B5A36304D11082FF7E8DBF92882F3 /* ConstraintConfig.swift in Sources */,
+				614B6201DC2FEB70E22FDA0D3B73098C /* ConstraintConstantTarget.swift in Sources */,
+				187C122B277310C26279747C9AEDA526 /* ConstraintDescription.swift in Sources */,
+				30B07B5BD325929650B63A9F66A6B704 /* ConstraintDSL.swift in Sources */,
+				C4F626DB7B0B541E4135D013BEBB5F4A /* ConstraintInsets.swift in Sources */,
+				CDFD19702E314F986DD166FCDAB5A3A8 /* ConstraintInsetTarget.swift in Sources */,
+				916FFE994B6B94B19DDC827F54889502 /* ConstraintItem.swift in Sources */,
+				3DD34CE858CC5769437BF8ADCDC19EC4 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
+				E9F94868B3BC050B60743E2567850EAB /* ConstraintLayoutGuide.swift in Sources */,
+				953698215EC0838B119D43B09B9A2010 /* ConstraintLayoutGuideDSL.swift in Sources */,
+				A299BD2282782FF00A69FFAC159441FE /* ConstraintLayoutSupport.swift in Sources */,
+				7A319839CB1A226366E40AFF2C657A92 /* ConstraintLayoutSupportDSL.swift in Sources */,
+				F1E07C98C613A1E13C6EB7033C0F18C3 /* ConstraintMaker.swift in Sources */,
+				73097539E28398973AD19E9F1C3BA2C7 /* ConstraintMakerEditable.swift in Sources */,
+				7F51A8B40B9E60AB4DBD4B2AEBE78973 /* ConstraintMakerExtendable.swift in Sources */,
+				380F1AADA3BBEF776EF651C319609734 /* ConstraintMakerFinalizable.swift in Sources */,
+				793310CEE02F687BD9E9E082B2A48765 /* ConstraintMakerPriortizable.swift in Sources */,
+				7C1D49FCDE776571CEADFB39FE3868EA /* ConstraintMakerRelatable.swift in Sources */,
+				61B043227AA37EB3F88382D980A13CF7 /* ConstraintMultiplierTarget.swift in Sources */,
+				D8A2003F0947B64155BBC51AE22CAA4C /* ConstraintOffsetTarget.swift in Sources */,
+				873ADCEA2E75EED1625ED7568CEF9880 /* ConstraintPriority.swift in Sources */,
+				D7B5DF6E6DA658728464AE2EBD124128 /* ConstraintPriorityTarget.swift in Sources */,
+				FD8E6B7CAF948563C90FC53105233F79 /* ConstraintRelatableTarget.swift in Sources */,
+				ECED63BF756482541E7E53D3ED20C274 /* ConstraintRelation.swift in Sources */,
+				5BFDCEDDEDEC67C8FB77572D0854F10C /* ConstraintView+Extensions.swift in Sources */,
+				940E2262AC8660BAD07A0F110E72DD76 /* ConstraintView.swift in Sources */,
+				C36CF915E229C7260A4CCBFE296FFF37 /* ConstraintViewDSL.swift in Sources */,
+				64AC3F87B96D3DABE7FBABC4A0E405B2 /* Debugging.swift in Sources */,
+				1455D0FDC96513DD351FEC0578C91A3E /* LayoutConstraint.swift in Sources */,
+				F4CCC06A0CE2CC6403931EFBC1F2D6CE /* LayoutConstraintItem.swift in Sources */,
+				54B7516DDD28C63120D1E2F3FFC3D115 /* SnapKit-dummy.m in Sources */,
+				3B4B1ECECD3D373A008A5DAD0C7332DA /* Typealiases.swift in Sources */,
+				19BF5E507C79AEA657B563531CF7C534 /* UILayoutSupport+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,13 +572,19 @@
 		8B8C9A642712F5FE7BCFDF9B18B830B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WCamera";
-			target = 87D32F626A7E5788836883CCEA51023E /* Pods-WCamera */;
+			target = 02655D15A3CB7A83C05628CDE895A935 /* Pods-WCamera */;
 			targetProxy = 2A73E814302547A3F89724D921B1836B /* PBXContainerItemProxy */;
+		};
+		9CACD9A84382ABCEA0B716C2194806AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 4D72DA954606C0962FFAF2DAF91F14D6 /* SnapKit */;
+			targetProxy = 7792106DF12615F25C5D5B093409260E /* PBXContainerItemProxy */;
 		};
 		F5392A5EFF5716EB40C9753792E6FAAC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WCamera";
-			target = 87D32F626A7E5788836883CCEA51023E /* Pods-WCamera */;
+			target = 02655D15A3CB7A83C05628CDE895A935 /* Pods-WCamera */;
 			targetProxy = 26637BABAEB10475A4FBAD0251D4F7FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -413,9 +648,9 @@
 			};
 			name = Release;
 		};
-		1CCC1B937811AB019EE1DE55D9BA0467 /* Release */ = {
+		0C781663CFF09E7C8582B8D10DFEF678 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 633016247858F2D7D06B205A852C62F3 /* Pods-WCamera.release.xcconfig */;
+			baseConfigurationReference = 794D6F66C2B5AB6B8934BB14F5D4BCB2 /* Pods-WCamera.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -445,12 +680,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		2F32D60A22CEE1890B1D4501C6FB9D68 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -477,44 +713,6 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-WCameraTests/Pods-WCameraTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6E99E9A037843E37224B98197D72953B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 794D6F66C2B5AB6B8934BB14F5D4BCB2 /* Pods-WCamera.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WCamera/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WCamera/Pods-WCamera.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -560,6 +758,43 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		96B5F60612FE6914CB2FFEBFFEE07BCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				PRODUCT_MODULE_NAME = SnapKit;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -629,6 +864,82 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+		};
+		D29CE2C1B486CA135F6D4FF71CEA592F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				PRODUCT_MODULE_NAME = SnapKit;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EB1141DBF017342EEA7DE5646CDC89D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633016247858F2D7D06B205A852C62F3 /* Pods-WCamera.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WCamera/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WCamera/Pods-WCamera.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		F459F613B37B777BDF85080CE4A5B112 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -710,6 +1021,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E178B2B557032E529EF65562DB8D08A /* Build configuration list for PBXNativeTarget "Pods-WCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C781663CFF09E7C8582B8D10DFEF678 /* Debug */,
+				EB1141DBF017342EEA7DE5646CDC89D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -737,11 +1057,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F741B8B18D7815FB46C429BE3AC090B /* Build configuration list for PBXNativeTarget "Pods-WCamera" */ = {
+		930AA33A1B029DC7306904DAEE8E09BC /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E99E9A037843E37224B98197D72953B /* Debug */,
-				1CCC1B937811AB019EE1DE55D9BA0467 /* Release */,
+				D29CE2C1B486CA135F6D4FF71CEA592F /* Debug */,
+				96B5F60612FE6914CB2FFEBFFEE07BCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
