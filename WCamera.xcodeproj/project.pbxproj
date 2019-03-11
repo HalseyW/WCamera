@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C315EC4D29FF5F4E2A1BA08 /* Pods_WCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E784D12F5DA990FF1942DE37 /* Pods_WCamera.framework */; };
+		77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77205ED8223627EC00DB31AD /* PreviewView.swift */; };
 		772CABE322325C0900829892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE222325C0900829892 /* AppDelegate.swift */; };
 		772CABE522325C0900829892 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* PermissionViewController.swift */; };
 		772CABE822325C0900829892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE622325C0900829892 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		2A5005AFC925D0CF2BB97830 /* Pods-WCameraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraUITests/Pods-WCameraUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4167648D023181A8C0A28E1B /* Pods_WCameraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WCameraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WCameraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77205ED8223627EC00DB31AD /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		772CABDF22325C0900829892 /* WCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABE222325C0900829892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		772CABE422325C0900829892 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				772CAC202232641500829892 /* CameraViewController.swift */,
+				77205ED8223627EC00DB31AD /* PreviewView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
 				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
 				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
+				77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */,
 				772CABE522325C0900829892 /* PermissionViewController.swift in Sources */,
 				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				772CABE322325C0900829892 /* AppDelegate.swift in Sources */,
