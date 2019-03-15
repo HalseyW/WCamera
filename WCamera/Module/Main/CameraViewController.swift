@@ -21,18 +21,24 @@ class CameraViewController: UIViewController {
         
         let captureSession = AVCaptureSession()
         captureSession.beginConfiguration()
-        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .unspecified)
+        captureSession.sessionPreset = .photo
+        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back)
         guard let deviceInput = try? AVCaptureDeviceInput(device: device!), captureSession.canAddInput(deviceInput) else { return }
         captureSession.addInput(deviceInput)
          photoOutput = AVCapturePhotoOutput()
         guard let photoOutput = photoOutput, captureSession.canAddOutput(photoOutput) else {
             return
         }
-        captureSession.sessionPreset = .photo
         captureSession.addOutput(photoOutput)
         captureSession.commitConfiguration()
         previewView?.videoPreviewLayer.session = captureSession
         captureSession.startRunning()
+        
+//        changeDeviceProperty(captureDevice: device!) {
+//            $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: (device?.activeFormat.maxISO)!, completionHandler: nil)
+//            $0.setExposureModeCustom(duration: (device?.activeFormat.minExposureDuration)!, iso: AVCaptureDevice.currentISO, completionHandler: nil)
+//        }
+        
     }
     
     @objc func onClickCapturePhotoButton() {
@@ -48,13 +54,38 @@ class CameraViewController: UIViewController {
             photoSettings = AVCapturePhotoSettings.init()
         }
         photoSettings.flashMode = .auto
+        if #available(iOS 12.0, *) {
+            photoSettings.isAutoRedEyeReductionEnabled = photoOutput.isAutoRedEyeReductionSupported
+        }
         photoSettings.isAutoStillImageStabilizationEnabled = photoOutput.isStillImageStabilizationSupported
         photoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
+    func changeDeviceProperty(captureDevice: AVCaptureDevice, change: (AVCaptureDevice) -> Void) {
+        do {
+            try captureDevice.lockForConfiguration()
+            change(captureDevice)
+            captureDevice.unlockForConfiguration()
+        } catch  let error as NSError{
+            print("CaptureDevice属性修改失败: \(error)")
+        }
     }
 }
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+        //开始拍照，执行动画等
+        btnCapturePhoto?.isEnabled = false
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+        //拍照完毕，但仍然在处理数据，执行动画等
+        btnCapturePhoto?.isEnabled = true
+    }
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        //保存照片
         if let e = error {
             print(e.localizedDescription)
             return
@@ -63,9 +94,6 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             let creationRequest = PHAssetCreationRequest.forAsset()
             creationRequest.addResource(with: .photo, data: photo.fileDataRepresentation()!, options: nil)
         }) { (isSuccess, error) in
-            if isSuccess {
-                print("Capture Success")
-            }
             if let e = error {
                 print("Capture Error: \(e.localizedDescription)")
             }
@@ -86,6 +114,7 @@ extension CameraViewController {
         //拍照按钮
         btnCapturePhoto = UIButton.init()
         btnCapturePhoto?.setTitle("拍照", for: .normal)
+        btnCapturePhoto?.setTitle("处理中...", for: .disabled)
         btnCapturePhoto?.setTitleColor(.white, for: .normal)
         btnCapturePhoto?.backgroundColor = .blue
         self.view.addSubview(btnCapturePhoto!)
