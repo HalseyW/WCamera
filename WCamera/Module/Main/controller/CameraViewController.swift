@@ -14,7 +14,7 @@ class CameraViewController: UIViewController {
     var previewView: PreviewView?
     var btnCapturePhoto: UIButton?
     let cameraManager = CameraManager.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()

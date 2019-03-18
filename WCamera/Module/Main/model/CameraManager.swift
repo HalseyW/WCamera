@@ -40,8 +40,6 @@ class CameraManager: NSObject {
         captureSession.addOutput(photoOutput)
         captureSession.commitConfiguration()
         delegate.getPreviewView().videoPreviewLayer.session = captureSession
-        //            $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: (captureDevice?.activeFormat.maxISO)!, completionHandler: nil)
-        //            $0.setExposureModeCustom(duration: (device?.activeFormat.minExposureDuration)!, iso: AVCaptureDevice.currentISO, completionHandler: nil)
     }
     
     /// 开始预览
@@ -69,7 +67,7 @@ class CameraManager: NSObject {
         if deviceDiscoverySession.devices.count != 0 {
             return deviceDiscoverySession.devices[0]
         } else {
-            return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back)!
+            return AVCaptureDevice.default(for: .video)!
         }
     }
     
