@@ -19,9 +19,6 @@ class CameraManager: NSObject {
     var photoOutput: AVCapturePhotoOutput?
     let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
     
-    /// 构建Session
-    ///
-    /// - Parameter delegate: CameraManagerDelegate
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
         captureSession.beginConfiguration()
@@ -42,26 +39,18 @@ class CameraManager: NSObject {
         delegate.getPreviewView().videoPreviewLayer.session = captureSession
     }
     
-    /// 开始预览
     func startRunning() {
         cameraQueue.async {
             self.captureSession.startRunning()
         }
     }
     
-    /// 停止预览
     func stopRunning() {
         cameraQueue.async {
             self.captureSession.stopRunning()
         }
     }
     
-    /// 根据种类和位置获取相机
-    ///
-    /// - Parameters:
-    ///   - type: 相机种类，广角、长焦等
-    ///   - position: 相机位置，前置、后置
-    /// - Returns: 相机设备
     func getCaptureDevice(type: AVCaptureDevice.DeviceType, position: AVCaptureDevice.Position) -> AVCaptureDevice {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession.init(deviceTypes: [type], mediaType: AVMediaType.video, position: position)
         if deviceDiscoverySession.devices.count != 0 {
@@ -71,7 +60,33 @@ class CameraManager: NSObject {
         }
     }
     
-    /// 拍照
+    func changeEV(device: AVCaptureDevice, ev: Float) {
+        guard ev >= device.minExposureTargetBias && ev <= device.maxExposureTargetBias else {
+            return
+        }
+        device.changeProperty {
+            $0.setExposureTargetBias(ev, completionHandler: nil)
+        }
+    }
+    
+    func changeISO(device: AVCaptureDevice, iso: Float) {
+        guard iso >= device.activeFormat.minISO && iso <= device.activeFormat.maxISO else {
+            return
+        }
+        device.changeProperty {
+            $0.setExposureModeCustom(duration: device.exposureDuration, iso: iso, completionHandler: nil)
+        }
+    }
+    
+    func changeExposureDuration(device: AVCaptureDevice, duration: CMTime) {
+        guard duration >= device.activeFormat.minExposureDuration && duration <= device.activeFormat.maxExposureDuration else {
+            return
+        }
+        device.changeProperty {
+            $0.setExposureModeCustom(duration: duration, iso: device.iso, completionHandler: nil)
+        }
+    }
+    
     func capturePhoto() {
         guard let photoOutput = photoOutput else { return }
         let photoSettings: AVCapturePhotoSettings
@@ -90,9 +105,6 @@ class CameraManager: NSObject {
 }
 
 extension AVCaptureDevice {
-    /// 改变 AVCaptureDevice 的属性
-    ///
-    /// - Parameter configure: 闭包改变属性
     func changeProperty(_ configure: (AVCaptureDevice) -> Void) {
         do {
             try lockForConfiguration()
