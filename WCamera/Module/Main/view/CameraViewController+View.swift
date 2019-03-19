@@ -18,7 +18,8 @@ extension CameraViewController {
         self.view.addSubview(previewView!)
         previewView?.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
-            make.height.equalToSuperview()
+            make.height.equalTo(UIScreen.main.bounds.width * 4 / 3)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         })
         //拍照按钮
         btnCapturePhoto = UIButton.init()
@@ -34,5 +35,16 @@ extension CameraViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         })
         btnCapturePhoto?.addTarget(self, action: #selector(onClickCapturePhotoButton), for: .touchUpInside)
+        //iso滑条
+        sliderISO = UISlider.init()
+        sliderISO?.minimumTrackTintColor = .lightGray
+        sliderISO?.maximumTrackTintColor = .lightGray
+        self.view.addSubview(sliderISO!)
+        sliderISO?.snp.makeConstraints({ (make) in
+            make.width.equalToSuperview().offset(-60)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(btnCapturePhoto!.snp.top).offset(-20)
+        })
+        sliderISO?.addTarget(self, action: #selector(isoSliderValueDidChange(sender:)), for: .valueChanged)
     }
 }

@@ -60,30 +60,41 @@ class CameraManager: NSObject {
         }
     }
     
-    func changeEV(device: AVCaptureDevice, ev: Float) {
-        guard ev >= device.minExposureTargetBias && ev <= device.maxExposureTargetBias else {
+    func changeEV(to ev: Float) {
+        guard let device = captureDevice else {
             return
         }
+        let minEV = device.minExposureTargetBias
+        let maxEV = device.maxExposureTargetBias
+        let value = ev * (maxEV - minEV) + minEV
         device.changeProperty {
-            $0.setExposureTargetBias(ev, completionHandler: nil)
+            $0.setExposureTargetBias(value, completionHandler: nil)
         }
     }
     
-    func changeISO(device: AVCaptureDevice, iso: Float) {
-        guard iso >= device.activeFormat.minISO && iso <= device.activeFormat.maxISO else {
+    func changeISO(to iso: Float) {
+        guard let device = captureDevice else {
             return
         }
+        let minISO = device.activeFormat.minISO
+        let maxISO = device.activeFormat.maxISO
+        let value = iso * (maxISO - minISO) + minISO
         device.changeProperty {
-            $0.setExposureModeCustom(duration: device.exposureDuration, iso: iso, completionHandler: nil)
+            $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: value, completionHandler: nil)
         }
     }
     
-    func changeExposureDuration(device: AVCaptureDevice, duration: CMTime) {
-        guard duration >= device.activeFormat.minExposureDuration && duration <= device.activeFormat.maxExposureDuration else {
+    func changeExposureDuration(to duration: Double) {
+        guard let device = captureDevice else {
             return
         }
+        let minDuration = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
+        let maxDuration = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
+        let value = duration * (maxDuration - minDuration) + minDuration
+//        let time = CMTime.init(seconds: 4.0, preferredTimescale: CMTimeScale(10))
+        let time = device.activeFormat.maxExposureDuration
         device.changeProperty {
-            $0.setExposureModeCustom(duration: duration, iso: device.iso, completionHandler: nil)
+            $0.setExposureModeCustom(duration: time, iso: AVCaptureDevice.currentISO, completionHandler: nil)
         }
     }
     

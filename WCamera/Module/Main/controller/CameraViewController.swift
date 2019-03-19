@@ -11,8 +11,10 @@ import AVFoundation
 import Photos
 
 class CameraViewController: UIViewController {
+    override var prefersStatusBarHidden: Bool { return true }
     var previewView: PreviewView?
     var btnCapturePhoto: UIButton?
+    var sliderISO: UISlider?
     let cameraManager = CameraManager.shared
     
     override func viewDidLoad() {
@@ -33,6 +35,13 @@ class CameraViewController: UIViewController {
     
     @objc func onClickCapturePhotoButton() {
         cameraManager.capturePhoto()
+    }
+    
+    @objc func isoSliderValueDidChange(sender: UISlider) {
+        let iso = sender.value
+//        cameraManager.changeISO(to: iso)
+//        cameraManager.changeEV(to: iso)
+        cameraManager.changeExposureDuration(to: Double(iso))
     }
 }
 
