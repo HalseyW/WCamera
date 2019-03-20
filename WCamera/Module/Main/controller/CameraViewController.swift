@@ -39,9 +39,9 @@ class CameraViewController: UIViewController {
     }
     
     @objc func isoAndExposureDurationValueDidChange() {
-        let sliderISOValue = sliderISO?.value
-        let sliderExposureDurationValue = sliderExposureDuration?.value
-        cameraManager.changeISOAndExposureDuration(duration: Double(exposureDuration!), iso: iso!)
+        let sliderISOValue = sliderISO!.value
+        let sliderExposureDurationValue = sliderExposureDuration!.value
+        cameraManager.changeISOAndExposureDuration(duration: Double(sliderExposureDurationValue), iso: sliderISOValue)
     }
 }
 
