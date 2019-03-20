@@ -64,38 +64,29 @@ class CameraManager: NSObject {
         guard let device = captureDevice else {
             return
         }
+        
         let minEV = device.minExposureTargetBias
         let maxEV = device.maxExposureTargetBias
         let value = ev * (maxEV - minEV) + minEV
-        device.changeProperty {
-            $0.setExposureTargetBias(value, completionHandler: nil)
-        }
+        
+        device.changeProperty { $0.setExposureTargetBias(value, completionHandler: nil) }
     }
     
-    func changeISO(to iso: Float) {
+    func changeISOAndExposureDuration(duration: Double, iso: Float) {
         guard let device = captureDevice else {
             return
         }
+        
         let minISO = device.activeFormat.minISO
         let maxISO = device.activeFormat.maxISO
-        let value = iso * (maxISO - minISO) + minISO
-        device.changeProperty {
-            $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: value, completionHandler: nil)
-        }
-    }
-    
-    func changeExposureDuration(to duration: Double) {
-        guard let device = captureDevice else {
-            return
-        }
+        let isoValue = round(iso * (maxISO - minISO) + minISO)
+        
         let minDuration = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
         let maxDuration = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
-        let value = duration * (maxDuration - minDuration) + minDuration
-//        let time = CMTime.init(seconds: 4.0, preferredTimescale: CMTimeScale(10))
-        let time = device.activeFormat.maxExposureDuration
-        device.changeProperty {
-            $0.setExposureModeCustom(duration: time, iso: AVCaptureDevice.currentISO, completionHandler: nil)
-        }
+        let durationValueSeconds = duration * (maxDuration - minDuration) + minDuration
+        let durationValue = CMTimeMakeWithSeconds(durationValueSeconds, preferredTimescale: 1000000)
+        
+        device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: isoValue, completionHandler: nil) }
     }
     
     func capturePhoto() {
@@ -106,11 +97,8 @@ class CameraManager: NSObject {
         } else {
             photoSettings = AVCapturePhotoSettings.init()
         }
-        photoSettings.flashMode = .auto
-        if #available(iOS 12.0, *) {
-            photoSettings.isAutoRedEyeReductionEnabled = photoOutput.isAutoRedEyeReductionSupported
-        }
-        photoSettings.isAutoStillImageStabilizationEnabled = photoOutput.isStillImageStabilizationSupported
+        //此处必须设置为 false，否则设备会对 iso 和曝光时长进行修改
+        photoSettings.isAutoStillImageStabilizationEnabled = false
         photoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
 }
@@ -126,4 +114,3 @@ extension AVCaptureDevice {
         }
     }
 }
-

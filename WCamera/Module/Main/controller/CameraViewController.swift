@@ -15,6 +15,7 @@ class CameraViewController: UIViewController {
     var previewView: PreviewView?
     var btnCapturePhoto: UIButton?
     var sliderISO: UISlider?
+    var sliderExposureDuration: UISlider?
     let cameraManager = CameraManager.shared
     
     override func viewDidLoad() {
@@ -37,11 +38,10 @@ class CameraViewController: UIViewController {
         cameraManager.capturePhoto()
     }
     
-    @objc func isoSliderValueDidChange(sender: UISlider) {
-        let iso = sender.value
-//        cameraManager.changeISO(to: iso)
-//        cameraManager.changeEV(to: iso)
-        cameraManager.changeExposureDuration(to: Double(iso))
+    @objc func isoAndExposureDurationValueDidChange() {
+        let sliderISOValue = sliderISO?.value
+        let sliderExposureDurationValue = sliderExposureDuration?.value
+        cameraManager.changeISOAndExposureDuration(duration: Double(exposureDuration!), iso: iso!)
     }
 }
 

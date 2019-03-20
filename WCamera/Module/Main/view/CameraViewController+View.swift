@@ -43,8 +43,19 @@ extension CameraViewController {
         sliderISO?.snp.makeConstraints({ (make) in
             make.width.equalToSuperview().offset(-60)
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(btnCapturePhoto!.snp.top).offset(-20)
+            make.top.equalTo(previewView!.snp.bottom).offset(20)
         })
-        sliderISO?.addTarget(self, action: #selector(isoSliderValueDidChange(sender:)), for: .valueChanged)
+        sliderISO?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
+        //曝光时间滑条
+        sliderExposureDuration = UISlider.init()
+        sliderExposureDuration?.minimumTrackTintColor = .lightGray
+        sliderExposureDuration?.maximumTrackTintColor = .lightGray
+        self.view.addSubview(sliderExposureDuration!)
+        sliderExposureDuration?.snp.makeConstraints({ (make) in
+            make.width.equalToSuperview().offset(-60)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(sliderISO!.snp.bottom).offset(20)
+        })
+        sliderExposureDuration?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
     }
 }
