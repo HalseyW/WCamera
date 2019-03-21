@@ -18,4 +18,9 @@ class PreviewView: UIView {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
     }
+    
+    //将屏幕坐标系上的触控点转换为摄像头设备坐标系上的点
+    func transferGestureLocationToCameraPoint(point: CGPoint) -> CGPoint {
+        return videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: point)
+    }
 }

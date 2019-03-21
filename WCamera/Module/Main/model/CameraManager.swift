@@ -104,14 +104,32 @@ class CameraManager: NSObject {
     ///
     /// - Parameter point: 点击的位置
     func focusAndExposure(at point: CGPoint) {
-        
+        guard let device = captureDevice else {
+            return
+        }
+        device.changeProperty { (device) in
+            let transferredPoint = delegate?.getPreviewView().transferGestureLocationToCameraPoint(point: point)
+            device.focusPointOfInterest = transferredPoint!
+            device.exposurePointOfInterest = transferredPoint!
+            device.focusMode = .continuousAutoFocus
+            device.exposureMode = .continuousAutoExposure
+        }
     }
     
     /// 长按锁定焦点、曝光
     ///
     /// - Parameter point: 长按的位置
     func lockFocusAndExposure(at point: CGPoint) {
-        
+        guard let device = captureDevice else {
+            return
+        }
+        device.changeProperty { (device) in
+            let transferredPoint = delegate?.getPreviewView().transferGestureLocationToCameraPoint(point: point)
+            device.focusPointOfInterest = transferredPoint!
+            device.exposurePointOfInterest = transferredPoint!
+            device.focusMode = .autoFocus
+            device.exposureMode = .autoExpose
+        }
     }
     
     /// 拍摄照片
