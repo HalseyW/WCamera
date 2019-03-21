@@ -37,6 +37,34 @@ extension CameraViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         })
         btnCapturePhoto?.addTarget(self, action: #selector(onClickCapturePhotoButton), for: .touchUpInside)
+        //切换前后摄像头
+        btnSwitchFrontAndBackCamera = UIButton.init()
+        btnSwitchFrontAndBackCamera?.setTitle("后置", for: .normal)
+        btnSwitchFrontAndBackCamera?.setTitle("前焦", for: .selected)
+        btnSwitchFrontAndBackCamera?.setTitleColor(.white, for: .normal)
+        btnSwitchFrontAndBackCamera?.backgroundColor = .green
+        self.view.addSubview(btnSwitchFrontAndBackCamera!)
+        btnSwitchFrontAndBackCamera?.snp.makeConstraints({ (make) in
+            make.width.equalTo(50)
+            make.height.equalTo(35)
+            make.centerY.equalTo(btnCapturePhoto!)
+            make.right.equalTo(btnCapturePhoto!.snp.left).offset(-20)
+        })
+        btnSwitchFrontAndBackCamera?.addTarget(self, action: #selector(onClickSwitchFrontAndBackCameraButton), for: .touchUpInside)
+        //切换广角和长焦摄像头
+        btnSwitchDualCamera = UIButton.init()
+        btnSwitchDualCamera?.setTitle("广角", for: .normal)
+        btnSwitchDualCamera?.setTitle("长焦", for: .selected)
+        btnSwitchDualCamera?.setTitleColor(.white, for: .normal)
+        btnSwitchDualCamera?.backgroundColor = .green
+        self.view.addSubview(btnSwitchDualCamera!)
+        btnSwitchDualCamera?.snp.makeConstraints({ (make) in
+            make.width.equalTo(50)
+            make.height.equalTo(35)
+            make.centerY.equalTo(btnCapturePhoto!)
+            make.left.equalTo(btnCapturePhoto!.snp.right).offset(20)
+        })
+        btnSwitchDualCamera?.addTarget(self, action: #selector(onClickSwitchDualCameraButton), for: .touchUpInside)
         //iso滑条
         sliderISO = UISlider.init()
         sliderISO?.minimumTrackTintColor = .lightGray

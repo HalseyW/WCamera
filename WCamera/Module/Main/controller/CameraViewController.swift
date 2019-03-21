@@ -14,6 +14,8 @@ class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return true }
     var previewView: PreviewView?
     var btnCapturePhoto: UIButton?
+    var btnSwitchDualCamera: UIButton?
+    var btnSwitchFrontAndBackCamera: UIButton?
     var ivFocus: UIImageView?
     var sliderISO: UISlider?
     var sliderExposureDuration: UISlider?
@@ -38,6 +40,42 @@ class CameraViewController: UIViewController {
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
         cameraManager.capturePhoto()
+    }
+    
+    //切换前/后置摄像头
+    @objc func onClickSwitchFrontAndBackCameraButton() {
+        switchCameraAnim {
+            self.btnCapturePhoto?.isEnabled = false
+            self.btnSwitchFrontAndBackCamera?.isEnabled = false
+            self.previewView?.alpha = 0
+            self.cameraManager.switchFrontAndBackCamera(to: .builtInWideAngleCamera)
+        }
+    }
+    
+    //切换后置双摄
+    @objc func onClickSwitchDualCameraButton() {
+        switchCameraAnim {
+            self.btnCapturePhoto?.isEnabled = false
+            self.btnSwitchDualCamera?.isEnabled = false
+            self.previewView?.alpha = 0
+            self.cameraManager.switchDualCamera()
+        }
+    }
+    
+    /// 切换摄像头的统一动画
+    ///
+    /// - Parameter anim: 执行的操作
+    func switchCameraAnim(anim: @escaping () -> Void) {
+        UIView.transition(with: previewView!, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
+    }
+    
+    /// 切换摄像头完成后回调的统一动画
+    ///
+    /// - Parameter completion: 完成后的操作
+    func switchCameraCompleteAnim(completion: @escaping (Bool) -> Void) {
+        UIView.transition(with: previewView!, duration: 0.35, options: .curveEaseIn, animations: {
+            self.previewView?.alpha = 1
+        }, completion: completion)
     }
     
     /// 拖动ISO和快门时间调整滑块
@@ -75,5 +113,21 @@ extension  CameraViewController: CameraManagerDelegate {
     
     func getCapturePhotoButton() -> UIButton {
         return btnCapturePhoto!
+    }
+    
+    func frontAndBackCameraSwitchComplete() {
+        switchCameraCompleteAnim { (_) in
+            self.btnSwitchFrontAndBackCamera?.isSelected.toggle()
+            self.btnCapturePhoto?.isEnabled = true
+            self.btnSwitchFrontAndBackCamera?.isEnabled = true
+        }
+    }
+    
+    func dualCameraSwitchComplete() {
+        switchCameraCompleteAnim { (_) in
+            self.btnSwitchDualCamera?.isSelected.toggle()
+            self.btnCapturePhoto?.isEnabled = true
+            self.btnSwitchDualCamera?.isEnabled = true
+        }
     }
 }

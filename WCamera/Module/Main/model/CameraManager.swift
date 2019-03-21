@@ -51,6 +51,42 @@ class CameraManager: NSObject {
         }
     }
     
+    /// 切换前后置摄像头
+    ///
+    /// - Parameter type: 后置摄像头是长焦还是广角
+    func switchFrontAndBackCamera(to type: AVCaptureDevice.DeviceType) {
+        captureDevice = (captureDevice?.position == .back) ? getCaptureDevice(type: .builtInWideAngleCamera, position: .front) : getCaptureDevice(type: type, position: .back)
+        switchCameraWorkFlow(to: captureDevice!) {
+            self.delegate?.frontAndBackCameraSwitchComplete()
+        }
+    }
+    
+    /// 切换后置双摄
+    func switchDualCamera()  {
+        captureDevice = (captureDevice?.deviceType == .builtInTelephotoCamera) ? getCaptureDevice(type: .builtInWideAngleCamera, position: .back) : getCaptureDevice(type: .builtInTelephotoCamera, position: .back)
+        switchCameraWorkFlow(to: captureDevice!) {
+            self.delegate?.dualCameraSwitchComplete()
+        }
+    }
+    
+    /// 切换摄像头的工作流
+    ///
+    /// - Parameters:
+    ///   - device: 切换的设备
+    ///   - notify: 切换成功的回调
+    func switchCameraWorkFlow(to device: AVCaptureDevice, complete notify: @escaping () -> Void) {
+        let workItem = DispatchWorkItem.init {
+            self.captureSession.beginConfiguration()
+            self.captureSession.removeInput(self.deviceInput!)
+            self.deviceInput = try? AVCaptureDeviceInput(device: device)
+            guard self.captureSession.canAddInput(self.deviceInput!) else { return }
+            self.captureSession.addInput(self.deviceInput!)
+            self.captureSession.commitConfiguration()
+        }
+        cameraQueue.async(execute: workItem)
+        workItem.notify(queue: DispatchQueue.main, execute: notify)
+    }
+    
     /// 根据相机类型和相机位置获取AVCaptureDevice
     ///
     /// - Parameters:
@@ -116,7 +152,7 @@ class CameraManager: NSObject {
     ///
     /// - Parameter point: 点击的位置
     func focusAndExposure(at point: CGPoint) {
-        guard let device = captureDevice else {
+        guard let device = captureDevice, device.isFocusPointOfInterestSupported, device.isExposurePointOfInterestSupported else {
             return
         }
         device.changeProperty { (device) in
@@ -132,7 +168,7 @@ class CameraManager: NSObject {
     ///
     /// - Parameter point: 长按的位置
     func lockFocusAndExposure(at point: CGPoint) {
-        guard let device = captureDevice else {
+        guard let device = captureDevice, device.isFocusPointOfInterestSupported, device.isExposurePointOfInterestSupported else {
             return
         }
         device.changeProperty { (device) in

@@ -14,4 +14,8 @@ protocol CameraManagerDelegate: NSObjectProtocol {
     func getPreviewView() -> PreviewView
     
     func getCapturePhotoButton() -> UIButton
+    
+    func frontAndBackCameraSwitchComplete()
+    
+    func dualCameraSwitchComplete()
 }
