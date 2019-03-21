@@ -21,6 +21,8 @@ extension CameraViewController {
             make.height.equalTo(UIScreen.main.bounds.width * 4 / 3)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         })
+        previewView?.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
+        previewView?.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
         //拍照按钮
         btnCapturePhoto = UIButton.init()
         btnCapturePhoto?.setTitle("拍照", for: .normal)

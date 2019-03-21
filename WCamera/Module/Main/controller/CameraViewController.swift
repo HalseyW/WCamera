@@ -35,6 +35,7 @@ class CameraViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
+    /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
         cameraManager.capturePhoto()
     }
@@ -44,6 +45,26 @@ class CameraViewController: UIViewController {
         let sliderISOValue = sliderISO!.value
         let sliderExposureDurationValue = sliderExposureDuration!.value
         cameraManager.changeISOAndExposureDuration(duration: Double(sliderExposureDurationValue), iso: sliderISOValue)
+    }
+    
+    /// 点击预览界面，对焦、测光
+    ///
+    /// - Parameter sender: 点击手势
+    @objc func onTapPreviewView(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let point = sender.location(in: previewView)
+            cameraManager.focusAndExposure(at: point)
+        }
+    }
+    
+    /// 长按预览界面，锁定焦点、曝光
+    ///
+    /// - Parameter sender: 长按手势
+    @objc func onLongPressPreviewView(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let point = sender.location(in: previewView)
+            cameraManager.lockFocusAndExposure(at: point)
+        }
     }
 }
 

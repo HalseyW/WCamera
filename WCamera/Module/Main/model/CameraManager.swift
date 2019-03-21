@@ -100,6 +100,20 @@ class CameraManager: NSObject {
         device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: isoValue, completionHandler: nil) }
     }
     
+    /// 点击对焦、测光
+    ///
+    /// - Parameter point: 点击的位置
+    func focusAndExposure(at point: CGPoint) {
+        
+    }
+    
+    /// 长按锁定焦点、曝光
+    ///
+    /// - Parameter point: 长按的位置
+    func lockFocusAndExposure(at point: CGPoint) {
+        
+    }
+    
     /// 拍摄照片
     func capturePhoto() {
         guard let photoOutput = photoOutput else { return }
