@@ -39,8 +39,7 @@ extension CameraViewController {
         btnCapturePhoto?.addTarget(self, action: #selector(onClickCapturePhotoButton), for: .touchUpInside)
         //切换前后摄像头
         btnSwitchFrontAndBackCamera = UIButton.init()
-        btnSwitchFrontAndBackCamera?.setTitle("后置", for: .normal)
-        btnSwitchFrontAndBackCamera?.setTitle("前焦", for: .selected)
+        btnSwitchFrontAndBackCamera?.setTitle("前/后", for: .normal)
         btnSwitchFrontAndBackCamera?.setTitleColor(.white, for: .normal)
         btnSwitchFrontAndBackCamera?.backgroundColor = .green
         self.view.addSubview(btnSwitchFrontAndBackCamera!)
@@ -53,8 +52,7 @@ extension CameraViewController {
         btnSwitchFrontAndBackCamera?.addTarget(self, action: #selector(onClickSwitchFrontAndBackCameraButton), for: .touchUpInside)
         //切换广角和长焦摄像头
         btnSwitchDualCamera = UIButton.init()
-        btnSwitchDualCamera?.setTitle("广角", for: .normal)
-        btnSwitchDualCamera?.setTitle("长焦", for: .selected)
+        btnSwitchDualCamera?.setTitle("W/T", for: .normal)
         btnSwitchDualCamera?.setTitleColor(.white, for: .normal)
         btnSwitchDualCamera?.backgroundColor = .green
         self.view.addSubview(btnSwitchDualCamera!)

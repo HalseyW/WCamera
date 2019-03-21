@@ -48,7 +48,7 @@ class CameraViewController: UIViewController {
             self.btnCapturePhoto?.isEnabled = false
             self.btnSwitchFrontAndBackCamera?.isEnabled = false
             self.previewView?.alpha = 0
-            self.cameraManager.switchFrontAndBackCamera(to: .builtInWideAngleCamera)
+            self.cameraManager.switchFrontAndBackCamera()
         }
     }
     

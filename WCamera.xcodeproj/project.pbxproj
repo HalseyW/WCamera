@@ -27,6 +27,7 @@
 		772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1822325D9900829892 /* PermissionAlert.swift */; };
 		772CAC1F22325D9900829892 /* Permission+request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1922325D9900829892 /* Permission+request.swift */; };
 		772CAC212232641500829892 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC202232641500829892 /* CameraViewController.swift */; };
+		773C28852243893900F9B196 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C28842243893900F9B196 /* UserDefaults+static.swift */; };
 		9EA78571354CE299852D4016 /* Pods_WCameraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4167648D023181A8C0A28E1B /* Pods_WCameraUITests.framework */; };
 		CDE0DDA9E07A20E1FE89C8FC /* Pods_WCameraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		772CAC1822325D9900829892 /* PermissionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionAlert.swift; sourceTree = "<group>"; };
 		772CAC1922325D9900829892 /* Permission+request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Permission+request.swift"; sourceTree = "<group>"; };
 		772CAC202232641500829892 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		773C28842243893900F9B196 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		895BD7B5CBF0791318D17845 /* Pods-WCameraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACAE6E3A4F929377A17569FA /* Pods-WCameraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraTests/Pods-WCameraTests.release.xcconfig"; sourceTree = "<group>"; };
 		C1491FA37353E86F43D0591A /* Pods-WCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WCamera/Pods-WCamera.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				772CAC1122325D4600829892 /* Permission */,
+				773C28842243893900F9B196 /* UserDefaults+static.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			files = (
 				772CAC1D22325D9900829892 /* Other.swift in Sources */,
 				772CAC1C22325D9900829892 /* PermissionStatus.swift in Sources */,
+				773C28852243893900F9B196 /* UserDefaults+static.swift in Sources */,
 				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
 				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
 				77190282223F480A009CA59F /* CameraManager+CapturePhoto.swift in Sources */,
