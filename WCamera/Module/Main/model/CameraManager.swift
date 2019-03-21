@@ -100,6 +100,18 @@ class CameraManager: NSObject {
         device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: isoValue, completionHandler: nil) }
     }
     
+    /// 设置镜头焦距
+    ///
+    /// - Parameter lens: 对焦焦距
+    func changeFocusLens(to lens: Float) {
+        guard let device = captureDevice else {
+            return
+        }
+        device.changeProperty {
+            $0.setFocusModeLocked(lensPosition: lens, completionHandler: nil)
+        }
+    }
+    
     /// 点击对焦、测光
     ///
     /// - Parameter point: 点击的位置
