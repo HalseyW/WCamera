@@ -51,6 +51,12 @@ class CameraManager: NSObject {
         }
     }
     
+    /// 根据相机类型和相机位置获取AVCaptureDevice
+    ///
+    /// - Parameters:
+    ///   - type: 相机类型，长焦、广角等
+    ///   - position: 相机位置，前置、后置
+    /// - Returns: 相机设备AVCaptureDevice
     func getCaptureDevice(type: AVCaptureDevice.DeviceType, position: AVCaptureDevice.Position) -> AVCaptureDevice {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession.init(deviceTypes: [type], mediaType: AVMediaType.video, position: position)
         if deviceDiscoverySession.devices.count != 0 {
@@ -60,35 +66,41 @@ class CameraManager: NSObject {
         }
     }
     
+    /// 设置曝光补偿
+    ///
+    /// - Parameter ev: 曝光补偿度
     func changeEV(to ev: Float) {
         guard let device = captureDevice else {
             return
         }
-        
         let minEV = device.minExposureTargetBias
         let maxEV = device.maxExposureTargetBias
         let value = ev * (maxEV - minEV) + minEV
-        
         device.changeProperty { $0.setExposureTargetBias(value, completionHandler: nil) }
     }
     
+    /// 设置ISO和快门时间
+    ///
+    /// - Parameters:
+    ///   - duration: 快门时间
+    ///   - iso: ISO
     func changeISOAndExposureDuration(duration: Double, iso: Float) {
         guard let device = captureDevice else {
             return
         }
-        
+        //计算ISO
         let minISO = device.activeFormat.minISO
         let maxISO = device.activeFormat.maxISO
         let isoValue = round(iso * (maxISO - minISO) + minISO)
-        
+        //计算快门时间
         let minDuration = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
         let maxDuration = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
         let durationValueSeconds = duration * (maxDuration - minDuration) + minDuration
         let durationValue = CMTimeMakeWithSeconds(durationValueSeconds, preferredTimescale: 1000000)
-        
         device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: isoValue, completionHandler: nil) }
     }
     
+    /// 拍摄照片
     func capturePhoto() {
         guard let photoOutput = photoOutput else { return }
         let photoSettings: AVCapturePhotoSettings

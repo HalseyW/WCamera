@@ -14,6 +14,7 @@ class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return true }
     var previewView: PreviewView?
     var btnCapturePhoto: UIButton?
+    var ivFocus: UIImageView?
     var sliderISO: UISlider?
     var sliderExposureDuration: UISlider?
     let cameraManager = CameraManager.shared
@@ -38,6 +39,7 @@ class CameraViewController: UIViewController {
         cameraManager.capturePhoto()
     }
     
+    /// 拖动ISO和快门时间调整滑块
     @objc func isoAndExposureDurationValueDidChange() {
         let sliderISOValue = sliderISO!.value
         let sliderExposureDurationValue = sliderExposureDuration!.value
