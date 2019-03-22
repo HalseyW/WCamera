@@ -86,6 +86,16 @@ extension CameraViewController {
             make.right.equalToSuperview().offset(-UIScreen.main.bounds.width / 4 + 11)
         })
         btnSwitchDualCamera?.addTarget(self, action: #selector(onClickSwitchDualCameraButton), for: .touchUpInside)
+        //对焦框
+        ivFocus = UIImageView.init()
+        ivFocus?.image = UIImage.init(named: "focus")
+        previewView?.addSubview(ivFocus!)
+        ivFocus?.snp.makeConstraints({ (make) in
+            make.width.equalTo(150)
+            make.height.equalTo(150)
+            make.center.equalToSuperview()
+        })
+        ivFocus?.isHidden = true
 //        //iso滑条
 //        sliderISO = UISlider.init()
 //        sliderISO?.minimumTrackTintColor = .lightGray

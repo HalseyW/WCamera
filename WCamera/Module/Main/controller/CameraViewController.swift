@@ -16,13 +16,14 @@ class CameraViewController: UIViewController {
     var uiTopView: UIView?
     var btnFlashMode: UIButton?
     var btnSwitchFrontAndBackCamera: UIButton?
-
-    var btnCapturePhoto: UIButton?
-    var btnSwitchDualCamera: UIButton?
     var ivFocus: UIImageView?
+    var btnCapturePhoto: UIButton?
+
+    var btnSwitchDualCamera: UIButton?
     var sliderISO: UISlider?
     var sliderExposureDuration: UISlider?
     let cameraManager = CameraManager.shared
+    var focusImageViewTapAnimator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,7 @@ class CameraViewController: UIViewController {
     //切换前/后置摄像头
     @objc func onClickSwitchFrontAndBackCameraButton() {
         switchCameraAnim {
+            self.ivFocus?.isHidden = true
             self.btnCapturePhoto?.isEnabled = false
             self.btnSwitchFrontAndBackCamera?.isEnabled = false
             self.btnSwitchDualCamera?.isEnabled = false
@@ -118,6 +120,7 @@ class CameraViewController: UIViewController {
         if sender.state == .ended {
             let point = sender.location(in: previewView)
             cameraManager.focusAndExposure(at: point)
+            setFocusImageViewWhenFocusing(to: point, use: UIImage.init(named: "focus")!)
         }
     }
     
@@ -128,7 +131,29 @@ class CameraViewController: UIViewController {
         if sender.state == .began {
             let point = sender.location(in: previewView)
             cameraManager.lockFocusAndExposure(at: point)
+            setFocusImageViewWhenFocusing(to: point, use: UIImage.init(named: "focus_locked")!)
         }
+    }
+    
+    /// 对焦时设置对焦框的状态
+    ///
+    /// - Parameters:
+    ///   - center: 对焦框的位置
+    ///   - image:  对焦框的图片，锁定和点击对焦
+    func setFocusImageViewWhenFocusing(to center: CGPoint, use image: UIImage) {
+        //如果正在运行动画，则停止当前动画，防连击
+        if let animator = focusImageViewTapAnimator, animator.isRunning {
+            animator.stopAnimation(true)
+        }
+        //设置对焦框状态和位置
+        ivFocus?.center = center
+        ivFocus?.isHidden = false
+        ivFocus?.image = image
+        ivFocus?.bounds.size = CGSize.init(width: 150, height: 150)
+        //执行动画
+        focusImageViewTapAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.ivFocus?.bounds.size = CGSize.init(width: 90, height: 90)
+        }, completion: nil)
     }
 }
 
