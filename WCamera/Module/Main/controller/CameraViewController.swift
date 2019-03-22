@@ -18,6 +18,7 @@ class CameraViewController: UIViewController {
     var btnSwitchFrontAndBackCamera: UIButton?
     var ivFocus: UIImageView?
     var btnCapturePhoto: UIButton?
+    var btnAutoMode: UIButton?
 
     var btnSwitchDualCamera: UIButton?
     var sliderISO: UISlider?
@@ -43,12 +44,6 @@ class CameraViewController: UIViewController {
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
-//        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
-//            self.previewView?.alpha = 0
-//        }) { (_) in
-//            self.previewView?.alpha = 1
-//        }
-        
         previewView?.isHidden = true
         cameraManager.capturePhoto()
     }
@@ -83,6 +78,7 @@ class CameraViewController: UIViewController {
             self.btnSwitchDualCamera?.isEnabled = false
             self.previewView?.alpha = 0
             self.cameraManager.switchFrontAndBackCamera()
+            AudioServicesPlaySystemSound(1519)
         }
     }
     
@@ -94,6 +90,7 @@ class CameraViewController: UIViewController {
             self.btnSwitchDualCamera?.isEnabled = false
             self.previewView?.alpha = 0
             self.cameraManager.switchDualCamera()
+            AudioServicesPlaySystemSound(1519)
         }
     }
     
@@ -111,6 +108,13 @@ class CameraViewController: UIViewController {
         UIView.transition(with: previewView!, duration: 0.35, options: .curveEaseIn, animations: {
             self.previewView?.alpha = 1
         }, completion: completion)
+    }
+    
+    /// 恢复自动模式
+    @objc func onClickAutoModeButton() {
+        ivFocus?.isHidden = true
+        cameraManager.changeToAutoMode()
+        AudioServicesPlaySystemSound(1519)
     }
     
     /// 拖动ISO和快门时间调整滑块

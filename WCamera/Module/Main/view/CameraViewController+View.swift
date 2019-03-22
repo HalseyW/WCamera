@@ -80,12 +80,23 @@ extension CameraViewController {
         btnSwitchDualCamera?.setBackgroundImage(switchDualCameraButtonImage, for: .normal)
         self.view.addSubview(btnSwitchDualCamera!)
         btnSwitchDualCamera?.snp.makeConstraints({ (make) in
-            make.width.equalTo(22)
-            make.height.equalTo(22)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
             make.centerY.equalTo(btnCapturePhoto!)
             make.right.equalToSuperview().offset(-UIScreen.main.bounds.width / 4 + 11)
         })
         btnSwitchDualCamera?.addTarget(self, action: #selector(onClickSwitchDualCameraButton), for: .touchUpInside)
+        //自动模式
+        btnAutoMode = UIButton.init()
+        btnAutoMode?.setBackgroundImage(UIImage.init(named: "auto_mode"), for: .normal)
+        self.view.addSubview(btnAutoMode!)
+        btnAutoMode?.snp.makeConstraints({ (make) in
+            make.width.equalTo(25)
+            make.height.equalTo(25)
+            make.centerY.equalTo(btnCapturePhoto!)
+            make.left.equalToSuperview().offset(UIScreen.main.bounds.width / 4 - 11)
+        })
+        btnAutoMode?.addTarget(self, action: #selector(onClickAutoModeButton), for: .touchUpInside)
         //对焦框
         ivFocus = UIImageView.init()
         ivFocus?.image = UIImage.init(named: "focus")
@@ -96,27 +107,27 @@ extension CameraViewController {
             make.center.equalToSuperview()
         })
         ivFocus?.isHidden = true
-        //iso滑条
-        sliderISO = UISlider.init()
-        sliderISO?.minimumTrackTintColor = .lightGray
-        sliderISO?.maximumTrackTintColor = .lightGray
-        self.view.addSubview(sliderISO!)
-        sliderISO?.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview().offset(-60)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(previewView!.snp.bottom).offset(20)
-        })
-        sliderISO?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
-        //曝光时间滑条
-        sliderExposureDuration = UISlider.init()
-        sliderExposureDuration?.minimumTrackTintColor = .lightGray
-        sliderExposureDuration?.maximumTrackTintColor = .lightGray
-        self.view.addSubview(sliderExposureDuration!)
-        sliderExposureDuration?.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview().offset(-60)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(sliderISO!.snp.bottom).offset(20)
-        })
-        sliderExposureDuration?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
+//        //iso滑条
+//        sliderISO = UISlider.init()
+//        sliderISO?.minimumTrackTintColor = .lightGray
+//        sliderISO?.maximumTrackTintColor = .lightGray
+//        self.view.addSubview(sliderISO!)
+//        sliderISO?.snp.makeConstraints({ (make) in
+//            make.width.equalToSuperview().offset(-60)
+//            make.centerX.equalToSuperview()
+//            make.top.equalTo(previewView!.snp.bottom).offset(20)
+//        })
+//        sliderISO?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
+//        //曝光时间滑条
+//        sliderExposureDuration = UISlider.init()
+//        sliderExposureDuration?.minimumTrackTintColor = .lightGray
+//        sliderExposureDuration?.maximumTrackTintColor = .lightGray
+//        self.view.addSubview(sliderExposureDuration!)
+//        sliderExposureDuration?.snp.makeConstraints({ (make) in
+//            make.width.equalToSuperview().offset(-60)
+//            make.centerX.equalToSuperview()
+//            make.top.equalTo(sliderISO!.snp.bottom).offset(20)
+//        })
+//        sliderExposureDuration?.addTarget(self, action: #selector(isoAndExposureDurationValueDidChange), for: .valueChanged)
     }
 }

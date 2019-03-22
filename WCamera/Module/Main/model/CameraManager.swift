@@ -194,6 +194,17 @@ class CameraManager: NSObject {
         }
     }
     
+    /// 恢复自动模式
+    func changeToAutoMode() {
+        guard let device = captureDevice else {
+            return
+        }
+        device.changeProperty {
+            $0.exposureMode = .continuousAutoExposure
+            $0.focusMode = .continuousAutoFocus
+        }
+    }
+    
     /// 拍摄照片
     func capturePhoto() {
         guard let photoOutput = photoOutput else { return }
