@@ -18,4 +18,6 @@ protocol CameraManagerDelegate: NSObjectProtocol {
     func frontAndBackCameraSwitchComplete()
     
     func dualCameraSwitchComplete()
+    
+    func didFinishProcessingPhoto()
 }

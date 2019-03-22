@@ -43,6 +43,13 @@ class CameraViewController: UIViewController {
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
+//        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+//            self.previewView?.alpha = 0
+//        }) { (_) in
+//            self.previewView?.alpha = 1
+//        }
+        
+        previewView?.isHidden = true
         cameraManager.capturePhoto()
     }
     
@@ -184,6 +191,12 @@ extension  CameraViewController: CameraManagerDelegate {
             //改变图标
             let switchDualCameraButtonImage = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? UIImage.init(named: "switch_wideangle_camera") : UIImage.init(named: "switch_telephoto_camera")
             self.btnSwitchDualCamera?.setBackgroundImage(switchDualCameraButtonImage, for: .normal)
+        }
+    }
+    
+    func didFinishProcessingPhoto() {
+        DispatchQueue.main.async {
+            self.previewView?.isHidden = false
         }
     }
 }

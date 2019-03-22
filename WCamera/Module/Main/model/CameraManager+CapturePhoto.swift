@@ -34,6 +34,7 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
             if let e = error {
                 print("Capture Error: \(e.localizedDescription)")
             }
+            self.delegate?.didFinishProcessingPhoto()
         }
     }
 }
