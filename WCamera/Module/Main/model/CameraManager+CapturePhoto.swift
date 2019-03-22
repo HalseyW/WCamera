@@ -19,6 +19,7 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         //拍照完毕，但仍然在处理数据，执行动画等
         delegate?.getCapturePhotoButton().isEnabled = true
+        delegate?.didFinishProcessingPhoto()
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -34,7 +35,6 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
             if let e = error {
                 print("Capture Error: \(e.localizedDescription)")
             }
-            self.delegate?.didFinishProcessingPhoto()
         }
     }
 }
