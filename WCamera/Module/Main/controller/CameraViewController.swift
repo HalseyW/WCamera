@@ -11,11 +11,14 @@ import AVFoundation
 import Photos
 
 class CameraViewController: UIViewController {
-    override var prefersStatusBarHidden: Bool { return true }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     var previewView: PreviewView?
+    var uiTopView: UIView?
+    var btnFlashMode: UIButton?
+    var btnSwitchFrontAndBackCamera: UIButton?
+
     var btnCapturePhoto: UIButton?
     var btnSwitchDualCamera: UIButton?
-    var btnSwitchFrontAndBackCamera: UIButton?
     var ivFocus: UIImageView?
     var sliderISO: UISlider?
     var sliderExposureDuration: UISlider?
@@ -42,11 +45,33 @@ class CameraViewController: UIViewController {
         cameraManager.capturePhoto()
     }
     
+    /// 切换闪光灯模式
+    @objc func onClickChangeFlashModeButton() {
+        var flashMode = UserDefaults.getInt(forKey: .FlashMode)
+        var flashModeButtonImage: UIImage?
+        switch flashMode {
+        case 0:
+            flashMode = 1
+            flashModeButtonImage = UIImage.init(named: "flash_on")
+        case 1:
+            flashMode = 2
+            flashModeButtonImage = UIImage.init(named: "flash_auto")
+        case 2:
+            flashMode = 0
+            flashModeButtonImage = UIImage.init(named: "flash_off")
+        default:
+            break
+        }
+        UserDefaults.saveInt(flashMode, forKey: .FlashMode)
+        btnFlashMode?.setBackgroundImage(flashModeButtonImage, for: .normal)
+    }
+    
     //切换前/后置摄像头
     @objc func onClickSwitchFrontAndBackCameraButton() {
         switchCameraAnim {
             self.btnCapturePhoto?.isEnabled = false
             self.btnSwitchFrontAndBackCamera?.isEnabled = false
+            self.btnSwitchDualCamera?.isEnabled = false
             self.previewView?.alpha = 0
             self.cameraManager.switchFrontAndBackCamera()
         }
@@ -56,6 +81,7 @@ class CameraViewController: UIViewController {
     @objc func onClickSwitchDualCameraButton() {
         switchCameraAnim {
             self.btnCapturePhoto?.isEnabled = false
+            self.btnSwitchFrontAndBackCamera?.isEnabled = false
             self.btnSwitchDualCamera?.isEnabled = false
             self.previewView?.alpha = 0
             self.cameraManager.switchDualCamera()
@@ -120,6 +146,7 @@ extension  CameraViewController: CameraManagerDelegate {
             self.btnSwitchFrontAndBackCamera?.isSelected.toggle()
             self.btnCapturePhoto?.isEnabled = true
             self.btnSwitchFrontAndBackCamera?.isEnabled = true
+            self.btnSwitchDualCamera?.isEnabled = true
         }
     }
     
@@ -127,7 +154,11 @@ extension  CameraViewController: CameraManagerDelegate {
         switchCameraCompleteAnim { (_) in
             self.btnSwitchDualCamera?.isSelected.toggle()
             self.btnCapturePhoto?.isEnabled = true
+            self.btnSwitchFrontAndBackCamera?.isEnabled = true
             self.btnSwitchDualCamera?.isEnabled = true
+            //改变图标
+            let switchDualCameraButtonImage = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? UIImage.init(named: "switch_wideangle_camera") : UIImage.init(named: "switch_telephoto_camera")
+            self.btnSwitchDualCamera?.setBackgroundImage(switchDualCameraButtonImage, for: .normal)
         }
     }
 }

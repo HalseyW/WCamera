@@ -203,6 +203,18 @@ class CameraManager: NSObject {
         } else {
             photoSettings = AVCapturePhotoSettings.init()
         }
+        //设置闪光灯模式
+        let flashMode = UserDefaults.getInt(forKey: .FlashMode)
+        switch flashMode {
+        case 0:
+            photoSettings.flashMode = .off
+        case 1:
+            photoSettings.flashMode = .on
+        case 2:
+            photoSettings.flashMode = .auto
+        default:
+            break
+        }
         //此处必须设置为 false，否则设备会对 iso 和曝光时长进行修改
         photoSettings.isAutoStillImageStabilizationEnabled = false
         photoOutput.capturePhoto(with: photoSettings, delegate: self)
