@@ -20,25 +20,27 @@ class CameraManager: NSObject {
     let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
     
     func buildSession(delegate: CameraManagerDelegate) {
-        self.delegate = delegate
-        captureSession.beginConfiguration()
-        captureSession.sessionPreset = .photo
-        //get device
-        let cameraPosition: AVCaptureDevice.Position = UserDefaults.getInt(forKey: .CameraPosition) == 0 ? .back : .front
-        let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
-        captureDevice = cameraPosition == .front ? getCaptureDevice(type: .builtInWideAngleCamera, position: .front) : getCaptureDevice(type: cameraType, position: .back)
-        //add input
-        deviceInput = try? AVCaptureDeviceInput(device: captureDevice!)
-        guard let deviceInput = deviceInput, captureSession.canAddInput(deviceInput) else { return }
-        captureSession.addInput(deviceInput)
-        //add output
-        photoOutput = AVCapturePhotoOutput()
-        guard let photoOutput = photoOutput, captureSession.canAddOutput(photoOutput) else {
-            return
+        cameraQueue.async {
+            self.delegate = delegate
+            self.captureSession.beginConfiguration()
+            self.captureSession.sessionPreset = .photo
+            //get device
+            let cameraPosition: AVCaptureDevice.Position = UserDefaults.getInt(forKey: .CameraPosition) == 0 ? .back : .front
+            let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
+            self.captureDevice = cameraPosition == .front ? self.getCaptureDevice(type: .builtInWideAngleCamera, position: .front) : self.getCaptureDevice(type: cameraType, position: .back)
+            //add input
+            self.deviceInput = try? AVCaptureDeviceInput(device: self.captureDevice!)
+            guard let deviceInput = self.deviceInput, self.captureSession.canAddInput(deviceInput) else { return }
+            self.captureSession.addInput(deviceInput)
+            //add output
+            self.photoOutput = AVCapturePhotoOutput()
+            guard let photoOutput = self.photoOutput, self.captureSession.canAddOutput(photoOutput) else {
+                return
+            }
+            self.captureSession.addOutput(photoOutput)
+            self.captureSession.commitConfiguration()
         }
-        captureSession.addOutput(photoOutput)
-        captureSession.commitConfiguration()
-        delegate.getPreviewView().videoPreviewLayer.session = captureSession
+        delegate.getPreviewView().videoPreviewLayer.session = self.captureSession
     }
     
     func startRunning() {
