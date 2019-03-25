@@ -11,34 +11,51 @@ import AVFoundation
 import Photos
 
 class CameraViewController: UIViewController {
+    override var prefersStatusBarHidden: Bool {
+        return !DeviceUtils.isNotchDevice()
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     var previewView: PreviewView?
     var uiTopView: UIView?
     var btnFlashMode: UIButton?
+    var btnSwitchDualCamera: UIButton?
     var btnSwitchFrontAndBackCamera: UIButton?
-    var ivFocus: UIImageView?
     var btnCapturePhoto: UIButton?
     var btnAutoMode: UIButton?
-
-    var btnSwitchDualCamera: UIButton?
-    var sliderISO: UISlider?
-    var sliderExposureDuration: UISlider?
+    var ivFocus: UIImageView?
+    //
+    var tvEvTitle: UILabel?
+    var tvEv: UILabel?
+    var evBottomLine: UIView?
+    //
+    var tvEtTitle: UILabel?
+    var tvEt: UILabel?
+    var etBottomLine: UIView?
+    //
+    var tvIsoTitle: UILabel?
+    var tvIso: UILabel?
+    var isoBottomLine: UIView?
+    //
+    var tvFocusTitle: UILabel?
+    var tvFocus: UILabel?
+    var focusBottomLine: UIView?
+    
     let cameraManager = CameraManager.shared
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        cameraManager.buildSession(delegate: self)
+         cameraManager.buildSession(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        cameraManager.startRunning()
+         cameraManager.startRunning()
         super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        cameraManager.stopRunning()
+         cameraManager.stopRunning()
         super.viewWillDisappear(animated)
     }
     
@@ -66,7 +83,7 @@ class CameraViewController: UIViewController {
             break
         }
         UserDefaults.saveInt(flashMode, forKey: .FlashMode)
-        btnFlashMode?.setBackgroundImage(flashModeButtonImage, for: .normal)
+        btnFlashMode?.setImage(flashModeButtonImage, for: .normal)
     }
     
     //切换前/后置摄像头
@@ -119,9 +136,9 @@ class CameraViewController: UIViewController {
     
     /// 拖动ISO和快门时间调整滑块
     @objc func isoAndExposureDurationValueDidChange() {
-        let sliderISOValue = sliderISO!.value
-        let sliderExposureDurationValue = sliderExposureDuration!.value
-        cameraManager.changeISOAndExposureDuration(duration: Double(sliderExposureDurationValue), iso: sliderISOValue)
+//        let sliderISOValue = sliderISO!.value
+//        let sliderExposureDurationValue = sliderExposureDuration!.value
+//        cameraManager.changeISOAndExposureDuration(duration: Double(sliderExposureDurationValue), iso: sliderISOValue)
     }
     
     /// 点击预览界面，对焦、测光
@@ -194,7 +211,7 @@ extension  CameraViewController: CameraManagerDelegate {
             self.btnSwitchDualCamera?.isEnabled = true
             //改变图标
             let switchDualCameraButtonImage = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? UIImage.init(named: "switch_wideangle_camera") : UIImage.init(named: "switch_telephoto_camera")
-            self.btnSwitchDualCamera?.setBackgroundImage(switchDualCameraButtonImage, for: .normal)
+            self.btnSwitchDualCamera?.setImage(switchDualCameraButtonImage, for: .normal)
         }
     }
     
