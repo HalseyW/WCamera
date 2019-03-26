@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Photos
+import MediaPlayer
 
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
@@ -36,6 +37,7 @@ class CameraViewController: UIViewController {
     let cameraManager = CameraManager.shared
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
+    let mpVolumeView = MPVolumeView.init(frame: CGRect.init(x: -100, y: -100, width: 0, height: 0))
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
@@ -48,9 +50,28 @@ class CameraViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         cameraManager.stopRunning()
         super.viewWillDisappear(animated)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        UIApplication.shared.endReceivingRemoteControlEvents()
+    }
+    
+    @objc func onPressVolumeButton() {
+        var slider: UISlider?
+        for view in mpVolumeView.subviews {
+                //找到MPVolumeSlider
+        }
+        onClickCapturePhotoButton()
     }
     
     /// 点击拍照按钮
