@@ -19,10 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
         let cameraPermissionStatus = Permission.init(type: .Camera).permissionStatus
-        let micPermissionStatus = Permission.init(type: .Mic).permissionStatus
         let photoPermissionStatus = Permission.init(type: .Photo).permissionStatus
         
-        if cameraPermissionStatus != .authorized || micPermissionStatus != .authorized || photoPermissionStatus != .authorized {
+        if cameraPermissionStatus != .authorized || photoPermissionStatus != .authorized {
             self.window?.rootViewController = PermissionViewController.init()
         } else {
             self.window?.rootViewController = CameraViewController.init()

@@ -11,9 +11,7 @@ import AVFoundation
 import Photos
 
 class CameraViewController: UIViewController {
-    override var prefersStatusBarHidden: Bool {
-        return !DeviceUtils.isNotchDevice()
-    }
+    override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     let previewView = PreviewView.init()
     var uiTopView: UIView?
@@ -45,18 +43,17 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
-        cameraManager.startRunning()
         super.viewDidLoad()
         initView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//         cameraManager.startRunning()
+        cameraManager.startRunning()
         super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-         cameraManager.stopRunning()
+        cameraManager.stopRunning()
         super.viewWillDisappear(animated)
     }
     

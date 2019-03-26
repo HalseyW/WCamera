@@ -22,8 +22,6 @@ extension CameraViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         })
         //预览层
-//        previewView = PreviewView()
-//        previewView?.backgroundColor = .lightGray
         self.view.addSubview(previewView)
         previewView.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
@@ -156,21 +154,23 @@ extension CameraViewController {
 }
 
 extension UIView {
-    func setManualOptItem(superView: UIView, leftView: UIView) {
-        superView.addSubview(self)
-        self.snp.makeConstraints({ (make) in
-            make.width.equalTo(DeviceUtils.screenWidth / 4)
-            make.height.equalToSuperview()
-            make.left.equalTo(leftView.snp.right)
-        })
-    }
-    
     func setManualOptFirstItem(superView: UIView) {
         superView.addSubview(self)
         self.snp.makeConstraints({ (make) in
             make.width.equalTo(DeviceUtils.screenWidth / 4)
             make.height.equalToSuperview()
             make.left.equalToSuperview()
+            make.centerY.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
+        })
+    }
+    
+    func setManualOptItem(superView: UIView, leftView: UIView) {
+        superView.addSubview(self)
+        self.snp.makeConstraints({ (make) in
+            make.width.equalTo(DeviceUtils.screenWidth / 4)
+            make.height.equalToSuperview()
+            make.left.equalTo(leftView.snp.right)
+            make.centerY.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
         })
     }
     
@@ -179,7 +179,7 @@ extension UIView {
         self.snp.makeConstraints({ (make) in
             make.width.equalToSuperview().offset(-40)
             make.height.equalTo(3)
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
             make.bottom.equalToSuperview()
         })
     }
@@ -196,6 +196,7 @@ extension UILabel {
             make.width.equalToSuperview()
             make.height.equalTo(20)
             make.top.equalToSuperview().offset(3)
+            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
         })
     }
     
@@ -208,6 +209,7 @@ extension UILabel {
         self.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
             make.top.equalTo(label.snp.bottom)
+            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
         })
     }
 }

@@ -13,14 +13,10 @@ import SnapKit
 class PermissionViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     var btnCameraPermission: UIButton?
-    var btnMicPermission: UIButton?
     var btnPhotoPermission: UIButton?
     /// 权限
     var cameraPermission: Permission {
         return buildPermission(type: .Camera, message: "需要您的授权才能使用照相机进行拍照")
-    }
-    var micPermission: Permission {
-        return buildPermission(type: .Mic, message: "需要您的授权才能使用麦克风进行录音")
     }
     var photoPermission: Permission {
         return buildPermission(type: .Photo, message: "需要您的授权才能访问相册用来保存照片")
@@ -33,10 +29,6 @@ class PermissionViewController: UIViewController {
     
     @objc func onClickCameraPermissionButton(sender: UIButton) {
         requestPermission(permisson: cameraPermission, button: sender)
-    }
-    
-    @objc func onClickMicPermissionButton(sender: UIButton) {
-        requestPermission(permisson: micPermission, button: sender)
     }
 
     @objc func onClickPhotoPermissionButton(sender: UIButton) {
@@ -53,7 +45,6 @@ class PermissionViewController: UIViewController {
             button.backgroundColor = ($0 != .authorized) ? UIColor.init(r: 255, g: 77, b: 0, alpha: 1) : UIColor.init(r: 0, g: 238, b: 180, alpha: 1)
             //如果全部授权则进入主界面
             if self.cameraPermission.permissionStatus == .authorized
-                && self.micPermission.permissionStatus == .authorized
                 && self.photoPermission.permissionStatus == .authorized {
                 self.present(CameraViewController.init(), animated: false, completion: nil)
             }
@@ -81,16 +72,6 @@ class PermissionViewController: UIViewController {
 extension PermissionViewController {
     func initView() {
         self.view.backgroundColor = .black
-        //麦克风权限按钮
-        btnMicPermission = UIButton.init()
-        btnMicPermission?.getPermissionButton(title: "麦克风", status: micPermission.permissionStatus)
-        self.view.addSubview(btnMicPermission!)
-        btnMicPermission?.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview().offset(-80)
-            make.height.equalTo(44)
-            make.center.equalToSuperview()
-        })
-        btnMicPermission?.addTarget(self, action: #selector(onClickMicPermissionButton(sender:)), for: .touchUpInside)
         //相机权限按钮
         btnCameraPermission = UIButton.init()
         btnCameraPermission?.getPermissionButton(title: "相机", status: cameraPermission.permissionStatus)
@@ -98,8 +79,7 @@ extension PermissionViewController {
         btnCameraPermission?.snp.makeConstraints({ (make) in
             make.width.equalToSuperview().offset(-80)
             make.height.equalTo(44)
-            make.centerX.equalTo(btnMicPermission!)
-            make.bottom.equalTo(btnMicPermission!.snp.top).offset(-30)
+            make.center.equalToSuperview()
         })
         btnCameraPermission?.addTarget(self, action: #selector(onClickCameraPermissionButton(sender:)), for: .touchUpInside)
         //照片权限按钮
@@ -109,8 +89,8 @@ extension PermissionViewController {
         btnPhotoPermission?.snp.makeConstraints({ (make) in
             make.width.equalToSuperview().offset(-80)
             make.height.equalTo(44)
-            make.centerX.equalTo(btnMicPermission!)
-            make.top.equalTo(btnMicPermission!.snp.bottom).offset(30)
+            make.centerX.equalTo(btnCameraPermission!)
+            make.top.equalTo(btnCameraPermission!.snp.bottom).offset(30)
         })
         btnPhotoPermission?.addTarget(self, action: #selector(onClickPhotoPermissionButton(sender:)), for: .touchUpInside)
     }

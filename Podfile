@@ -18,6 +18,6 @@ target 'WCamera' do
   end
   
   #代码布局
-  pod 'SnapKit', '~> 4.0.0'
+  pod 'SnapKit', '~> 4.2.0'
 
 end
