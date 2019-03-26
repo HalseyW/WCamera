@@ -15,7 +15,7 @@ class CameraViewController: UIViewController {
         return !DeviceUtils.isNotchDevice()
     }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    var previewView: PreviewView?
+    let previewView = PreviewView.init()
     var uiTopView: UIView?
     var btnFlashMode: UIButton?
     var btnSwitchDualCamera: UIButton?
@@ -44,9 +44,9 @@ class CameraViewController: UIViewController {
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
+        cameraManager.buildSession(delegate: self)
         super.viewDidLoad()
         initView()
-         cameraManager.buildSession(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class CameraViewController: UIViewController {
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
-        previewView?.isHidden = true
+        previewView.isHidden = true
         cameraManager.capturePhoto()
     }
     
@@ -93,7 +93,7 @@ class CameraViewController: UIViewController {
             self.btnCapturePhoto?.isEnabled = false
             self.btnSwitchFrontAndBackCamera?.isEnabled = false
             self.btnSwitchDualCamera?.isEnabled = false
-            self.previewView?.alpha = 0
+            self.previewView.alpha = 0
             self.cameraManager.switchFrontAndBackCamera()
             AudioServicesPlaySystemSound(1519)
         }
@@ -105,7 +105,7 @@ class CameraViewController: UIViewController {
             self.btnCapturePhoto?.isEnabled = false
             self.btnSwitchFrontAndBackCamera?.isEnabled = false
             self.btnSwitchDualCamera?.isEnabled = false
-            self.previewView?.alpha = 0
+            self.previewView.alpha = 0
             self.cameraManager.switchDualCamera()
             AudioServicesPlaySystemSound(1519)
         }
@@ -115,15 +115,15 @@ class CameraViewController: UIViewController {
     ///
     /// - Parameter anim: 执行的操作
     func switchCameraAnim(anim: @escaping () -> Void) {
-        UIView.transition(with: previewView!, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
+        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
     }
     
     /// 切换摄像头完成后回调的统一动画
     ///
     /// - Parameter completion: 完成后的操作
     func switchCameraCompleteAnim(completion: @escaping (Bool) -> Void) {
-        UIView.transition(with: previewView!, duration: 0.35, options: .curveEaseIn, animations: {
-            self.previewView?.alpha = 1
+        UIView.transition(with: previewView, duration: 0.35, options: .curveEaseIn, animations: {
+            self.previewView.alpha = 1
         }, completion: completion)
     }
     
@@ -187,7 +187,7 @@ class CameraViewController: UIViewController {
 
 extension  CameraViewController: CameraManagerDelegate {
     func getPreviewView() -> PreviewView {
-        return previewView!
+        return previewView
     }
     
     func getCapturePhotoButton() -> UIButton {
@@ -217,7 +217,7 @@ extension  CameraViewController: CameraManagerDelegate {
     
     func didFinishProcessingPhoto() {
         DispatchQueue.main.async {
-            self.previewView?.isHidden = false
+            self.previewView.isHidden = false
         }
     }
 }

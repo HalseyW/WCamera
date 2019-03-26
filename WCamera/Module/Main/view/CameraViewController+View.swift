@@ -22,16 +22,16 @@ extension CameraViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         })
         //预览层
-        previewView = PreviewView()
+//        previewView = PreviewView()
 //        previewView?.backgroundColor = .lightGray
-        self.view.addSubview(previewView!)
-        previewView?.snp.makeConstraints({ (make) in
+        self.view.addSubview(previewView)
+        previewView.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
             make.height.equalTo(DeviceUtils.screenWidth * 4 / 3)
             make.top.equalTo(uiTopView!.snp.bottom)
         })
-        previewView?.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
-        previewView?.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
+        previewView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
+        previewView.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
         //闪光灯按钮
         btnFlashMode = UIButton.init()
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
@@ -101,7 +101,7 @@ extension CameraViewController {
         //对焦框
         ivFocus = UIImageView.init()
         ivFocus?.image = UIImage.init(named: "focus")
-        previewView?.addSubview(ivFocus!)
+        previewView.addSubview(ivFocus!)
         ivFocus?.snp.makeConstraints({ (make) in
             make.width.equalTo(150)
             make.height.equalTo(150)
