@@ -20,7 +20,7 @@ class CameraManager: NSObject {
     let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
     
     func buildSession(delegate: CameraManagerDelegate) {
-//        cameraQueue.async {
+        cameraQueue.async {
             self.captureSession.beginConfiguration()
             self.captureSession.sessionPreset = .photo
             //get device
@@ -38,7 +38,7 @@ class CameraManager: NSObject {
             }
             self.captureSession.addOutput(photoOutput)
             self.captureSession.commitConfiguration()
-//        }
+        }
         self.delegate = delegate
         delegate.getPreviewView().videoPreviewLayer.session = captureSession
     }

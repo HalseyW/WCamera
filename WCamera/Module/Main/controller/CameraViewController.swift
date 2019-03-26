@@ -13,7 +13,6 @@ import Photos
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
     let previewView = PreviewView.init()
     var uiTopView: UIView?
     var btnFlashMode: UIButton?
@@ -22,24 +21,20 @@ class CameraViewController: UIViewController {
     var btnCapturePhoto: UIButton?
     var btnAutoMode: UIButton?
     var ivFocus: UIImageView?
-    //
     var tvEvTitle: UILabel?
     var tvEv: UILabel?
     var evBottomLine: UIView?
-    //
     var tvEtTitle: UILabel?
     var tvEt: UILabel?
     var etBottomLine: UIView?
-    //
     var tvIsoTitle: UILabel?
     var tvIso: UILabel?
     var isoBottomLine: UIView?
-    //
     var tvFocusTitle: UILabel?
     var tvFocus: UILabel?
     var focusBottomLine: UIView?
-    
     let cameraManager = CameraManager.shared
+    lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
@@ -60,8 +55,9 @@ class CameraViewController: UIViewController {
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
-        previewView.isHidden = true
         cameraManager.capturePhoto()
+        previewView.isHidden = true
+        tapticEngineGenerator.impactOccurred()
     }
     
     /// 切换闪光灯模式
@@ -94,7 +90,7 @@ class CameraViewController: UIViewController {
             self.btnSwitchDualCamera?.isEnabled = false
             self.previewView.alpha = 0
             self.cameraManager.switchFrontAndBackCamera()
-            AudioServicesPlaySystemSound(1519)
+            self.tapticEngineGenerator.impactOccurred()
         }
     }
     
@@ -106,7 +102,7 @@ class CameraViewController: UIViewController {
             self.btnSwitchDualCamera?.isEnabled = false
             self.previewView.alpha = 0
             self.cameraManager.switchDualCamera()
-            AudioServicesPlaySystemSound(1519)
+            self.tapticEngineGenerator.impactOccurred()
         }
     }
     
@@ -130,7 +126,7 @@ class CameraViewController: UIViewController {
     @objc func onClickAutoModeButton() {
         ivFocus?.isHidden = true
         cameraManager.changeToAutoMode()
-        AudioServicesPlaySystemSound(1519)
+        tapticEngineGenerator.impactOccurred()
     }
     
     /// 拖动ISO和快门时间调整滑块
