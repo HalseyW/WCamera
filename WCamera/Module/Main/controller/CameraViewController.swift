@@ -13,6 +13,7 @@ import Photos
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     let previewView = PreviewView.init()
     var uiTopView: UIView?
     var btnFlashMode: UIButton?

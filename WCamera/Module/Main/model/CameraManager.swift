@@ -20,7 +20,7 @@ class CameraManager: NSObject {
     let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
     
     func buildSession(delegate: CameraManagerDelegate) {
-        cameraQueue.async {
+//        cameraQueue.async {
             self.captureSession.beginConfiguration()
             self.captureSession.sessionPreset = .photo
             //get device
@@ -38,7 +38,7 @@ class CameraManager: NSObject {
             }
             self.captureSession.addOutput(photoOutput)
             self.captureSession.commitConfiguration()
-        }
+//        }
         self.delegate = delegate
         delegate.getPreviewView().videoPreviewLayer.session = captureSession
     }
@@ -225,6 +225,18 @@ class CameraManager: NSObject {
             photoSettings.flashMode = .on
         case 2:
             photoSettings.flashMode = .auto
+        default:
+            break
+        }
+        //根据设备方向来设置照片方向，使得照片方向始终为竖屏
+        let deviceOritation = UIDevice.current.orientation
+        switch deviceOritation {
+        case .portrait:
+            photoOutput.connection(with: .video)?.videoOrientation = .portrait
+        case .landscapeLeft:
+            photoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
+        case .landscapeRight:
+            photoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
         default:
             break
         }
