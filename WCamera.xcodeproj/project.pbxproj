@@ -15,9 +15,7 @@
 		77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77205ED8223627EC00DB31AD /* PreviewView.swift */; };
 		772CABE322325C0900829892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE222325C0900829892 /* AppDelegate.swift */; };
 		772CABE522325C0900829892 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* PermissionViewController.swift */; };
-		772CABE822325C0900829892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE622325C0900829892 /* Main.storyboard */; };
 		772CABEA22325C0A00829892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE922325C0A00829892 /* Assets.xcassets */; };
-		772CABED22325C0A00829892 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CABEB22325C0A00829892 /* LaunchScreen.storyboard */; };
 		772CABF822325C0A00829892 /* WCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABF722325C0A00829892 /* WCameraTests.swift */; };
 		772CAC0322325C0A00829892 /* WCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC0222325C0A00829892 /* WCameraUITests.swift */; };
 		772CAC1A22325D9900829892 /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1422325D9800829892 /* PermissionType.swift */; };
@@ -64,9 +62,7 @@
 		772CABDF22325C0900829892 /* WCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABE222325C0900829892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		772CABE422325C0900829892 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
-		772CABE722325C0900829892 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		772CABE922325C0A00829892 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		772CABEC22325C0A00829892 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		772CABEE22325C0A00829892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772CABF322325C0A00829892 /* WCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABF722325C0A00829892 /* WCameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCameraTests.swift; sourceTree = "<group>"; };
@@ -187,9 +183,7 @@
 				772CAC1322325D5C00829892 /* Module */,
 				772CAC1022325D3E00829892 /* Utils */,
 				772CABE222325C0900829892 /* AppDelegate.swift */,
-				772CABE622325C0900829892 /* Main.storyboard */,
 				772CABE922325C0A00829892 /* Assets.xcassets */,
-				772CABEB22325C0A00829892 /* LaunchScreen.storyboard */,
 				772CABEE22325C0A00829892 /* Info.plist */,
 			);
 			path = WCamera;
@@ -382,9 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				772CABED22325C0A00829892 /* LaunchScreen.storyboard in Resources */,
 				772CABEA22325C0A00829892 /* Assets.xcassets in Resources */,
-				772CABE822325C0900829892 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,25 +526,6 @@
 			targetProxy = 772CABFF22325C0A00829892 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		772CABE622325C0900829892 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				772CABE722325C0900829892 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		772CABEB22325C0A00829892 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				772CABEC22325C0A00829892 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		772CAC0522325C0A00829892 /* Debug */ = {
