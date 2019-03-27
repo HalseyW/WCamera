@@ -139,8 +139,8 @@
 			children = (
 				772CAC202232641500829892 /* CameraViewController.swift */,
 				772181DE224B4D2400C75EB8 /* CameraViewController+Click.swift */,
-				772181DC224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift */,
 				772181E0224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift */,
+				772181DC224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";

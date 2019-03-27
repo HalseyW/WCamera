@@ -46,6 +46,7 @@ extension CameraViewController {
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
+        btnCapturePhoto?.isEnabled = false
         cameraManager.capturePhoto()
         previewView.isHidden = true
         tapticEngineGenerator.impactOccurred()

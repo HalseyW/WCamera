@@ -14,10 +14,6 @@ extension  CameraViewController: CameraManagerDelegate {
         return previewView
     }
     
-    func getCapturePhotoButton() -> UIButton {
-        return btnCapturePhoto!
-    }
-    
     func frontAndBackCameraSwitchComplete() {
         switchCameraCompleteAnim { (_) in
             self.btnSwitchFrontAndBackCamera?.isSelected.toggle()
@@ -39,9 +35,10 @@ extension  CameraViewController: CameraManagerDelegate {
         }
     }
     
-    func didFinishProcessingPhoto() {
+    func didFinishCapturePhoto() {
         DispatchQueue.main.async {
             self.previewView.isHidden = false
+            self.btnCapturePhoto?.isEnabled = true
         }
     }
 }

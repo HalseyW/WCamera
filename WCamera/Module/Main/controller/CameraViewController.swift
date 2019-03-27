@@ -38,7 +38,7 @@ class CameraViewController: UIViewController {
     let cameraManager = CameraManager.shared
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
-    var currentVolume: Float = -1
+    lazy var currentVolume: Float = -1
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)

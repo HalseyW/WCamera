@@ -13,11 +13,9 @@ import UIKit
 protocol CameraManagerDelegate: NSObjectProtocol {
     func getPreviewView() -> PreviewView
     
-    func getCapturePhotoButton() -> UIButton
-    
     func frontAndBackCameraSwitchComplete()
     
     func dualCameraSwitchComplete()
     
-    func didFinishProcessingPhoto()
+    func didFinishCapturePhoto()
 }

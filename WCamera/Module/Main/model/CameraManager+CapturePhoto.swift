@@ -11,15 +11,9 @@ import Photos
 
 extension CameraManager: AVCapturePhotoCaptureDelegate {
     
-    func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
-        //开始拍照，执行动画等
-        delegate?.getCapturePhotoButton().isEnabled = false
-    }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
         //拍照完毕，但仍然在处理数据，执行动画等
-        delegate?.getCapturePhotoButton().isEnabled = true
-        delegate?.didFinishProcessingPhoto()
+        delegate?.didFinishCapturePhoto()
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
