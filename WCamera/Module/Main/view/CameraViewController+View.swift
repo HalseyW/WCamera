@@ -31,6 +31,8 @@ extension CameraViewController {
         previewView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
         previewView.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
         //覆盖系统音量按钮
+        mpVolumeView.showsRouteButton = false
+        mpVolumeView.showsVolumeSlider = true
         self.view.addSubview(mpVolumeView)
         //闪光灯按钮
         btnFlashMode = UIButton.init()

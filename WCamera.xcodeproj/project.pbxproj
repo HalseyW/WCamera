@@ -13,6 +13,9 @@
 		77190280223F47E2009CA59F /* CameraManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7719027F223F47E2009CA59F /* CameraManagerDelegate.swift */; };
 		77190282223F480A009CA59F /* CameraManager+CapturePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77190281223F480A009CA59F /* CameraManager+CapturePhoto.swift */; };
 		77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77205ED8223627EC00DB31AD /* PreviewView.swift */; };
+		772181DD224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772181DC224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift */; };
+		772181DF224B4D2400C75EB8 /* CameraViewController+Click.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772181DE224B4D2400C75EB8 /* CameraViewController+Click.swift */; };
+		772181E1224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772181E0224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift */; };
 		772CABE322325C0900829892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE222325C0900829892 /* AppDelegate.swift */; };
 		772CABE522325C0900829892 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* PermissionViewController.swift */; };
 		772CABEA22325C0A00829892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE922325C0A00829892 /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		7719027F223F47E2009CA59F /* CameraManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerDelegate.swift; sourceTree = "<group>"; };
 		77190281223F480A009CA59F /* CameraManager+CapturePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraManager+CapturePhoto.swift"; sourceTree = "<group>"; };
 		77205ED8223627EC00DB31AD /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		772181DC224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewController+VolumeButton.swift"; sourceTree = "<group>"; };
+		772181DE224B4D2400C75EB8 /* CameraViewController+Click.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewController+Click.swift"; sourceTree = "<group>"; };
+		772181E0224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewController+ManagerDelegate.swift"; sourceTree = "<group>"; };
 		772CABDF22325C0900829892 /* WCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABE222325C0900829892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		772CABE422325C0900829892 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				772CAC202232641500829892 /* CameraViewController.swift */,
+				772181DE224B4D2400C75EB8 /* CameraViewController+Click.swift */,
+				772181DC224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift */,
+				772181E0224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -486,12 +495,15 @@
 				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
 				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
 				77190282223F480A009CA59F /* CameraManager+CapturePhoto.swift in Sources */,
+				772181DF224B4D2400C75EB8 /* CameraViewController+Click.swift in Sources */,
 				7719027D223F3FDC009CA59F /* CameraViewController+View.swift in Sources */,
 				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
 				77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */,
 				772CABE522325C0900829892 /* PermissionViewController.swift in Sources */,
 				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				77190280223F47E2009CA59F /* CameraManagerDelegate.swift in Sources */,
+				772181E1224B4DBE00C75EB8 /* CameraViewController+ManagerDelegate.swift in Sources */,
+				772181DD224B4AC800C75EB8 /* CameraViewController+VolumeButton.swift in Sources */,
 				772CABE322325C0900829892 /* AppDelegate.swift in Sources */,
 				772CAC212232641500829892 /* CameraViewController.swift in Sources */,
 				7719027A223F32E7009CA59F /* CameraManager.swift in Sources */,
@@ -653,7 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83LX8MTQKZ;
+				DEVELOPMENT_TEAM = 82KL4YM2V6;
 				INFOPLIST_FILE = WCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,7 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83LX8MTQKZ;
+				DEVELOPMENT_TEAM = 82KL4YM2V6;
 				INFOPLIST_FILE = WCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
