@@ -17,9 +17,10 @@ class CameraManager: NSObject {
     var captureDevice: AVCaptureDevice?
     var deviceInput: AVCaptureInput?
     var photoOutput: AVCapturePhotoOutput?
-    let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
+    let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue", qos: .userInteractive)
     
     func buildSession(delegate: CameraManagerDelegate) {
+        self.delegate = delegate
         delegate.getPreviewView().videoPreviewLayer.session = captureSession
         cameraQueue.async {
             self.captureSession.beginConfiguration()
@@ -39,13 +40,7 @@ class CameraManager: NSObject {
             }
             self.captureSession.addOutput(photoOutput)
             self.captureSession.commitConfiguration()
-            
-            self.delegate = delegate
-        }
-    }
-    
-    func startRunning() {
-        cameraQueue.async {
+            //start preview
             self.captureSession.startRunning()
         }
     }
