@@ -47,6 +47,14 @@ class CameraManager: NSObject {
         }
     }
     
+    func startRunning() {
+        cameraQueue.async {
+            if !self.captureSession.isRunning {
+                self.captureSession.startRunning()
+            }
+        }
+    }
+    
     func stopRunning() {
         cameraQueue.async {
             if self.captureSession.isRunning {

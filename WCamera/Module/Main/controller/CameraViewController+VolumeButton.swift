@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 extension CameraViewController {
     /// 获取MPVolumeView中的音量调节Slider
@@ -23,23 +24,23 @@ extension CameraViewController {
         return slider
     }
     
-    /// 应用进入后台。将currentValue设为-1，重置获取到的系统音量，防止用户在其他地方修改了音量，再回到应用时的音量错误。
+    /// 获取系统当前音量，用以在应用退出或进入后台时恢复用户设置的音量
     ///
-    /// - Parameter notification: 通知
-    @objc func didEnterBackground(notification: Notification) {
-        currentVolume = -1
+    /// - Returns: 系统当前音量
+    func getCurrentVolume() -> Float {
+        do {
+            try AVAudioSession.sharedInstance().setActive(true, options: .init())
+        } catch {
+            fatalError("AVAudioSession set active error")
+        }
+        return AVAudioSession.sharedInstance().outputVolume
     }
     
     /// 按下了实体音量键盘
     ///
     /// - Parameter notification: 通知
     @objc func onPressVolumeButton(notification: Notification) {
-        guard let session = previewView.videoPreviewLayer.session, session.isRunning, btnCapturePhoto!.isEnabled else { return }
+        guard canCaptureWhenPressVolumeButton else { return }
         onClickCapturePhotoButton()
-        //第一次进入应用或者应用进入后台，currentVolume都将被重置为-1
-        if currentVolume == -1 {
-            currentVolume = getMPVolumeSlider().value
-        }
-        getMPVolumeSlider().value = currentVolume
     }
 }

@@ -39,6 +39,7 @@ class CameraViewController: UIViewController {
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     lazy var currentVolume: Float = -1
+    lazy var canCaptureWhenPressVolumeButton = true
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
@@ -51,15 +52,23 @@ class CameraViewController: UIViewController {
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
         UIApplication.shared.beginReceivingRemoteControlEvents()
-        //进入后台监听
-        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        //App运行状态监听
+        NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        cameraManager.stopRunning()
-        super.viewWillDisappear(animated)
+    @objc func willBecomeActive(notification: Notification) {
+        cameraManager.startRunning()
+        currentVolume = getCurrentVolume()
+        canCaptureWhenPressVolumeButton = true
     }
-
+    
+    @objc func willResignActive(notification: Notification) {
+        cameraManager.stopRunning()
+        canCaptureWhenPressVolumeButton = false
+        getMPVolumeSlider().value = currentVolume
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         UIApplication.shared.endReceivingRemoteControlEvents()
