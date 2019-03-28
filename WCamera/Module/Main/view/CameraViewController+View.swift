@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import MediaPlayer
 
 extension CameraViewController {
     func initView() {
@@ -31,9 +32,10 @@ extension CameraViewController {
         previewView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
         previewView.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
         //覆盖系统音量按钮
-        mpVolumeView.showsRouteButton = false
-        mpVolumeView.showsVolumeSlider = true
-        self.view.addSubview(mpVolumeView)
+        mpVolumeView = MPVolumeView.init(frame: CGRect.init(x: -100, y: -100, width: 0, height: 0))
+        mpVolumeView!.showsRouteButton = false
+        mpVolumeView!.showsVolumeSlider = true
+        self.view.addSubview(mpVolumeView!)
         //闪光灯按钮
         btnFlashMode = UIButton.init()
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)

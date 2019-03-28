@@ -34,10 +34,10 @@ class CameraViewController: UIViewController {
     var tvFocusTitle: UILabel?
     var tvFocus: UILabel?
     var focusBottomLine: UIView?
-    let mpVolumeView = MPVolumeView.init(frame: CGRect.init(x: -100, y: -100, width: 0, height: 0))
+    var mpVolumeView: MPVolumeView?
     let cameraManager = CameraManager.shared
-    lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
+    lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     lazy var currentVolume: Float = -1
     
     override func viewDidLoad() {

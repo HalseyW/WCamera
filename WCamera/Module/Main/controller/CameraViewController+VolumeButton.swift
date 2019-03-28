@@ -14,7 +14,7 @@ extension CameraViewController {
     /// - Returns: 系统音量调节Slider
     func getMPVolumeSlider() -> UISlider {
         var slider = UISlider.init()
-        for view in mpVolumeView.subviews {
+        for view in mpVolumeView!.subviews {
             if type(of: view).description() == "MPVolumeSlider" {
                 slider = view as! UISlider
                 return slider

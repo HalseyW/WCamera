@@ -47,7 +47,9 @@ class CameraManager: NSObject {
     
     func stopRunning() {
         cameraQueue.async {
-            self.captureSession.stopRunning()
+            if self.captureSession.isRunning {
+                self.captureSession.stopRunning()
+            }
         }
     }
     
