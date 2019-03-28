@@ -18,6 +18,8 @@ class CameraManager: NSObject {
     var deviceInput: AVCaptureInput?
     var photoOutput: AVCapturePhotoOutput?
     let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue", qos: .userInteractive)
+    var rawImageFileURL: URL?
+    var compressedFileData: Data?
     
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
@@ -207,13 +209,9 @@ class CameraManager: NSObject {
     
     /// 拍摄照片
     func capturePhoto() {
-        guard let photoOutput = photoOutput else { return }
-        let photoSettings: AVCapturePhotoSettings
-        if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
-            photoSettings = AVCapturePhotoSettings.init(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
-        } else {
-            photoSettings = AVCapturePhotoSettings.init()
-        }
+        guard let photoOutput = photoOutput, let availableRawFormat = photoOutput.availableRawPhotoPixelFormatTypes.first else { return }
+        //如果用HEIC保存照片，会导致部分修图程序读不出RAW数据
+        let photoSettings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat, processedFormat: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         //设置闪光灯模式
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
         switch flashMode {

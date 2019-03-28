@@ -41,8 +41,8 @@ class CameraViewController: UIViewController {
     lazy var currentVolume: Float = -1
     
     override func viewDidLoad() {
-        initView()
         cameraManager.buildSession(delegate: self)
+        initView()
         super.viewDidLoad()
     }
     
