@@ -36,6 +36,15 @@ extension CameraViewController {
         mpVolumeView!.showsRouteButton = false
         mpVolumeView!.showsVolumeSlider = true
         self.view.addSubview(mpVolumeView!)
+        //九宫格辅助线
+        let ivAuxiliaryLine = UIImageView.init()
+        ivAuxiliaryLine.image = UIImage.init(named: "auxiliary_line")
+        self.previewView.addSubview(ivAuxiliaryLine)
+        ivAuxiliaryLine.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+            make.center.equalToSuperview()
+        }
         //闪光灯按钮
         btnFlashMode = UIButton.init()
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
