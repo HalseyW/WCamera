@@ -18,12 +18,14 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
             print(e.localizedDescription)
             return
         }
-        guard let rawURL = self.rawImageFileURL, let compressedData = self.compressedFileData else { return }
         PHPhotoLibrary.shared().performChanges({
             //将JEPG格式作为主要显示格式c保存
+            guard let compressedData = self.compressedFileData else { return }
             let creationRequest = PHAssetCreationRequest.forAsset()
             creationRequest.addResource(with: .photo, data: compressedData, options: nil)
+            
             // 将Raw作为备用格式保存
+            guard let rawURL = self.rawImageFileURL else { return }
             let options = PHAssetResourceCreationOptions()
             options.shouldMoveFile = true
             creationRequest.addResource(with: .alternatePhoto, fileURL: rawURL, options: options)

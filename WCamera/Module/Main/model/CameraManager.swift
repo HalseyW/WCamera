@@ -217,9 +217,18 @@ class CameraManager: NSObject {
     
     /// 拍摄照片
     func capturePhoto() {
-        guard let photoOutput = photoOutput, let availableRawFormat = photoOutput.availableRawPhotoPixelFormatTypes.first else { return }
-        //如果用HEIC保存照片，会导致部分修图程序读不出RAW数据
-        let photoSettings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat, processedFormat: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        let photoSettings: AVCapturePhotoSettings
+        guard let photoOutput = photoOutput else { return }
+        if let availableRawFormat = photoOutput.availableRawPhotoPixelFormatTypes.first { //查到支持的RAW格式
+            // 如果用HEIC保存照片，会导致部分修图程序读不出RAW数据
+            photoSettings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat, processedFormat: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        } else {//如果不支持RAW拍摄，则回落到HEIC
+            if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
+                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            } else {
+                photoSettings = AVCapturePhotoSettings()
+            }
+        }
         //设置闪光灯模式
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
         switch flashMode {
