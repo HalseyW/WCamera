@@ -217,8 +217,8 @@ class CameraManager: NSObject {
     
     /// 拍摄照片
     func capturePhoto() {
-        let photoSettings: AVCapturePhotoSettings
         guard let photoOutput = photoOutput else { return }
+        let photoSettings: AVCapturePhotoSettings
         if let availableRawFormat = photoOutput.availableRawPhotoPixelFormatTypes.first { //查到支持的RAW格式
             // 如果用HEIC保存照片，会导致部分修图程序读不出RAW数据
             photoSettings = AVCapturePhotoSettings(rawPixelFormatType: availableRawFormat, processedFormat: [AVVideoCodecKey: AVVideoCodecType.jpeg])

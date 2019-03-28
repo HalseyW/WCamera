@@ -30,6 +30,9 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
             options.shouldMoveFile = true
             creationRequest.addResource(with: .alternatePhoto, fileURL: rawURL, options: options)
         }, completionHandler: { (isSuccess, error) in
+            //置为nil，防止摄像头切换时判断不准确
+            self.rawImageFileURL = nil
+            self.compressedFileData = nil
             if let e = error {
                 fatalError(e.localizedDescription)
             }
