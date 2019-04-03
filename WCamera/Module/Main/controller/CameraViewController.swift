@@ -44,11 +44,7 @@ class CameraViewController: UIViewController {
     override func loadView() {
         super.loadView()
         initView()
-    }
-    
-    override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
-        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
