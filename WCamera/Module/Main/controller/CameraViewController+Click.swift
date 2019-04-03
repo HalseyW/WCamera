@@ -20,23 +20,35 @@ extension CameraViewController {
     
     //切换前/后置摄像头
     @objc func onClickSwitchFrontAndBackCameraButton() {
-        switchCameraAnim {
-            self.ivFocus?.isHidden = true
-            self.btnCapturePhoto?.isEnabled = false
-            self.btnSwitchFrontAndBackCamera?.isEnabled = false
-            self.btnSwitchDualCamera?.isEnabled = false
-            self.previewView.alpha = 0
+        switchCameraUIWorkFlow {
             self.cameraManager.switchFrontAndBackCamera()
-            self.tapticEngineGenerator.impactOccurred()
+            self.ivFocus?.isHidden = true
+        }
+    }
+    
+    //切换后置双摄
+    @objc func onClickSwitchDualCameraButton() {
+        switchCameraUIWorkFlow {
+            self.cameraManager.switchDualCamera()
         }
     }
     
     /// 点击拍照按钮
     @objc func onClickCapturePhotoButton() {
-        btnCapturePhoto?.isEnabled = false
         cameraManager.capturePhoto()
+        btnCapturePhoto?.isEnabled = false
         previewView.isHidden = true
         tapticEngineGenerator.impactOccurred()
+    }
+    
+    /// 切换摄像头的统一动画
+    ///
+    /// - Parameter anim: 执行的操作
+    func switchCameraUIWorkFlow(anim: @escaping () -> Void) {
+        self.isCameraSwitchComplete = false
+        self.previewView.alpha = 0
+        self.tapticEngineGenerator.impactOccurred()
+        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
     }
     
     /// 恢复自动模式
@@ -44,18 +56,6 @@ extension CameraViewController {
         ivFocus?.isHidden = true
         cameraManager.changeToAutoMode()
         tapticEngineGenerator.impactOccurred()
-    }
-    
-    //切换后置双摄
-    @objc func onClickSwitchDualCameraButton() {
-        switchCameraAnim {
-            self.btnCapturePhoto?.isEnabled = false
-            self.btnSwitchFrontAndBackCamera?.isEnabled = false
-            self.btnSwitchDualCamera?.isEnabled = false
-            self.previewView.alpha = 0
-            self.cameraManager.switchDualCamera()
-            self.tapticEngineGenerator.impactOccurred()
-        }
     }
     
     /// 点击预览界面，对焦、测光
@@ -78,22 +78,6 @@ extension CameraViewController {
             cameraManager.lockFocusAndExposure(at: point)
             setFocusImageViewWhenFocusing(to: point, use: UIImage.init(named: "focus_locked")!)
         }
-    }
-    
-    /// 切换摄像头的统一动画
-    ///
-    /// - Parameter anim: 执行的操作
-    func switchCameraAnim(anim: @escaping () -> Void) {
-        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
-    }
-    
-    /// 切换摄像头完成后回调的统一动画
-    ///
-    /// - Parameter completion: 完成后的操作
-    func switchCameraCompleteAnim(completion: @escaping (Bool) -> Void) {
-        UIView.transition(with: previewView, duration: 0.35, options: .curveEaseIn, animations: {
-            self.previewView.alpha = 1
-        }, completion: completion)
     }
     
     /// 对焦时设置对焦框的状态
