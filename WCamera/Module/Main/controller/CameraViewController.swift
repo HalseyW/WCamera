@@ -41,10 +41,14 @@ class CameraViewController: UIViewController {
     lazy var canCaptureWhenPressVolumeButton = true
     lazy var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
     
+    override func loadView() {
+        super.loadView()
+        initView()
+    }
+    
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
         super.viewDidLoad()
-        initView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
