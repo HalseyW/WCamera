@@ -39,6 +39,7 @@ class CameraViewController: UIViewController {
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     lazy var currentVolume: Float = -1
     lazy var canCaptureWhenPressVolumeButton = true
+    lazy var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)

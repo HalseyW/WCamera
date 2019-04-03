@@ -13,22 +13,9 @@ extension CameraViewController {
     /// 切换闪光灯模式
     @objc func onClickChangeFlashModeButton() {
         var flashMode = UserDefaults.getInt(forKey: .FlashMode)
-        var flashModeButtonImage: UIImage?
-        switch flashMode {
-        case 0:
-            flashMode = 1
-            flashModeButtonImage = UIImage.init(named: "flash_on")
-        case 1:
-            flashMode = 2
-            flashModeButtonImage = UIImage.init(named: "flash_auto")
-        case 2:
-            flashMode = 0
-            flashModeButtonImage = UIImage.init(named: "flash_off")
-        default:
-            break
-        }
+        flashMode = (flashMode + 1) % 3
         UserDefaults.saveInt(flashMode, forKey: .FlashMode)
-        btnFlashMode?.setImage(flashModeButtonImage, for: .normal)
+        btnFlashMode?.setImage(flashModeButtonImages[flashMode], for: .normal)
     }
     
     //切换前/后置摄像头

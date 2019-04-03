@@ -231,16 +231,7 @@ class CameraManager: NSObject {
         }
         //设置闪光灯模式
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
-        switch flashMode {
-        case 0:
-            photoSettings.flashMode = .off
-        case 1:
-            photoSettings.flashMode = .on
-        case 2:
-            photoSettings.flashMode = .auto
-        default:
-            break
-        }
+        photoSettings.flashMode = AVCaptureDevice.FlashMode(rawValue: flashMode)!
         //根据设备方向来设置照片方向，使得照片方向始终为竖屏
         let deviceOritation = UIDevice.current.orientation
         switch deviceOritation {

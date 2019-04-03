@@ -59,10 +59,9 @@ extension CameraViewController {
         }
         uiTopView.addSubview(btnFlashMode!)
         btnFlashMode?.snp.makeConstraints({ (make) in
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(10)
-            make.height.equalToSuperview()
             make.width.equalTo(44)
+            make.height.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
         })
         btnFlashMode?.addTarget(self, action: #selector(onClickChangeFlashModeButton), for: .touchUpInside)
         //切换前后摄像头
@@ -71,8 +70,7 @@ extension CameraViewController {
         uiTopView.addSubview(btnSwitchFrontAndBackCamera!)
         btnSwitchFrontAndBackCamera?.snp.makeConstraints({ (make) in
             make.width.equalTo(44)
-            make.height.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.height.centerY.equalToSuperview()
             make.right.equalToSuperview().inset(10)
         })
         btnSwitchFrontAndBackCamera?.addTarget(self, action: #selector(onClickSwitchFrontAndBackCameraButton), for: .touchUpInside)
