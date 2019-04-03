@@ -215,6 +215,21 @@ class CameraManager: NSObject {
         }
     }
     
+    /// 获取正确的照片方向
+    ///
+    /// - Returns: 照片方向
+    func getPhotoOrientation() -> AVCaptureVideoOrientation {
+        let deviceOritation = UIDevice.current.orientation
+        switch deviceOritation {
+        case .landscapeLeft:
+            return .landscapeRight
+        case .landscapeRight:
+            return .landscapeLeft
+        default:
+            return .portrait
+        }
+    }
+    
     /// 拍摄照片
     func capturePhoto() {
         guard let photoOutput = photoOutput else { return }
@@ -233,17 +248,7 @@ class CameraManager: NSObject {
         let flashMode = UserDefaults.getInt(forKey: .FlashMode)
         photoSettings.flashMode = AVCaptureDevice.FlashMode(rawValue: flashMode)!
         //根据设备方向来设置照片方向，使得照片方向始终为竖屏
-        let deviceOritation = UIDevice.current.orientation
-        switch deviceOritation {
-        case .portrait:
-            photoOutput.connection(with: .video)?.videoOrientation = .portrait
-        case .landscapeLeft:
-            photoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
-        case .landscapeRight:
-            photoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
-        default:
-            break
-        }
+        photoOutput.connection(with: .video)?.videoOrientation = getPhotoOrientation()
         //此处必须设置为 false，否则设备会对 iso 和曝光时长进行修改
         photoSettings.isAutoStillImageStabilizationEnabled = false
         photoOutput.capturePhoto(with: photoSettings, delegate: self)
