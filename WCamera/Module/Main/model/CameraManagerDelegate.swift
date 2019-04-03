@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 /// CameraManager与Controller交互的协议
 protocol CameraManagerDelegate: NSObjectProtocol {

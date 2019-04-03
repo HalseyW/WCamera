@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
-import Photos
 import MediaPlayer
 
 class CameraViewController: UIViewController {

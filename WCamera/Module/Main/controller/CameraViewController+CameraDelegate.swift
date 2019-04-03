@@ -6,7 +6,6 @@
 //  Copyright © 2019 wushhhhhh. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension  CameraViewController: CameraManagerDelegate {
