@@ -38,11 +38,12 @@ class CameraViewController: UIViewController {
     lazy var currentVolume: Float = -1
     lazy var canCaptureWhenPressVolumeButton = true
     lazy var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
-    var isCameraSwitchComplete = true {
+    var isCameraSwitchComplete: Bool? {
         willSet {
-            self.btnCapturePhoto?.isEnabled = newValue
-            self.btnSwitchFrontAndBackCamera?.isEnabled = newValue
-            self.btnSwitchDualCamera?.isEnabled = newValue
+            guard let value = newValue else { return }
+            self.btnCapturePhoto?.isEnabled = value
+            self.btnSwitchFrontAndBackCamera?.isEnabled = value
+            self.btnSwitchDualCamera?.isEnabled = value
         }
     }
     

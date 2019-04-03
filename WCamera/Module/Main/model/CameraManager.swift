@@ -12,11 +12,11 @@ import AVFoundation
 class CameraManager: NSObject {
     static let shared = CameraManager()
     weak var delegate: CameraManagerDelegate?
-    let captureSession = AVCaptureSession.init()
+    lazy var captureSession = AVCaptureSession.init()
     var captureDevice: AVCaptureDevice?
     var deviceInput: AVCaptureInput?
     var photoOutput: AVCapturePhotoOutput?
-    let cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue", qos: .userInteractive)
+    lazy var cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue", qos: .userInteractive)
     var rawImageFileURL: URL?
     var compressedFileData: Data?
     
