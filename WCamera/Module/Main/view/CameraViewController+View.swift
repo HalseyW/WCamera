@@ -15,9 +15,9 @@ extension CameraViewController {
     func initView() {
         self.view.backgroundColor = .black
         //顶部view
-        uiTopView = UIView.init()
-        self.view.addSubview(uiTopView!)
-        uiTopView?.snp.makeConstraints({ (make) in
+        let uiTopView = UIView.init()
+        self.view.addSubview(uiTopView)
+        uiTopView.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
             make.height.equalTo(44)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -27,7 +27,7 @@ extension CameraViewController {
         previewView.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
             make.height.equalTo(DeviceUtils.screenWidth * 4 / 3)
-            make.top.equalTo(uiTopView!.snp.bottom)
+            make.top.equalTo(uiTopView.snp.bottom)
         })
         previewView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapPreviewView(sender:))))
         previewView.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(onLongPressPreviewView(sender:))))
@@ -41,8 +41,7 @@ extension CameraViewController {
         ivAuxiliaryLine.image = UIImage.init(named: "auxiliary_line")
         self.previewView.addSubview(ivAuxiliaryLine)
         ivAuxiliaryLine.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
+            make.size.equalToSuperview()
             make.center.equalToSuperview()
         }
         //闪光灯按钮
@@ -58,7 +57,7 @@ extension CameraViewController {
         default:
             break
         }
-        uiTopView?.addSubview(btnFlashMode!)
+        uiTopView.addSubview(btnFlashMode!)
         btnFlashMode?.snp.makeConstraints({ (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
@@ -69,12 +68,12 @@ extension CameraViewController {
         //切换前后摄像头
         btnSwitchFrontAndBackCamera = UIButton.init()
         btnSwitchFrontAndBackCamera?.setImage(UIImage.init(named: "switch_camera"), for: .normal)
-        uiTopView?.addSubview(btnSwitchFrontAndBackCamera!)
+        uiTopView.addSubview(btnSwitchFrontAndBackCamera!)
         btnSwitchFrontAndBackCamera?.snp.makeConstraints({ (make) in
             make.width.equalTo(44)
             make.height.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().inset(10)
         })
         btnSwitchFrontAndBackCamera?.addTarget(self, action: #selector(onClickSwitchFrontAndBackCameraButton), for: .touchUpInside)
         //拍照按钮
@@ -82,8 +81,7 @@ extension CameraViewController {
         btnCapturePhoto?.setImage(UIImage.init(named: "capture"), for: .normal)
         self.view.addSubview(btnCapturePhoto!)
         btnCapturePhoto?.snp.makeConstraints({ (make) in
-            make.width.equalTo(70)
-            make.height.equalTo(70)
+            make.size.equalTo(CGSize.init(width: 70, height: 70))
             make.centerX.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         })
@@ -94,10 +92,9 @@ extension CameraViewController {
         btnSwitchDualCamera?.setImage(switchDualCameraButtonImage, for: .normal)
         self.view.addSubview(btnSwitchDualCamera!)
         btnSwitchDualCamera?.snp.makeConstraints({ (make) in
-            make.width.equalTo(50)
-            make.height.equalTo(50)
+            make.size.equalTo(CGSize.init(width: 50, height: 50))
             make.centerY.equalTo(btnCapturePhoto!)
-            make.right.equalToSuperview().offset(-DeviceUtils.screenWidth / 4 + 25)
+            make.right.equalToSuperview().inset(DeviceUtils.screenWidth / 4 - 25)
         })
         btnSwitchDualCamera?.addTarget(self, action: #selector(onClickSwitchDualCameraButton), for: .touchUpInside)
         //自动模式
@@ -105,10 +102,9 @@ extension CameraViewController {
         btnAutoMode?.setImage(UIImage.init(named: "auto_mode"), for: .normal)
         self.view.addSubview(btnAutoMode!)
         btnAutoMode?.snp.makeConstraints({ (make) in
-            make.width.equalTo(50)
-            make.height.equalTo(50)
+            make.size.equalTo(CGSize.init(width: 50, height: 50))
             make.centerY.equalTo(btnCapturePhoto!)
-            make.left.equalToSuperview().offset(DeviceUtils.screenWidth / 4 - 25)
+            make.left.equalToSuperview().inset(DeviceUtils.screenWidth / 4 - 25)
         })
         btnAutoMode?.addTarget(self, action: #selector(onClickAutoModeButton), for: .touchUpInside)
         //对焦框
@@ -116,12 +112,11 @@ extension CameraViewController {
         ivFocus?.image = UIImage.init(named: "focus")
         previewView.addSubview(ivFocus!)
         ivFocus?.snp.makeConstraints({ (make) in
-            make.width.equalTo(150)
-            make.height.equalTo(150)
+            make.size.equalTo(CGSize.init(width: 150, height: 150))
             make.center.equalToSuperview()
         })
         ivFocus?.isHidden = true
-        //
+        //手动操作设置区域
         let uiManualOpt = UIView.init()
         self.view.addSubview(uiManualOpt)
         uiManualOpt.snp.makeConstraints({ (make) in
@@ -129,16 +124,16 @@ extension CameraViewController {
             make.height.equalTo(44)
             make.bottom.equalTo(btnCapturePhoto!.snp.top).offset(-10)
         })
-        //
+        //Exp调整
         let uiEv = UIView.init()
-        uiEv.setManualOptFirstItem(superView: uiManualOpt)
+        uiEv.setManualOptItem(superView: uiManualOpt, leftView: nil)
         tvEvTitle = UILabel.init()
         tvEvTitle?.getManualOptItemTitle(superView: uiEv, title: "Exp")
         tvEv = UILabel.init()
         tvEv?.getManualOptItemText(superView: uiEv, label: tvEvTitle!, title: "0.0")
         evBottomLine = UIView.init()
         evBottomLine?.setManualOptItemBottomLine(superView: uiEv)
-        //
+        //Sec调整
         let uiEt = UIView.init()
         uiEt.setManualOptItem(superView: uiManualOpt, leftView: uiEv)
         tvEtTitle = UILabel.init()
@@ -147,7 +142,7 @@ extension CameraViewController {
         tvEt?.getManualOptItemText(superView: uiEt, label: tvEtTitle!, title: "自动")
         etBottomLine = UIView.init()
         etBottomLine?.setManualOptItemBottomLine(superView: uiEt)
-        //
+        //ISO调整
         let uiIso = UIView.init()
         uiIso.setManualOptItem(superView: uiManualOpt, leftView: uiEt)
         tvIsoTitle = UILabel.init()
@@ -156,7 +151,7 @@ extension CameraViewController {
         tvIso?.getManualOptItemText(superView: uiIso, label: tvIsoTitle!, title: "自动")
         isoBottomLine = UIView.init()
         isoBottomLine?.setManualOptItemBottomLine(superView: uiIso)
-        //
+        //FL调整
         let uiFocus = UIView.init()
         uiFocus.setManualOptItem(superView: uiManualOpt, leftView: uiIso)
         tvFocusTitle = UILabel.init()
@@ -169,33 +164,25 @@ extension CameraViewController {
 }
 
 extension UIView {
-    func setManualOptFirstItem(superView: UIView) {
+    func setManualOptItem(superView: UIView, leftView: UIView?) {
         superView.addSubview(self)
         self.snp.makeConstraints({ (make) in
-            make.width.equalTo(DeviceUtils.screenWidth / 4)
-            make.height.equalToSuperview()
-            make.left.equalToSuperview()
-            make.centerY.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
-        })
-    }
-    
-    func setManualOptItem(superView: UIView, leftView: UIView) {
-        superView.addSubview(self)
-        self.snp.makeConstraints({ (make) in
-            make.width.equalTo(DeviceUtils.screenWidth / 4)
-            make.height.equalToSuperview()
-            make.left.equalTo(leftView.snp.right)
-            make.centerY.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
+            make.width.equalToSuperview().dividedBy(4)
+            make.height.centerY.equalToSuperview() //centerY为必要语句，否则会在 11.4 上造成错位
+            if let view = leftView {
+                make.left.equalTo(view.snp.right)
+            } else {
+                make.left.equalToSuperview()
+            }
         })
     }
     
     func setManualOptItemBottomLine(superView: UIView) {
         superView.addSubview(self)
         self.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview().offset(-40)
+            make.width.equalToSuperview().inset(30)
             make.height.equalTo(3)
-            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
-            make.bottom.equalToSuperview()
+            make.bottom.centerX.equalToSuperview()//centerY必要语句，否则会在 11.4 上造成错位
         })
     }
 }
@@ -208,10 +195,9 @@ extension UILabel {
         self.textAlignment = .center
         superView.addSubview(self)
         self.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview()
+            make.width.centerX.equalToSuperview() //centerX为必要语句，否则会在 11.4 上造成错位
             make.height.equalTo(20)
             make.top.equalToSuperview().offset(3)
-            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
         })
     }
     
@@ -222,9 +208,8 @@ extension UILabel {
         self.textAlignment = .center
         superView.addSubview(self)
         self.snp.makeConstraints({ (make) in
-            make.width.equalToSuperview()
+            make.width.centerX.equalToSuperview() //centerX为必要语句，否则会在 11.4 上造成错位
             make.top.equalTo(label.snp.bottom)
-            make.centerX.equalToSuperview()//必要语句，否则会在 11.4 上造成错位
         })
     }
 }

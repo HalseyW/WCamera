@@ -15,7 +15,6 @@ class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     let previewView = PreviewView.init()
-    var uiTopView: UIView?
     var btnFlashMode: UIButton?
     var btnSwitchDualCamera: UIButton?
     var btnSwitchFrontAndBackCamera: UIButton?
@@ -43,8 +42,8 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         cameraManager.buildSession(delegate: self)
-        initView()
         super.viewDidLoad()
+        initView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
