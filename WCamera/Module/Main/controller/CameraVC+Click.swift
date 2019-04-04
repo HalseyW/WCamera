@@ -99,4 +99,57 @@ extension CameraViewController {
             self.ivFocus?.bounds.size = CGSize.init(width: 90, height: 90)
         }, completion: nil)
     }
+    
+    @objc func onTapExpView(sender: UITapGestureRecognizer) {
+        showManualOptSlider(value: 0)
+    }
+    
+    @objc func onTapSecView(sender: UITapGestureRecognizer) {
+        showManualOptSlider(value: 0)
+    }
+    
+    @objc func onTapISOView(sender: UITapGestureRecognizer) {
+        showManualOptSlider(value: 0)
+    }
+    
+    @objc func onTapFLView(sender: UITapGestureRecognizer) {
+        showManualOptSlider(value: 0)
+    }
+    
+    func showManualOptSlider(value: Float) {
+        if uiSliderManualOpt == nil {
+            //
+            uiSliderManualOpt = UIView.init()
+            uiSliderManualOpt?.backgroundColor = .red
+            uiSliderManualOpt?.isHidden = true
+            self.view.addSubview(uiSliderManualOpt!)
+            uiSliderManualOpt?.snp.makeConstraints({ (make) in
+                make.width.equalToSuperview()
+                make.height.equalTo(50)
+                make.bottom.equalTo(uiManualOpt!.snp.top).offset(-10)
+            })
+            //
+            btnManualOptAuto = UIButton.init()
+            btnManualOptAuto?.setTitleColor(.white, for: .normal)
+            btnManualOptAuto?.setTitle("自动", for: .normal)
+            btnManualOptAuto?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            uiSliderManualOpt?.addSubview(btnManualOptAuto!)
+            btnManualOptAuto?.snp.makeConstraints { (make) in
+                make.width.equalTo(50)
+                make.height.centerY.left.equalToSuperview()
+            }
+            //
+            sliderManualOpt = UISlider.init()
+            sliderManualOpt?.value = value
+            uiSliderManualOpt!.addSubview(sliderManualOpt!)
+            sliderManualOpt?.snp.makeConstraints({ (make) in
+                make.left.equalTo(btnManualOptAuto!.snp.right)
+                make.top.equalToSuperview()
+                make.right.equalToSuperview().inset(20)
+            })
+            //
+            
+        }
+        uiSliderManualOpt?.isHidden.toggle()
+    }
 }

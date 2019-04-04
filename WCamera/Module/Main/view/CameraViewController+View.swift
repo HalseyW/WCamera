@@ -114,16 +114,16 @@ extension CameraViewController {
         })
         ivFocus?.isHidden = true
         //手动操作设置区域
-        let uiManualOpt = UIView.init()
-        self.view.addSubview(uiManualOpt)
-        uiManualOpt.snp.makeConstraints({ (make) in
+        uiManualOpt = UIView.init()
+        self.view.addSubview(uiManualOpt!)
+        uiManualOpt!.snp.makeConstraints({ (make) in
             make.width.equalToSuperview()
             make.height.equalTo(44)
             make.bottom.equalTo(btnCapturePhoto!.snp.top).offset(-10)
         })
         //Exp调整
         let uiEv = UIView.init()
-        uiEv.setManualOptItem(superView: uiManualOpt, leftView: nil)
+        uiEv.setManualOptItem(superView: uiManualOpt!, leftView: nil)
         tvEvTitle = UILabel.init()
         tvEvTitle?.getManualOptItemTitle(superView: uiEv, title: "Exp")
         tvEv = UILabel.init()
@@ -132,7 +132,7 @@ extension CameraViewController {
         evBottomLine?.setManualOptItemBottomLine(superView: uiEv)
         //Sec调整
         let uiEt = UIView.init()
-        uiEt.setManualOptItem(superView: uiManualOpt, leftView: uiEv)
+        uiEt.setManualOptItem(superView: uiManualOpt!, leftView: uiEv)
         tvEtTitle = UILabel.init()
         tvEtTitle?.getManualOptItemTitle(superView: uiEt, title: "Sec")
         tvEt = UILabel.init()
@@ -141,7 +141,7 @@ extension CameraViewController {
         etBottomLine?.setManualOptItemBottomLine(superView: uiEt)
         //ISO调整
         let uiIso = UIView.init()
-        uiIso.setManualOptItem(superView: uiManualOpt, leftView: uiEt)
+        uiIso.setManualOptItem(superView: uiManualOpt!, leftView: uiEt)
         tvIsoTitle = UILabel.init()
         tvIsoTitle?.getManualOptItemTitle(superView: uiIso, title: "ISO")
         tvIso = UILabel.init()
@@ -150,13 +150,18 @@ extension CameraViewController {
         isoBottomLine?.setManualOptItemBottomLine(superView: uiIso)
         //FL调整
         let uiFocus = UIView.init()
-        uiFocus.setManualOptItem(superView: uiManualOpt, leftView: uiIso)
+        uiFocus.setManualOptItem(superView: uiManualOpt!, leftView: uiIso)
         tvFocusTitle = UILabel.init()
         tvFocusTitle?.getManualOptItemTitle(superView: uiFocus, title: "FL")
         tvFocus = UILabel.init()
         tvFocus?.getManualOptItemText(superView: uiFocus, label: tvFocusTitle!, title: "自动")
         focusBottomLine = UIView.init()
         focusBottomLine?.setManualOptItemBottomLine(superView: uiFocus)
+        //添加点击手势
+        uiEv.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapExpView(sender:))))
+        uiEt.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapSecView(sender:))))
+        uiIso.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapISOView(sender:))))
+        uiFocus.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapFLView(sender:))))
     }
 }
 

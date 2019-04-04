@@ -18,6 +18,7 @@ class CameraViewController: UIViewController {
     var btnSwitchFrontAndBackCamera: UIButton?
     var btnCapturePhoto: UIButton?
     var btnAutoMode: UIButton?
+    var uiManualOpt: UIView?
     var ivFocus: UIImageView?
     var tvEvTitle: UILabel?
     var tvEv: UILabel?
@@ -32,6 +33,9 @@ class CameraViewController: UIViewController {
     var tvFocus: UILabel?
     var focusBottomLine: UIView?
     var mpVolumeView: MPVolumeView?
+    var uiSliderManualOpt: UIView?
+    var btnManualOptAuto: UIButton?
+    var sliderManualOpt: UISlider?
     let cameraManager = CameraManager.shared
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
