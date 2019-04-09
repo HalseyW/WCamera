@@ -72,6 +72,8 @@ class CameraViewController: UIViewController {
         //App运行状态监听
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
+        //开始预览
+        cameraManager.startRunning()
         super.viewDidLoad()
     }
     

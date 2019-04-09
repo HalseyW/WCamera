@@ -41,8 +41,6 @@ class CameraManager: NSObject {
             }
             self.captureSession.addOutput(photoOutput)
             self.captureSession.commitConfiguration()
-            //start preview
-            self.captureSession.startRunning()
         }
     }
     
