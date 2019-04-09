@@ -46,7 +46,7 @@ class PermissionViewController: UIViewController {
             //如果全部授权则进入主界面
             if self.cameraPermission.permissionStatus == .authorized
                 && self.photoPermission.permissionStatus == .authorized {
-                self.present(CameraViewController.init(), animated: false, completion: nil)
+                self.dismiss(animated: false, completion: nil)
             }
         }
     }

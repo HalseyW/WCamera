@@ -27,7 +27,9 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意来访问相册用来保存照片</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Main</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

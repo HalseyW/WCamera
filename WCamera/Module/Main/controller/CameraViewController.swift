@@ -12,14 +12,15 @@ import MediaPlayer
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    let previewView = PreviewView.init()
-    var btnFlashMode: UIButton?
-    var btnSwitchDualCamera: UIButton?
-    var btnSwitchFrontAndBackCamera: UIButton?
-    var btnCapturePhoto: UIButton?
-    var btnAutoMode: UIButton?
+    @IBOutlet weak var previewView: PreviewView!
+    @IBOutlet weak var btnFlashMode: UIButton!
+    @IBOutlet weak var btnSwitchDualCamera: UIButton!
+    @IBOutlet weak var btnSwitchFrontAndBackCamera: UIButton!
+    @IBOutlet weak var btnCapturePhoto: UIButton!
+    @IBOutlet weak var btnAutoMode: UIButton!
+    @IBOutlet weak var ivFocus: UIImageView!
+    
     var uiManualOpt: UIView?
-    var ivFocus: UIImageView?
     var tvEvTitle: UILabel?
     var tvEv: UILabel?
     var evBottomLine: UIView?
@@ -36,7 +37,9 @@ class CameraViewController: UIViewController {
     var uiSliderManualOpt: UIView?
     var btnManualOptAuto: UIButton?
     var sliderManualOpt: UISlider?
+    
     let cameraManager = CameraManager.shared
+    var isPermissionAuthorized = true
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     lazy var currentVolume: Float = -1
@@ -54,11 +57,20 @@ class CameraViewController: UIViewController {
     override func loadView() {
         super.loadView()
         initView()
-        cameraManager.buildSession(delegate: self)
+        let cameraPermissionStatus = Permission.init(type: .Camera).permissionStatus
+        let photoPermissionStatus = Permission.init(type: .Photo).permissionStatus
+        if cameraPermissionStatus != .authorized || photoPermissionStatus != .authorized {
+            isPermissionAuthorized = false
+        } else {
+            cameraManager.buildSession(delegate: self)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if !isPermissionAuthorized {
+            self.present(PermissionViewController.init(), animated: false, completion: nil)
+        }
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
         UIApplication.shared.beginReceivingRemoteControlEvents()

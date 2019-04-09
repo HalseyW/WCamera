@@ -10,7 +10,7 @@ import UIKit
 
 extension CameraViewController {
     /// 切换闪光灯模式
-    @objc func onClickChangeFlashModeButton() {
+    @IBAction func onClickFlashModeChangeButton(_ sender: UIButton) {
         var flashMode = UserDefaults.getInt(forKey: .FlashMode)
         flashMode = (flashMode + 1) % 3
         UserDefaults.saveInt(flashMode, forKey: .FlashMode)
@@ -18,7 +18,7 @@ extension CameraViewController {
     }
     
     //切换前/后置摄像头
-    @objc func onClickSwitchFrontAndBackCameraButton() {
+    @IBAction func onClickSwitchFrontAndBackCameraButton() {
         switchCameraUIWorkFlow {
             self.cameraManager.switchFrontAndBackCamera()
             self.ivFocus?.isHidden = true
@@ -26,14 +26,14 @@ extension CameraViewController {
     }
     
     //切换后置双摄
-    @objc func onClickSwitchDualCameraButton() {
+    @IBAction func onClickSwitchDualCameraButton() {
         switchCameraUIWorkFlow {
             self.cameraManager.switchDualCamera()
         }
     }
     
     /// 点击拍照按钮
-    @objc func onClickCapturePhotoButton() {
+    @IBAction func onClickCapturePhotoButton() {
         cameraManager.capturePhoto()
         btnCapturePhoto?.isEnabled = false
         previewView.isHidden = true
@@ -51,7 +51,7 @@ extension CameraViewController {
     }
     
     /// 恢复自动模式
-    @objc func onClickAutoModeButton() {
+    @IBAction func onClickAutoModeButton() {
         ivFocus?.isHidden = true
         cameraManager.changeToAutoMode()
         tapticEngineGenerator.impactOccurred()
@@ -60,7 +60,7 @@ extension CameraViewController {
     /// 点击预览界面，对焦、测光
     ///
     /// - Parameter sender: 点击手势
-    @objc func onTapPreviewView(sender: UITapGestureRecognizer) {
+    @IBAction func onTapPreviewView(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             let point = sender.location(in: previewView)
             cameraManager.focusAndExposure(at: point)
@@ -71,7 +71,7 @@ extension CameraViewController {
     /// 长按预览界面，锁定焦点、曝光
     ///
     /// - Parameter sender: 长按手势
-    @objc func onLongPressPreviewView(sender: UILongPressGestureRecognizer) {
+    @IBAction func onLongPressPreviewView(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let point = sender.location(in: previewView)
             cameraManager.lockFocusAndExposure(at: point)
@@ -101,7 +101,7 @@ extension CameraViewController {
     }
     
     @objc func onTapExpView(sender: UITapGestureRecognizer) {
-        
+        showManualOpt()
     }
     
     @objc func onTapSecView(sender: UITapGestureRecognizer) {
@@ -114,5 +114,26 @@ extension CameraViewController {
     
     @objc func onTapFLView(sender: UITapGestureRecognizer) {
         
+    }
+    
+    func showManualOpt() {
+        if uiSliderManualOpt == nil {
+            uiSliderManualOpt = UIView.init()
+            uiSliderManualOpt?.isHidden = true
+            self.view.addSubview(uiSliderManualOpt!)
+            uiSliderManualOpt?.snp.makeConstraints({ (make) in
+                make.left.equalToSuperview().offset(30)
+                make.right.equalToSuperview().inset(30)
+                make.height.equalTo(50)
+                make.bottom.equalTo(uiManualOpt!.snp.top).offset(-10)
+            })
+            //
+            sliderManualOpt = UISlider.init()
+            uiSliderManualOpt?.addSubview(sliderManualOpt!)
+            sliderManualOpt?.snp.makeConstraints({ (make) in
+                make.width.bottom.equalToSuperview()
+            })
+        }
+        uiSliderManualOpt?.isHidden.toggle()
     }
 }

@@ -13,20 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //如果相机/麦克风/相册权限全部获取，则进入CameraViewController，否则进入PermissionViewController
-        window = UIWindow.init(frame: UIScreen.main.bounds)
-        
-        guard let window = window else { return true }
-        
-        let cameraPermissionStatus = Permission.init(type: .Camera).permissionStatus
-        let photoPermissionStatus = Permission.init(type: .Photo).permissionStatus
-        
-        if cameraPermissionStatus != .authorized || photoPermissionStatus != .authorized {
-            window.rootViewController = PermissionViewController.init()
-        } else {
-            window.rootViewController = CameraViewController.init()
-        }
-        window.makeKeyAndVisible()
         return true
     }
 
