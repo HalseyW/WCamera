@@ -22,8 +22,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>需要您的同意来使用摄像头进行拍摄</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>需要您的同意来使用麦克风进行录音</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意来访问相册用来保存照片</string>
 	<key>UILaunchStoryboardName</key>

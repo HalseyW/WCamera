@@ -57,19 +57,14 @@ class CameraViewController: UIViewController {
     override func loadView() {
         super.loadView()
         initView()
-        let cameraPermissionStatus = Permission.init(type: .Camera).permissionStatus
-        let photoPermissionStatus = Permission.init(type: .Photo).permissionStatus
-        if cameraPermissionStatus != .authorized || photoPermissionStatus != .authorized {
-            isPermissionAuthorized = false
-        } else {
-            cameraManager.buildSession(delegate: self)
-        }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if !isPermissionAuthorized {
-            self.present(PermissionViewController.init(), animated: false, completion: nil)
+
+    override func viewDidLoad() {
+        //判断权限并构建CameraManager
+        Permission.buildPermission(type: .Camera, message: "需要您的授权才能使用照相机进行拍照").request { (status) in
+            if status == .authorized {
+                self.cameraManager.buildSession(delegate: self)
+            }
         }
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
@@ -77,6 +72,7 @@ class CameraViewController: UIViewController {
         //App运行状态监听
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
+        super.viewDidLoad()
     }
     
     @objc func willBecomeActive(notification: Notification) {

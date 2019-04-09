@@ -17,7 +17,6 @@
 		772181DF224B4D2400C75EB8 /* CameraVC+Click.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772181DE224B4D2400C75EB8 /* CameraVC+Click.swift */; };
 		772181E1224B4DBE00C75EB8 /* CameraVC+CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772181E0224B4DBE00C75EB8 /* CameraVC+CameraDelegate.swift */; };
 		772CABE322325C0900829892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE222325C0900829892 /* AppDelegate.swift */; };
-		772CABE522325C0900829892 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABE422325C0900829892 /* PermissionViewController.swift */; };
 		772CABEA22325C0A00829892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE922325C0A00829892 /* Assets.xcassets */; };
 		772CABF822325C0A00829892 /* WCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABF722325C0A00829892 /* WCameraTests.swift */; };
 		772CAC0322325C0A00829892 /* WCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC0222325C0A00829892 /* WCameraUITests.swift */; };
@@ -68,7 +67,6 @@
 		772181E0224B4DBE00C75EB8 /* CameraVC+CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraVC+CameraDelegate.swift"; sourceTree = "<group>"; };
 		772CABDF22325C0900829892 /* WCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CABE222325C0900829892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		772CABE422325C0900829892 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		772CABE922325C0A00829892 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		772CABEE22325C0A00829892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772CABF322325C0A00829892 /* WCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,17 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				772CAC23223269B000829892 /* Main */,
-				772CAC22223269A700829892 /* Permission */,
 			);
 			path = Module;
-			sourceTree = "<group>";
-		};
-		772CAC22223269A700829892 /* Permission */ = {
-			isa = PBXGroup;
-			children = (
-				772CABE422325C0900829892 /* PermissionViewController.swift */,
-			);
-			path = Permission;
 			sourceTree = "<group>";
 		};
 		772CAC23223269B000829892 /* Main */ = {
@@ -503,7 +492,6 @@
 				7719027D223F3FDC009CA59F /* CameraViewController+View.swift in Sources */,
 				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
 				77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */,
-				772CABE522325C0900829892 /* PermissionViewController.swift in Sources */,
 				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				77190280223F47E2009CA59F /* CameraManagerDelegate.swift in Sources */,
 				772181E1224B4DBE00C75EB8 /* CameraVC+CameraDelegate.swift in Sources */,

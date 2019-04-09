@@ -79,4 +79,21 @@ class Permission: NSObject {
             self.callback?(self.permissionStatus)
         }
     }
+    
+    /// 构建权限工具类
+    ///
+    /// - Parameters:
+    ///   - type: 权限的类型
+    ///   - message: 权限被拒绝后Alert的message
+    /// - Returns: 权限工具类
+    static func buildPermission(type: PermissionType, message: String) -> Permission {
+        let permission = Permission.init(type: type)
+        permission.shouldPresentPreAlert = false
+        permission.shouldPresentCancelAlert = false
+        permission.deniedAlert.title = "权限获取失败"
+        permission.deniedAlert.message = message
+        permission.deniedAlert.defaulCancelActionTitle = "取消"
+        permission.deniedAlert.defaultActionTitle = "设置"
+        return permission
+    }
 }
