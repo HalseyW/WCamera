@@ -205,7 +205,7 @@ class CameraManager: NSObject {
     
     /// 恢复自动模式
     func changeToAutoMode() {
-        guard let device = captureDevice else {
+        guard let device = captureDevice, device.position == .back else {
             return
         }
         device.changeProperty {
