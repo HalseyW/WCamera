@@ -53,18 +53,22 @@ extension  CameraViewController: CameraManagerDelegate {
     }
     
     func didChangeEvValue(to value: Float) {
-        currentEvValue = value
+        if value < 0 && value > -1 {
+            tvEvCurrentValue.text = "0"
+        } else {
+            tvEvCurrentValue.text = "\(lroundf(value))"
+        }
     }
     
     func didChangeEtValue(to value: Double) {
-        currentEtValue = value
+//        tvEtCurrentValue.text = "1/\(value)"
     }
     
     func didChangeISOValue(to value: Float) {
-        currentISOValue = value
+        tvISOCurrentValue.text = "\(lroundf(value))"
     }
     
     func didChangeFLValue(to value: Float) {
-        currentFlValue = value
+        tvFlCurrentValue.text = String(format: "%.2f", value)
     }
 }

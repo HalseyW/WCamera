@@ -141,6 +141,12 @@ extension CameraViewController {
         toggleManualOptSlider(value: 0, min: 0, max: 1)
     }
     
+    /// 改变滑块的状态
+    ///
+    /// - Parameters:
+    ///   - value: 滑条的初始值
+    ///   - min: 滑条的最小值
+    ///   - max: 滑条的最大值
     func toggleManualOptSlider(value: Float, min: Float, max: Float) {
         uiManualOpt.isHidden = false
         sliderManualOpt.minimumValue = min

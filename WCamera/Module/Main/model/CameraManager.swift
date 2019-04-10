@@ -158,7 +158,6 @@ class CameraManager: NSObject {
         }
         let durationValue = CMTimeMakeWithSeconds(duration, preferredTimescale: 1000000)
         device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: AVCaptureDevice.currentISO, completionHandler: { (_) in
-            print(device.exposureDuration)
             self.delegate?.didChangeEtValue(to: duration)
         })}
     }
