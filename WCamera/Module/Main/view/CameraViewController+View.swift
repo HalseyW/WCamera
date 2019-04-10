@@ -23,5 +23,8 @@ extension CameraViewController {
         //切换广角和长焦摄像头
         let switchDualCameraButtonImage = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? UIImage.init(named: "switch_wideangle_camera") : UIImage.init(named: "switch_telephoto_camera")
         btnSwitchDualCamera?.setImage(switchDualCameraButtonImage, for: .normal)
+        //滑块图片
+        sliderManualOpt.setThumbImage(UIImage.init(named: "slider_thumb"), for: .normal)
+        sliderManualOpt.setThumbImage(UIImage.init(named: "slider_thumb_highlighted"), for: .highlighted)
     }
 }
