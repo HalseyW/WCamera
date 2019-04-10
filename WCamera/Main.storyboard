@@ -230,6 +230,41 @@
                                     <constraint firstAttribute="bottom" secondItem="kEa-c9-5vd" secondAttribute="bottom" id="yNf-gq-UaG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHF-96-inp">
+                                <rect key="frame" x="0.0" y="599" width="375" height="45"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="waM-3z-lWu">
+                                        <rect key="frame" x="28" y="15" width="319" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5Z5-hu-h3a"/>
+                                        </constraints>
+                                        <color key="minimumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="maximumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtY-24-G8z">
+                                        <rect key="frame" x="30" y="0.0" width="8" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGM-el-deV">
+                                        <rect key="frame" x="324" y="0.0" width="21" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DtY-24-G8z" firstAttribute="top" secondItem="VHF-96-inp" secondAttribute="top" id="45c-Uz-5II"/>
+                                    <constraint firstItem="EGM-el-deV" firstAttribute="top" secondItem="VHF-96-inp" secondAttribute="top" id="4gP-I5-6C9"/>
+                                    <constraint firstItem="EGM-el-deV" firstAttribute="trailing" secondItem="waM-3z-lWu" secondAttribute="trailing" id="csz-A2-zG1"/>
+                                    <constraint firstItem="DtY-24-G8z" firstAttribute="leading" secondItem="waM-3z-lWu" secondAttribute="leading" id="dMW-oq-XxX"/>
+                                    <constraint firstAttribute="bottom" secondItem="waM-3z-lWu" secondAttribute="bottom" id="jea-fy-M33"/>
+                                    <constraint firstItem="waM-3z-lWu" firstAttribute="leading" secondItem="VHF-96-inp" secondAttribute="leading" constant="30" id="kRn-ME-FS9"/>
+                                    <constraint firstAttribute="height" constant="45" id="syC-ZT-ZlW"/>
+                                    <constraint firstAttribute="trailing" secondItem="waM-3z-lWu" secondAttribute="trailing" constant="30" id="vxH-kA-oXS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -245,9 +280,12 @@
                             <constraint firstItem="LFE-o5-hLH" firstAttribute="trailing" secondItem="lkX-4H-M6a" secondAttribute="trailing" id="R3o-gB-K9N"/>
                             <constraint firstItem="LFE-o5-hLH" firstAttribute="trailing" secondItem="6Wk-hg-a0R" secondAttribute="trailing" id="UaT-o8-e8K"/>
                             <constraint firstItem="LFE-o5-hLH" firstAttribute="trailing" secondItem="ULP-Gr-QtV" secondAttribute="trailing" id="YXf-x0-xEN"/>
+                            <constraint firstItem="LFE-o5-hLH" firstAttribute="trailing" secondItem="VHF-96-inp" secondAttribute="trailing" id="auP-SU-aXs"/>
                             <constraint firstItem="6Wk-hg-a0R" firstAttribute="leading" secondItem="LFE-o5-hLH" secondAttribute="leading" id="iMn-LT-FUG"/>
                             <constraint firstItem="NSA-NO-l3G" firstAttribute="centerY" secondItem="TNn-XB-jnS" secondAttribute="centerY" id="n1F-bh-nhc"/>
                             <constraint firstItem="TNn-XB-jnS" firstAttribute="bottom" secondItem="LFE-o5-hLH" secondAttribute="bottom" id="uXf-FT-QJk"/>
+                            <constraint firstItem="VHF-96-inp" firstAttribute="leading" secondItem="LFE-o5-hLH" secondAttribute="leading" id="wIz-ry-ZWn"/>
+                            <constraint firstItem="lkX-4H-M6a" firstAttribute="top" secondItem="VHF-96-inp" secondAttribute="bottom" constant="20" id="wQJ-aH-hyI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LFE-o5-hLH"/>
                     </view>
@@ -273,7 +311,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+            <point key="canvasLocation" x="47.200000000000003" y="20.689655172413794"/>
         </scene>
     </scenes>
     <resources>
