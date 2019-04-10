@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C315EC4D29FF5F4E2A1BA08 /* Pods_WCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E784D12F5DA990FF1942DE37 /* Pods_WCamera.framework */; };
+		771856A6225D7B99006FE572 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771856A5225D7B99006FE572 /* LaunchScreen.storyboard */; };
 		7719027A223F32E7009CA59F /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77190279223F32E7009CA59F /* CameraManager.swift */; };
 		7719027D223F3FDC009CA59F /* CameraViewController+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7719027C223F3FDC009CA59F /* CameraViewController+View.swift */; };
 		77190280223F47E2009CA59F /* CameraManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7719027F223F47E2009CA59F /* CameraManagerDelegate.swift */; };
@@ -57,6 +58,7 @@
 		2A5005AFC925D0CF2BB97830 /* Pods-WCameraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCameraUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WCameraUITests/Pods-WCameraUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4167648D023181A8C0A28E1B /* Pods_WCameraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WCameraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A0E852ACDF8BABE15AAF0D /* Pods_WCameraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WCameraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771856A5225D7B99006FE572 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77190279223F32E7009CA59F /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		7719027C223F3FDC009CA59F /* CameraViewController+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewController+View.swift"; sourceTree = "<group>"; };
 		7719027F223F47E2009CA59F /* CameraManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				772CABE922325C0A00829892 /* Assets.xcassets */,
 				772CABEE22325C0A00829892 /* Info.plist */,
 				77E95764225C692F0049320F /* Main.storyboard */,
+				771856A5225D7B99006FE572 /* LaunchScreen.storyboard */,
 			);
 			path = WCamera;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771856A6225D7B99006FE572 /* LaunchScreen.storyboard in Resources */,
 				77E95765225C692F0049320F /* Main.storyboard in Resources */,
 				772CABEA22325C0A00829892 /* Assets.xcassets in Resources */,
 			);
