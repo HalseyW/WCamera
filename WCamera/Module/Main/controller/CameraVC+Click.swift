@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 extension CameraViewController {
     /// 切换闪光灯模式
@@ -53,6 +54,12 @@ extension CameraViewController {
     /// 恢复自动模式
     @IBAction func onClickAutoModeButton() {
         ivFocus?.isHidden = true
+        uiManualOpt.isHidden = true
+        sliderMode = -1
+        tvEvCurrentValue.text = "0"
+        tvEtCurrentValue.text = "自动"
+        tvISOCurrentValue.text = "自动"
+        tvFlCurrentValue.text = "自动"
         cameraManager.changeToAutoMode()
         tapticEngineGenerator.impactOccurred()
     }
@@ -100,10 +107,66 @@ extension CameraViewController {
         }, completion: nil)
     }
     
+    /// 点击了调节EV的模块
+    @IBAction func onClickExposureValueView() {
+        guard let device = cameraManager.captureDevice, sliderMode != 0 else { return }
+        let min = device.minExposureTargetBias
+        let max = device.maxExposureTargetBias
+        sliderMode = 0
+        toggleManualOptSlider(value: 0, min: min, max: max)
+    }
+    
+    /// 点击了调节ET的模块
+    @IBAction func onClickExposureTimeView() {
+        guard let device = cameraManager.captureDevice, sliderMode != 1 else { return }
+        let min = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
+        let max = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
+        sliderMode = 1
+        toggleManualOptSlider(value: 0, min: Float(min), max: Float(max))
+    }
+    
+    /// 点击了调节ISO的模块
+    @IBAction func onClickISOView() {
+        guard let device = cameraManager.captureDevice, sliderMode != 2 else { return }
+        let min = device.activeFormat.minISO
+        let max = device.activeFormat.maxISO
+        sliderMode = 2
+        toggleManualOptSlider(value: 0, min: min, max: max)
+    }
+    
+    /// 点击了调节FL的模块
+    @IBAction func onClickFocusLenthView() {
+        guard sliderMode != 3 else { return }
+        sliderMode = 3
+        toggleManualOptSlider(value: 0, min: 0, max: 1)
+    }
+    
+    func toggleManualOptSlider(value: Float, min: Float, max: Float) {
+        uiManualOpt.isHidden = false
+        sliderManualOpt.minimumValue = min
+        sliderManualOpt.maximumValue = max
+        sliderManualOpt.value = value
+        tvSliderMinValue.text = "\(lroundf(min))"
+        tvSliderMaxValue.text = "\(lroundf(max))"
+    }
+    
     /// 手动控制时滑动滑条的回调
     ///
     /// - Parameter sender: 滑条
     @IBAction func onSlideManualOptSlider(_ sender: UISlider) {
-        
+        let value = sender.value
+        switch sliderMode {
+        case 0:
+            cameraManager.changeEV(to: value)
+        case 1:
+            let time = Double(String(format: "%.6f", value))!
+            cameraManager.changeExposureDuration(to: time)
+        case 2:
+            cameraManager.changeISO(to: value)
+        case 3:
+            cameraManager.changeFocusLens(to: value)
+        default:
+            break
+        }
     }
 }

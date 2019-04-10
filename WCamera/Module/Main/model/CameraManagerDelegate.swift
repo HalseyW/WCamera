@@ -17,4 +17,12 @@ protocol CameraManagerDelegate: NSObjectProtocol {
     func dualCameraSwitchComplete()
     
     func didFinishCapturePhoto()
+    
+    func didChangeEvValue(to value: Float)
+    
+    func didChangeEtValue(to value: Double)
+    
+    func didChangeISOValue(to value: Float)
+
+    func didChangeFLValue(to value: Float)
 }

@@ -51,4 +51,20 @@ extension  CameraViewController: CameraManagerDelegate {
             self.btnCapturePhoto?.isEnabled = true
         }
     }
+    
+    func didChangeEvValue(to value: Float) {
+        currentEvValue = value
+    }
+    
+    func didChangeEtValue(to value: Double) {
+        currentEtValue = value
+    }
+    
+    func didChangeISOValue(to value: Float) {
+        currentISOValue = value
+    }
+    
+    func didChangeFLValue(to value: Float) {
+        currentFlValue = value
+    }
 }

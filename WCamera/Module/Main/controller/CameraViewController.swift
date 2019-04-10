@@ -21,6 +21,39 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var btnAutoMode: UIButton!
     @IBOutlet weak var ivFocus: UIImageView!
     @IBOutlet weak var sliderManualOpt: UISlider!
+    @IBOutlet weak var uiManualOpt: UIView!
+    @IBOutlet weak var tvSliderMinValue: UILabel!
+    @IBOutlet weak var tvSliderMaxValue: UILabel!
+    @IBOutlet weak var tvEvCurrentValue: UILabel!
+    @IBOutlet weak var tvEtCurrentValue: UILabel!
+    @IBOutlet weak var tvISOCurrentValue: UILabel!
+    @IBOutlet weak var tvFlCurrentValue: UILabel!
+    
+    lazy var sliderMode = -1
+    var currentEvValue: Float = 0 {
+        willSet {
+            if newValue < 0 && newValue > -1 {
+                tvEvCurrentValue.text = "0"
+            } else {
+                tvEvCurrentValue.text = "\(lroundf(newValue))"
+            }
+        }
+    }
+    var currentEtValue: Double = 0 {
+        willSet {
+            tvEtCurrentValue.text = "\(newValue)"
+        }
+    }
+    var currentISOValue: Float = 0 {
+        willSet {
+            tvISOCurrentValue.text = "\(lroundf(newValue))"
+        }
+    }
+    var currentFlValue: Float = 0 {
+        willSet {
+            tvFlCurrentValue.text = String(format: "%.2f", newValue)
+        }
+    }
     
     let cameraManager = CameraManager.shared
     var isPermissionAuthorized = true

@@ -130,31 +130,37 @@ class CameraManager: NSObject {
         guard let device = captureDevice else {
             return
         }
-        let minEV = device.minExposureTargetBias
-        let maxEV = device.maxExposureTargetBias
-        let value = ev * (maxEV - minEV) + minEV
-        device.changeProperty { $0.setExposureTargetBias(value, completionHandler: nil) }
+        device.changeProperty {
+            $0.setExposureTargetBias(ev) { _ in
+                self.delegate?.didChangeEvValue(to: ev)
+            }
+        }
     }
     
-    /// 设置ISO和快门时间
+    /// 设置ISO
     ///
-    /// - Parameters:
-    ///   - duration: 快门时间
-    ///   - iso: ISO
-    func changeISOAndExposureDuration(duration: Double, iso: Float) {
+    /// - Parameter iso: 感光度
+    func changeISO(to iso: Float) {
         guard let device = captureDevice else {
             return
         }
-        //计算ISO
-        let minISO = device.activeFormat.minISO
-        let maxISO = device.activeFormat.maxISO
-        let isoValue = round(iso * (maxISO - minISO) + minISO)
-        //计算快门时间
-        let minDuration = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
-        let maxDuration = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
-        let durationValueSeconds = duration * (maxDuration - minDuration) + minDuration
-        let durationValue = CMTimeMakeWithSeconds(durationValueSeconds, preferredTimescale: 1000000)
-        device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: isoValue, completionHandler: nil) }
+        device.changeProperty { $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: iso, completionHandler: { (_) in
+            self.delegate?.didChangeISOValue(to: iso)
+        })}
+    }
+    
+    /// 设置曝光时间
+    ///
+    /// - Parameter duration: 曝光时间
+    func changeExposureDuration(to duration: Double) {
+        guard let device = captureDevice else {
+            return
+        }
+        let durationValue = CMTimeMakeWithSeconds(duration, preferredTimescale: 1000000)
+        device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: AVCaptureDevice.currentISO, completionHandler: { (_) in
+            print(device.exposureDuration)
+            self.delegate?.didChangeEtValue(to: duration)
+        })}
     }
     
     /// 设置镜头焦距
@@ -165,7 +171,9 @@ class CameraManager: NSObject {
             return
         }
         device.changeProperty {
-            $0.setFocusModeLocked(lensPosition: lens, completionHandler: nil)
+            $0.setFocusModeLocked(lensPosition: lens) { _ in
+                self.delegate?.didChangeFLValue(to: lens)
+            }
         }
     }
     
@@ -209,6 +217,7 @@ class CameraManager: NSObject {
         device.changeProperty {
             $0.exposureMode = .continuousAutoExposure
             $0.focusMode = .continuousAutoFocus
+            $0.setExposureTargetBias(0, completionHandler: nil)
         }
     }
     
