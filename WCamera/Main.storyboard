@@ -240,6 +240,9 @@
                                         </constraints>
                                         <color key="minimumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="maximumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="onSlideManualOptSlider:" destination="iVq-hF-Jht" eventType="valueChanged" id="lZu-85-szZ"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtY-24-G8z">
                                         <rect key="frame" x="30" y="0.0" width="8" height="15"/>
@@ -297,6 +300,7 @@
                         <outlet property="btnSwitchFrontAndBackCamera" destination="IlG-nW-trD" id="bPc-2s-wXW"/>
                         <outlet property="ivFocus" destination="gjK-2e-70u" id="JiN-3f-jRR"/>
                         <outlet property="previewView" destination="6Wk-hg-a0R" id="5DV-cG-ge2"/>
+                        <outlet property="sliderManualOpt" destination="waM-3z-lWu" id="L8K-wQ-MCt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8L-C2-V2o" userLabel="First Responder" sceneMemberID="firstResponder"/>

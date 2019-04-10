@@ -12,6 +12,7 @@ import MediaPlayer
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    var mpVolumeView: MPVolumeView?
     @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var btnFlashMode: UIButton!
     @IBOutlet weak var btnSwitchDualCamera: UIButton!
@@ -19,24 +20,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var btnCapturePhoto: UIButton!
     @IBOutlet weak var btnAutoMode: UIButton!
     @IBOutlet weak var ivFocus: UIImageView!
-    
-    var uiManualOpt: UIView?
-    var tvEvTitle: UILabel?
-    var tvEv: UILabel?
-    var evBottomLine: UIView?
-    var tvEtTitle: UILabel?
-    var tvEt: UILabel?
-    var etBottomLine: UIView?
-    var tvIsoTitle: UILabel?
-    var tvIso: UILabel?
-    var isoBottomLine: UIView?
-    var tvFocusTitle: UILabel?
-    var tvFocus: UILabel?
-    var focusBottomLine: UIView?
-    var mpVolumeView: MPVolumeView?
-    var uiSliderManualOpt: UIView?
-    var btnManualOptAuto: UIButton?
-    var sliderManualOpt: UISlider?
+    @IBOutlet weak var sliderManualOpt: UISlider!
     
     let cameraManager = CameraManager.shared
     var isPermissionAuthorized = true

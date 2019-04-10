@@ -100,40 +100,10 @@ extension CameraViewController {
         }, completion: nil)
     }
     
-    @objc func onTapExpView(sender: UITapGestureRecognizer) {
-        showManualOpt()
-    }
-    
-    @objc func onTapSecView(sender: UITapGestureRecognizer) {
+    /// 手动控制时滑动滑条的回调
+    ///
+    /// - Parameter sender: 滑条
+    @IBAction func onSlideManualOptSlider(_ sender: UISlider) {
         
-    }
-    
-    @objc func onTapISOView(sender: UITapGestureRecognizer) {
-        
-    }
-    
-    @objc func onTapFLView(sender: UITapGestureRecognizer) {
-        
-    }
-    
-    func showManualOpt() {
-        if uiSliderManualOpt == nil {
-            uiSliderManualOpt = UIView.init()
-            uiSliderManualOpt?.isHidden = true
-            self.view.addSubview(uiSliderManualOpt!)
-            uiSliderManualOpt?.snp.makeConstraints({ (make) in
-                make.left.equalToSuperview().offset(30)
-                make.right.equalToSuperview().inset(30)
-                make.height.equalTo(50)
-                make.bottom.equalTo(uiManualOpt!.snp.top).offset(-10)
-            })
-            //
-            sliderManualOpt = UISlider.init()
-            uiSliderManualOpt?.addSubview(sliderManualOpt!)
-            sliderManualOpt?.snp.makeConstraints({ (make) in
-                make.width.bottom.equalToSuperview()
-            })
-        }
-        uiSliderManualOpt?.isHidden.toggle()
     }
 }
