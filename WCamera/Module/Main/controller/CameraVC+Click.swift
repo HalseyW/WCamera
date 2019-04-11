@@ -20,9 +20,13 @@ extension CameraViewController {
     
     //切换后置双摄
     @IBAction func onClickSwitchDualCameraButton() {
-        switchCameraUIWorkFlow {
+        onClickAutoModeButton()
+        self.btnCapturePhoto?.isEnabled = false
+        self.btnSwitchDualCamera?.isEnabled = false
+        self.previewView.alpha = 0
+        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: {
             self.cameraManager.switchDualCamera()
-        }
+        }, completion: nil)
     }
     
     /// 点击拍照按钮
@@ -31,16 +35,6 @@ extension CameraViewController {
         btnCapturePhoto?.isEnabled = false
         previewView.isHidden = true
         tapticEngineGenerator.impactOccurred()
-    }
-    
-    /// 切换摄像头的统一动画
-    ///
-    /// - Parameter anim: 执行的操作
-    func switchCameraUIWorkFlow(anim: @escaping () -> Void) {
-        onClickAutoModeButton()
-        self.isCameraSwitchComplete = false
-        self.previewView.alpha = 0
-        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
     }
     
     /// 恢复自动模式

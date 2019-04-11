@@ -67,9 +67,7 @@ extension CameraManager {
     ///
     /// - Parameter ev: 曝光补偿度
     func changeEV(to ev: Float) {
-        guard let device = captureDevice else {
-            return
-        }
+        guard let device = captureDevice else { return }
         device.changeProperty {
             $0.setExposureTargetBias(ev) { _ in
                 self.delegate?.didChangeEvValue(to: ev)
@@ -81,9 +79,7 @@ extension CameraManager {
     ///
     /// - Parameter iso: 感光度
     func changeISO(to iso: Float) {
-        guard let device = captureDevice else {
-            return
-        }
+        guard let device = captureDevice else { return }
         device.changeProperty { $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: iso, completionHandler: { (_) in
             self.delegate?.didChangeISOValue(to: iso)
         })}
@@ -93,9 +89,7 @@ extension CameraManager {
     ///
     /// - Parameter duration: 曝光时间
     func changeExposureDuration(to duration: Double) {
-        guard let device = captureDevice else {
-            return
-        }
+        guard let device = captureDevice else { return }
         let durationValue = CMTimeMakeWithSeconds(duration, preferredTimescale: 1000000)
         device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: AVCaptureDevice.currentISO, completionHandler: { (_) in
             self.delegate?.didChangeEtValue(to: durationValue)
@@ -106,9 +100,7 @@ extension CameraManager {
     ///
     /// - Parameter lens: 对焦焦距
     func changeFocusLens(to lens: Float) {
-        guard let device = captureDevice else {
-            return
-        }
+        guard let device = captureDevice else { return }
         device.changeProperty {
             $0.setFocusModeLocked(lensPosition: lens) { _ in
                 self.delegate?.didChangeFLValue(to: lens)

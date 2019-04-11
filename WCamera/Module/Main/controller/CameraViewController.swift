@@ -27,7 +27,6 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var tvEtCurrentValue: UILabel!
     @IBOutlet weak var tvISOCurrentValue: UILabel!
     @IBOutlet weak var tvFlCurrentValue: UILabel!
-    
     let cameraManager = CameraManager.shared
     lazy var sliderMode = -1
     var isPermissionAuthorized = true
@@ -36,13 +35,6 @@ class CameraViewController: UIViewController {
     lazy var currentVolume: Float = -1
     lazy var canCaptureWhenPressVolumeButton = true
     lazy var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
-    var isCameraSwitchComplete: Bool? {
-        willSet {
-            guard let value = newValue else { return }
-            self.btnCapturePhoto?.isEnabled = value
-            self.btnSwitchDualCamera?.isEnabled = value
-        }
-    }
     
     override func loadView() {
         super.loadView()
@@ -56,15 +48,14 @@ class CameraViewController: UIViewController {
                 self.cameraManager.buildSession(delegate: self)
             }
         }
+        cameraManager.startRunning()
+        super.viewDidLoad()
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
         UIApplication.shared.beginReceivingRemoteControlEvents()
         //App运行状态监听
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
-        //开始预览
-        cameraManager.startRunning()
-        super.viewDidLoad()
     }
     
     @objc func willBecomeActive(notification: Notification) {
