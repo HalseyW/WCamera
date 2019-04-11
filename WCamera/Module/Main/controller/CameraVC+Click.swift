@@ -60,7 +60,7 @@ extension CameraViewController {
     ///
     /// - Parameter sender: 点击手势
     @IBAction func onTapPreviewView(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
+        if sender.state == .ended && uiManualOpt.isHidden {
             let point = sender.location(in: previewView)
             cameraManager.focusAndExposure(at: point)
             setFocusImageViewWhenFocusing(to: point, use: UIImage.init(named: "focus")!)
@@ -71,7 +71,7 @@ extension CameraViewController {
     ///
     /// - Parameter sender: 长按手势
     @IBAction func onLongPressPreviewView(sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
+        if sender.state == .began && uiManualOpt.isHidden {
             let point = sender.location(in: previewView)
             cameraManager.lockFocusAndExposure(at: point)
             setFocusImageViewWhenFocusing(to: point, use: UIImage.init(named: "focus_locked")!)
