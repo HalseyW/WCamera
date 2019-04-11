@@ -12,6 +12,7 @@ import MediaPlayer
 
 extension CameraViewController {
     func initView() {
+        previewView.videoPreviewLayer.session = cameraManager.captureSession
         //覆盖系统音量按钮
         mpVolumeView = MPVolumeView.init(frame: CGRect.init(x: -100, y: -100, width: 0, height: 0))
         mpVolumeView!.showsRouteButton = false

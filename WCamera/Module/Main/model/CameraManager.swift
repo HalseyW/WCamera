@@ -17,7 +17,6 @@ class CameraManager: NSObject {
     var deviceInput: AVCaptureInput?
     var photoOutput: AVCapturePhotoOutput?
     var cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
-    var cameraBuildQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraBuildQueue")
     var rawImageFileURL: URL?
     var compressedFileData: Data?
     var minEV: Float?
@@ -31,25 +30,23 @@ class CameraManager: NSObject {
     
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
-        delegate.getPreviewView().videoPreviewLayer.session = captureSession
-        cameraBuildQueue.async {
-            self.captureSession.beginConfiguration()
-            self.captureSession.sessionPreset = .photo
-            //get device
-            let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
-            self.captureDevice = self.getCaptureDevice(type: cameraType, position: .back)
-            //add input
-            self.deviceInput = try? AVCaptureDeviceInput(device: self.captureDevice!)
-            guard let deviceInput = self.deviceInput, self.captureSession.canAddInput(deviceInput) else { return }
-            self.captureSession.addInput(deviceInput)
-            //add output
-            self.photoOutput = AVCapturePhotoOutput()
-            guard let photoOutput = self.photoOutput, self.captureSession.canAddOutput(photoOutput) else {
-                return
-            }
-            self.captureSession.addOutput(photoOutput)
-            self.captureSession.commitConfiguration()
+        captureSession.beginConfiguration()
+        captureSession.sessionPreset = .photo
+        //get device
+        let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
+        captureDevice = getCaptureDevice(type: cameraType, position: .back)
+        //add input
+        deviceInput = try? AVCaptureDeviceInput(device: captureDevice!)
+        guard let deviceInput = deviceInput, captureSession.canAddInput(deviceInput) else { return }
+        captureSession.addInput(deviceInput)
+        //add output
+        photoOutput = AVCapturePhotoOutput()
+        guard let photoOutput = photoOutput, captureSession.canAddOutput(photoOutput) else {
+            return
         }
+        captureSession.addOutput(photoOutput)
+        captureSession.commitConfiguration()
+        delegate.getPreviewView().videoPreviewLayer.session = captureSession
     }
     
     func startRunning() {
@@ -77,18 +74,13 @@ class CameraManager: NSObject {
         let dualCameraType = captureDevice?.deviceType == .builtInWideAngleCamera ? 0 : 1
         UserDefaults.saveInt(dualCameraType, forKey: .DualCameraType)
         //开始切换
-        let workItem = DispatchWorkItem.init {
-            self.captureSession.beginConfiguration()
-            self.captureSession.removeInput(self.deviceInput!)
-            self.deviceInput = try? AVCaptureDeviceInput(device: self.captureDevice!)
-            guard self.captureSession.canAddInput(self.deviceInput!) else { return }
-            self.captureSession.addInput(self.deviceInput!)
-            self.captureSession.commitConfiguration()
-        }
-        cameraQueue.async(execute: workItem)
-        workItem.notify(queue: DispatchQueue.main, execute: {
-            self.delegate?.dualCameraSwitchComplete()
-        })
+        captureSession.beginConfiguration()
+        captureSession.removeInput(deviceInput!)
+        deviceInput = try? AVCaptureDeviceInput(device: captureDevice!)
+        guard captureSession.canAddInput(deviceInput!) else { return }
+        captureSession.addInput(deviceInput!)
+        captureSession.commitConfiguration()
+        delegate?.dualCameraSwitchComplete()
     }
     
     /// 根据相机类型和相机位置获取AVCaptureDevice
