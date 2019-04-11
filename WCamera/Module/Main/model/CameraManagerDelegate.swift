@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 /// CameraManager与Controller交互的协议
 protocol CameraManagerDelegate: NSObjectProtocol {
@@ -18,7 +19,7 @@ protocol CameraManagerDelegate: NSObjectProtocol {
     
     func didChangeEvValue(to value: Float)
     
-    func didChangeEtValue(to value: Double)
+    func didChangeEtValue(to value: CMTime)
     
     func didChangeISOValue(to value: Float)
 

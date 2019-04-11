@@ -19,6 +19,14 @@ class CameraManager: NSObject {
     lazy var cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue", qos: .userInteractive)
     var rawImageFileURL: URL?
     var compressedFileData: Data?
+    var minEV: Float?
+    var maxEV: Float?
+    var minEt: Float?
+    var maxEt: Float?
+    var minEtForLabel: String?
+    var maxEtForLabel: String?
+    var minISO: Float?
+    var maxISO: Float?
     
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
@@ -102,59 +110,6 @@ class CameraManager: NSObject {
             return deviceDiscoverySession.devices[0]
         } else {
             return AVCaptureDevice.default(for: .video)!
-        }
-    }
-    
-    /// 设置曝光补偿
-    ///
-    /// - Parameter ev: 曝光补偿度
-    func changeEV(to ev: Float) {
-        guard let device = captureDevice else {
-            return
-        }
-        device.changeProperty {
-            $0.setExposureTargetBias(ev) { _ in
-                self.delegate?.didChangeEvValue(to: ev)
-            }
-        }
-    }
-    
-    /// 设置ISO
-    ///
-    /// - Parameter iso: 感光度
-    func changeISO(to iso: Float) {
-        guard let device = captureDevice else {
-            return
-        }
-        device.changeProperty { $0.setExposureModeCustom(duration: AVCaptureDevice.currentExposureDuration, iso: iso, completionHandler: { (_) in
-            self.delegate?.didChangeISOValue(to: iso)
-        })}
-    }
-    
-    /// 设置曝光时间
-    ///
-    /// - Parameter duration: 曝光时间
-    func changeExposureDuration(to duration: Double) {
-        guard let device = captureDevice else {
-            return
-        }
-        let durationValue = CMTimeMakeWithSeconds(duration, preferredTimescale: 1000000)
-        device.changeProperty { $0.setExposureModeCustom(duration: durationValue, iso: AVCaptureDevice.currentISO, completionHandler: { (_) in
-            self.delegate?.didChangeEtValue(to: duration)
-        })}
-    }
-    
-    /// 设置镜头焦距
-    ///
-    /// - Parameter lens: 对焦焦距
-    func changeFocusLens(to lens: Float) {
-        guard let device = captureDevice else {
-            return
-        }
-        device.changeProperty {
-            $0.setFocusModeLocked(lensPosition: lens) { _ in
-                self.delegate?.didChangeFLValue(to: lens)
-            }
         }
     }
     

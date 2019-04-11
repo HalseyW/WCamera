@@ -101,36 +101,28 @@ extension CameraViewController {
     
     /// 点击了调节EV的模块
     @IBAction func onClickExposureValueView() {
-        guard let device = cameraManager.captureDevice, sliderMode != 0 else { return }
-        let min = device.minExposureTargetBias
-        let max = device.maxExposureTargetBias
-        sliderMode = 0
-        toggleManualOptSlider(value: 0, min: min, max: max)
+        onClickManualOptView(currentSliderMode: 0)
     }
     
     /// 点击了调节ET的模块
     @IBAction func onClickExposureTimeView() {
-        guard let device = cameraManager.captureDevice, sliderMode != 1 else { return }
-        let min = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
-        let max = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
-        sliderMode = 1
-        toggleManualOptSlider(value: 0, min: Float(min), max: Float(max))
+        onClickManualOptView(currentSliderMode: 1)
     }
     
     /// 点击了调节ISO的模块
     @IBAction func onClickISOView() {
-        guard let device = cameraManager.captureDevice, sliderMode != 2 else { return }
-        let min = device.activeFormat.minISO
-        let max = device.activeFormat.maxISO
-        sliderMode = 2
-        toggleManualOptSlider(value: 0, min: min, max: max)
+        onClickManualOptView(currentSliderMode: 2)
     }
     
     /// 点击了调节FL的模块
     @IBAction func onClickFocusLenthView() {
-        guard sliderMode != 3 else { return }
-        sliderMode = 3
-        toggleManualOptSlider(value: 0, min: 0, max: 1)
+        onClickManualOptView(currentSliderMode: 3)
+    }
+    
+    func onClickManualOptView(currentSliderMode: Int) {
+        guard sliderMode != currentSliderMode else { return }
+        sliderMode = currentSliderMode
+        setManualOptView()
     }
     
     /// 改变滑块的状态
@@ -139,13 +131,34 @@ extension CameraViewController {
     ///   - value: 滑条的初始值
     ///   - min: 滑条的最小值
     ///   - max: 滑条的最大值
-    func toggleManualOptSlider(value: Float, min: Float, max: Float) {
+    func setManualOptView() {
+        switch sliderMode {
+        case 0:
+            let evValues = cameraManager.getDeivceMinMaxEV()
+            setManualOptSliderAndLabe(with: evValues.min, evValues.max, evValues.value, label: "\(lroundf(evValues.min))", "\(lroundf(evValues.max))")
+        case 1:
+            let etValues = cameraManager.getDeivceMinMaxEt()
+            setManualOptSliderAndLabe(with: etValues.min, etValues.max, etValues.value, label: etValues.minLabel, etValues.maxLabel)
+        case 2:
+            let isoValues = cameraManager.getDeivceMinMaxISO()
+            setManualOptSliderAndLabe(with: isoValues.min, isoValues.max, isoValues.value, label: "\(lroundf(isoValues.min))", "\(lroundf(isoValues.max))")
+        case 3:
+            let flValues = cameraManager.getDeivceMinMaxFL()
+            setManualOptSliderAndLabe(with: flValues.min, flValues.max, flValues.value, label: "\(lroundf(flValues.min))", "\(lroundf(flValues.max))")
+        default:
+            break
+        }
+    }
+    
+    func setManualOptSliderAndLabe(with sliderMin: Float, _ sliderMax: Float, _ sliderValue: Float, label minLabel: String, _ maxLabel: String) {
         uiManualOpt.isHidden = false
-        sliderManualOpt.minimumValue = min
-        sliderManualOpt.maximumValue = max
-        sliderManualOpt.value = value
-        tvSliderMinValue.text = "\(lroundf(min))"
-        tvSliderMaxValue.text = "\(lroundf(max))"
+
+        sliderManualOpt.minimumValue = sliderMin
+        sliderManualOpt.maximumValue = sliderMax
+        sliderManualOpt.value = sliderValue
+        
+        tvSliderMinValue.text = minLabel
+        tvSliderMaxValue.text = maxLabel
     }
     
     /// 手动控制时滑动滑条的回调
