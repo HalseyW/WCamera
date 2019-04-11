@@ -27,20 +27,20 @@ extension CameraManager {
         guard let device = captureDevice else { return (0, 1, "0", "1", 0.5) }
         //用以显示的UILabel上的曝光时间的分母
         let currentExposureDuration = device.exposureDuration
-        let currentEt = Float(currentExposureDuration.timescale) / Float(currentExposureDuration.value)
+        let currentEt = Float(CMTimeGetSeconds(currentExposureDuration))
         //获取已有的值
         if let minEtValue = minEV, let maxEtValue = maxEV, let minEtForLabelValue = minEtForLabel, let maxEtForLabelValue = maxEtForLabel {
             return (minEtValue, maxEtValue, minEtForLabelValue, maxEtForLabelValue, currentEt)
         }
         //如果没有已存在的值，则去计算
+        //最小值
         let minTime = device.activeFormat.minExposureDuration
         let min = CMTimeGetSeconds(minTime)
         let minForLabel = DeviceUtils.getExposureDurationShowValue(minTime)
-        
+        //最大值
         let maxTime = device.activeFormat.maxExposureDuration
         let max = CMTimeGetSeconds(maxTime)
         let maxForLabel = DeviceUtils.getExposureDurationShowValue(maxTime)
-        
         return (Float(min), Float(max), minForLabel, maxForLabel, currentEt)
     }
     

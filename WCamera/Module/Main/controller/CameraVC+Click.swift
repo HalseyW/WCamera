@@ -98,31 +98,17 @@ extension CameraViewController {
             self.ivFocus?.bounds.size = CGSize.init(width: 90, height: 90)
         }, completion: nil)
     }
-    
-    /// 点击了调节EV的模块
-    @IBAction func onClickExposureValueView() {
-        onClickManualOptView(currentSliderMode: 0)
-    }
-    
-    /// 点击了调节ET的模块
-    @IBAction func onClickExposureTimeView() {
-        onClickManualOptView(currentSliderMode: 1)
-    }
-    
-    /// 点击了调节ISO的模块
-    @IBAction func onClickISOView() {
-        onClickManualOptView(currentSliderMode: 2)
-    }
-    
-    /// 点击了调节FL的模块
-    @IBAction func onClickFocusLenthView() {
-        onClickManualOptView(currentSliderMode: 3)
-    }
-    
-    func onClickManualOptView(currentSliderMode: Int) {
-        guard sliderMode != currentSliderMode else { return }
-        sliderMode = currentSliderMode
-        setManualOptView()
+
+    /// 点击了手动操作区域，根据tag判断点击的是哪个区域
+    ///
+    /// - Parameter sender: 单击手势
+    @IBAction func onClickManualOptView(_ sender: UITapGestureRecognizer) {
+        guard let view = sender.view else { return }
+        let newSliderMode = view.tag
+        if sliderMode != newSliderMode {
+            sliderMode = newSliderMode
+            setManualOptView()
+        }
     }
     
     /// 改变滑块的状态
@@ -150,13 +136,21 @@ extension CameraViewController {
         }
     }
     
+    /// 设置slider和Slider上方UILabel的最小/最大/当前值
+    ///
+    /// - Parameters:
+    ///   - sliderMin: slider最小值
+    ///   - sliderMax: slider最大值
+    ///   - sliderValue: slider当前值
+    ///   - minLabel: 该属性的最小值
+    ///   - maxLabel: 该属性的最大值
     func setManualOptSliderAndLabe(with sliderMin: Float, _ sliderMax: Float, _ sliderValue: Float, label minLabel: String, _ maxLabel: String) {
         uiManualOpt.isHidden = false
-
+        //设置slider
         sliderManualOpt.minimumValue = sliderMin
         sliderManualOpt.maximumValue = sliderMax
         sliderManualOpt.value = sliderValue
-        
+        //设置UILabel
         tvSliderMinValue.text = minLabel
         tvSliderMaxValue.text = maxLabel
     }

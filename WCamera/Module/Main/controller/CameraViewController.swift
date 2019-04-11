@@ -28,8 +28,8 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var tvISOCurrentValue: UILabel!
     @IBOutlet weak var tvFlCurrentValue: UILabel!
     
-    lazy var sliderMode = -1
     let cameraManager = CameraManager.shared
+    lazy var sliderMode = -1
     var isPermissionAuthorized = true
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)

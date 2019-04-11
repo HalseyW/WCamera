@@ -130,7 +130,7 @@
                                             <outletCollection property="gestureRecognizers" destination="Fqo-Xm-EZB" appends="YES" id="rXy-YD-jA1"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LT-wY-RYw">
+                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LT-wY-RYw">
                                         <rect key="frame" x="93.666666666666686" y="0.0" width="94" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-Is-0uW">
@@ -157,7 +157,7 @@
                                             <outletCollection property="gestureRecognizers" destination="FM5-nG-ZD8" appends="YES" id="79J-PK-AAl"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kcr-6b-XyB">
+                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kcr-6b-XyB">
                                         <rect key="frame" x="187.66666666666666" y="0.0" width="93.666666666666657" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCT-dO-FV6">
@@ -184,7 +184,7 @@
                                             <outletCollection property="gestureRecognizers" destination="zwq-BX-y06" appends="YES" id="DSO-Jb-yHz"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh6-oo-wlt">
+                                    <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh6-oo-wlt">
                                         <rect key="frame" x="281.33333333333331" y="0.0" width="93.666666666666686" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mn-xu-tJs">
@@ -326,22 +326,22 @@
                 </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="Fqo-Xm-EZB">
                     <connections>
-                        <action selector="onClickExposureValueView" destination="iVq-hF-Jht" id="Tyh-kn-dOv"/>
+                        <action selector="onClickManualOptView:" destination="iVq-hF-Jht" id="6Oq-mN-LVK"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="FM5-nG-ZD8">
                     <connections>
-                        <action selector="onClickExposureTimeView" destination="iVq-hF-Jht" id="Q5O-ng-abL"/>
+                        <action selector="onClickManualOptView:" destination="iVq-hF-Jht" id="TwF-gy-LzT"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="zwq-BX-y06">
                     <connections>
-                        <action selector="onClickISOView" destination="iVq-hF-Jht" id="IEu-1E-0U9"/>
+                        <action selector="onClickManualOptView:" destination="iVq-hF-Jht" id="UWG-3P-DNC"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="0v6-gc-YJM">
                     <connections>
-                        <action selector="onClickFocusLenthView" destination="iVq-hF-Jht" id="6eu-fe-Uls"/>
+                        <action selector="onClickManualOptView:" destination="iVq-hF-Jht" id="9Zh-9P-wh1"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
