@@ -16,14 +16,6 @@ extension  CameraViewController: CameraManagerDelegate {
         return previewView
     }
     
-    /// 前/后置摄像头切换完成
-    func frontAndBackCameraSwitchComplete() {
-        switchCameraCompleteAnim { (_) in
-            self.btnSwitchFrontAndBackCamera?.isSelected.toggle()
-            self.isCameraSwitchComplete = true
-        }
-    }
-    
     /// 双摄像头切换完成
     func dualCameraSwitchComplete() {
         switchCameraCompleteAnim { (_) in

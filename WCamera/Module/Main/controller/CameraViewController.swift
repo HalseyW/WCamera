@@ -16,7 +16,6 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var btnFlashMode: UIButton!
     @IBOutlet weak var btnSwitchDualCamera: UIButton!
-    @IBOutlet weak var btnSwitchFrontAndBackCamera: UIButton!
     @IBOutlet weak var btnCapturePhoto: UIButton!
     @IBOutlet weak var btnAutoMode: UIButton!
     @IBOutlet weak var ivFocus: UIImageView!
@@ -41,7 +40,6 @@ class CameraViewController: UIViewController {
         willSet {
             guard let value = newValue else { return }
             self.btnCapturePhoto?.isEnabled = value
-            self.btnSwitchFrontAndBackCamera?.isEnabled = value
             self.btnSwitchDualCamera?.isEnabled = value
         }
     }

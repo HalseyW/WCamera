@@ -27,9 +27,8 @@ class CameraManager: NSObject {
             self.captureSession.beginConfiguration()
             self.captureSession.sessionPreset = .photo
             //get device
-            let cameraPosition: AVCaptureDevice.Position = UserDefaults.getInt(forKey: .CameraPosition) == 0 ? .back : .front
             let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
-            self.captureDevice = cameraPosition == .front ? self.getCaptureDevice(type: .builtInWideAngleCamera, position: .front) : self.getCaptureDevice(type: cameraType, position: .back)
+            self.captureDevice = self.getCaptureDevice(type: cameraType, position: .back)
             //add input
             self.deviceInput = try? AVCaptureDeviceInput(device: self.captureDevice!)
             guard let deviceInput = self.deviceInput, self.captureSession.canAddInput(deviceInput) else { return }
@@ -60,31 +59,14 @@ class CameraManager: NSObject {
         }
     }
     
-    /// 切换前后置摄像头
-    ///
-    /// - Parameter type: 后置摄像头是长焦还是广角
-    func switchFrontAndBackCamera() {
-        let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
-        captureDevice = (captureDevice?.position == .back) ? getCaptureDevice(type: .builtInWideAngleCamera, position: .front) : getCaptureDevice(type: cameraType, position: .back)
-        let cameraPosition = captureDevice?.position == .back ? 0 : 1
-        UserDefaults.saveInt(cameraPosition, forKey: .CameraPosition)
-        switchCameraWorkFlow(to: captureDevice!) {
-            self.delegate?.frontAndBackCameraSwitchComplete()
-        }
-    }
-    
     /// 切换后置双摄
     func switchDualCamera()  {
-        //如果当前是前置，就仅切换摄像头，不做更改
-        if captureDevice?.position == .front {
-            switchFrontAndBackCamera()
-        } else {
-            let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
-            captureDevice = (cameraType == .builtInTelephotoCamera) ? getCaptureDevice(type: .builtInWideAngleCamera, position: .back) : getCaptureDevice(type: .builtInTelephotoCamera, position: .back)
-            //保存设置
-            let dualCameraType = captureDevice?.deviceType == .builtInWideAngleCamera ? 0 : 1
-            UserDefaults.saveInt(dualCameraType, forKey: .DualCameraType)
-        }
+        //根据用户设置获取摄像头
+        let cameraType: AVCaptureDevice.DeviceType = UserDefaults.getInt(forKey: .DualCameraType) == 0 ? .builtInWideAngleCamera : .builtInTelephotoCamera
+        captureDevice = (cameraType == .builtInTelephotoCamera) ? getCaptureDevice(type: .builtInWideAngleCamera, position: .back) : getCaptureDevice(type: .builtInTelephotoCamera, position: .back)
+        //保存设置
+        let dualCameraType = captureDevice?.deviceType == .builtInWideAngleCamera ? 0 : 1
+        UserDefaults.saveInt(dualCameraType, forKey: .DualCameraType)
         switchCameraWorkFlow(to: captureDevice!) {
             self.delegate?.dualCameraSwitchComplete()
         }
@@ -210,7 +192,7 @@ class CameraManager: NSObject {
     
     /// 恢复自动模式
     func changeToAutoMode() {
-        guard let device = captureDevice, device.position == .back else {
+        guard let device = captureDevice else {
             return
         }
         device.changeProperty {

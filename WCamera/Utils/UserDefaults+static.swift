@@ -57,8 +57,6 @@ extension UserDefaults {
 }
 
 extension String {
-    //0：后置，1：前置
-    static let CameraPosition = "CameraPosition"
     //0：广角，1：长焦
     static let DualCameraType = "DualCameraType"
     //0：关闭，1：开启，2：自动

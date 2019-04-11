@@ -18,14 +18,6 @@ extension CameraViewController {
         btnFlashMode?.setImage(flashModeButtonImages[flashMode], for: .normal)
     }
     
-    //切换前/后置摄像头
-    @IBAction func onClickSwitchFrontAndBackCameraButton() {
-        switchCameraUIWorkFlow {
-            self.cameraManager.switchFrontAndBackCamera()
-            self.ivFocus?.isHidden = true
-        }
-    }
-    
     //切换后置双摄
     @IBAction func onClickSwitchDualCameraButton() {
         switchCameraUIWorkFlow {
@@ -45,9 +37,9 @@ extension CameraViewController {
     ///
     /// - Parameter anim: 执行的操作
     func switchCameraUIWorkFlow(anim: @escaping () -> Void) {
+        onClickAutoModeButton()
         self.isCameraSwitchComplete = false
         self.previewView.alpha = 0
-        self.tapticEngineGenerator.impactOccurred()
         UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: anim, completion: nil)
     }
     

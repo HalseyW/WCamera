@@ -30,26 +30,13 @@
                                             <action selector="onClickFlashModeChangeButton:" destination="iVq-hF-Jht" eventType="touchUpInside" id="DAb-0y-NjK"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlG-nW-trD">
-                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="ryH-FP-Bod"/>
-                                        </constraints>
-                                        <state key="normal" image="switch_camera"/>
-                                        <connections>
-                                            <action selector="onClickSwitchFrontAndBackCameraButton" destination="iVq-hF-Jht" eventType="touchUpInside" id="thB-wU-L2J"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="om6-Ne-A5Q" firstAttribute="top" secondItem="ULP-Gr-QtV" secondAttribute="top" id="B57-SS-XzP"/>
                                     <constraint firstAttribute="bottom" secondItem="om6-Ne-A5Q" secondAttribute="bottom" id="F2W-jz-1kT"/>
-                                    <constraint firstAttribute="bottom" secondItem="IlG-nW-trD" secondAttribute="bottom" id="Wu1-nA-Q18"/>
                                     <constraint firstItem="om6-Ne-A5Q" firstAttribute="leading" secondItem="ULP-Gr-QtV" secondAttribute="leading" id="bZs-4P-Mlg"/>
-                                    <constraint firstAttribute="trailing" secondItem="IlG-nW-trD" secondAttribute="trailing" id="dYn-VI-0JF"/>
                                     <constraint firstAttribute="height" constant="44" id="hdt-7i-QUY"/>
-                                    <constraint firstItem="IlG-nW-trD" firstAttribute="top" secondItem="ULP-Gr-QtV" secondAttribute="top" id="ocM-Ls-SgP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wk-hg-a0R" customClass="PreviewView" customModule="WCamera" customModuleProvider="target">
@@ -314,7 +301,6 @@
                         <outlet property="btnCapturePhoto" destination="TNn-XB-jnS" id="VWX-hY-z8T"/>
                         <outlet property="btnFlashMode" destination="om6-Ne-A5Q" id="e1S-hg-j1i"/>
                         <outlet property="btnSwitchDualCamera" destination="JUo-sy-nJO" id="Dvg-hX-8CB"/>
-                        <outlet property="btnSwitchFrontAndBackCamera" destination="IlG-nW-trD" id="bPc-2s-wXW"/>
                         <outlet property="ivFocus" destination="gjK-2e-70u" id="JiN-3f-jRR"/>
                         <outlet property="previewView" destination="6Wk-hg-a0R" id="5DV-cG-ge2"/>
                         <outlet property="sliderManualOpt" destination="waM-3z-lWu" id="L8K-wQ-MCt"/>
@@ -367,6 +353,5 @@
         <image name="auxiliary_line" width="375" height="667"/>
         <image name="capture" width="70" height="70"/>
         <image name="focus" width="50" height="50"/>
-        <image name="switch_camera" width="23.333333969116211" height="23.333333969116211"/>
     </resources>
 </document>

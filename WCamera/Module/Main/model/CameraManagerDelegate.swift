@@ -12,8 +12,6 @@ import Foundation
 protocol CameraManagerDelegate: NSObjectProtocol {
     func getPreviewView() -> PreviewView
     
-    func frontAndBackCameraSwitchComplete()
-    
     func dualCameraSwitchComplete()
     
     func didFinishCapturePhoto()
