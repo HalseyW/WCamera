@@ -17,7 +17,9 @@ extension CameraManager {
         if let minEvValue = minEV, let maxEvValue = maxEV {
             return (minEvValue, maxEvValue, device.exposureTargetBias)
         }
-        return (device.minExposureTargetBias, device.maxExposureTargetBias, device.exposureTargetBias)
+        minEV = device.minExposureTargetBias
+        maxEV = device.maxExposureTargetBias
+        return (minEV!, maxEV!, device.exposureTargetBias)
     }
     
     /// 获取当前设备的最大和最小曝光时间
@@ -29,19 +31,19 @@ extension CameraManager {
         let currentExposureDuration = device.exposureDuration
         let currentEt = Float(CMTimeGetSeconds(currentExposureDuration))
         //获取已有的值
-        if let minEtValue = minEV, let maxEtValue = maxEV, let minEtForLabelValue = minEtForLabel, let maxEtForLabelValue = maxEtForLabel {
+        if let minEtValue = minEt, let maxEtValue = maxEt, let minEtForLabelValue = minEtForLabel, let maxEtForLabelValue = maxEtForLabel {
             return (minEtValue, maxEtValue, minEtForLabelValue, maxEtForLabelValue, currentEt)
         }
         //如果没有已存在的值，则去计算
         //最小值
         let minTime = device.activeFormat.minExposureDuration
-        let min = CMTimeGetSeconds(minTime)
-        let minForLabel = DeviceUtils.getExposureDurationShowValue(minTime)
+        minEt = Float(CMTimeGetSeconds(minTime))
+        minEtForLabel = DeviceUtils.getExposureDurationShowValue(minTime)
         //最大值
         let maxTime = device.activeFormat.maxExposureDuration
-        let max = CMTimeGetSeconds(maxTime)
-        let maxForLabel = DeviceUtils.getExposureDurationShowValue(maxTime)
-        return (Float(min), Float(max), minForLabel, maxForLabel, currentEt)
+        maxEt = Float(CMTimeGetSeconds(maxTime))
+        maxEtForLabel = DeviceUtils.getExposureDurationShowValue(maxTime)
+        return (minEt!, maxEt!, minEtForLabel!, maxEtForLabel!, currentEt)
     }
     
     /// 获取当前设备的最大和最小ISO
@@ -52,7 +54,9 @@ extension CameraManager {
         if let minISOValue = minISO, let maxISOValue = maxISO {
             return (minISOValue, maxISOValue, device.iso)
         }
-        return (device.activeFormat.minISO, device.activeFormat.maxISO, device.iso)
+        minISO = device.activeFormat.minISO
+        maxISO = device.activeFormat.maxISO
+        return (minISO!, maxISO!, device.iso)
     }
     
     /// 获取当前设备的最大和最小焦距
