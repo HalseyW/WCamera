@@ -29,6 +29,7 @@ extension CameraViewController {
     func getCurrentVolume() -> Float {
         do {
             try AVAudioSession.sharedInstance().setActive(true, options: .init())
+            try AVAudioSession.sharedInstance().setCategory(.ambient)
         } catch {
             fatalError("AVAudioSession set active error")
         }
