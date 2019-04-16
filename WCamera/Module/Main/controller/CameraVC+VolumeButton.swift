@@ -28,8 +28,8 @@ extension CameraViewController {
     /// - Returns: 系统当前音量
     func getCurrentVolume() -> Float {
         do {
-            try AVAudioSession.sharedInstance().setActive(true, options: .init())
             try AVAudioSession.sharedInstance().setCategory(.ambient)
+            try AVAudioSession.sharedInstance().setActive(true, options: .init())
         } catch {
             fatalError("AVAudioSession set active error")
         }
