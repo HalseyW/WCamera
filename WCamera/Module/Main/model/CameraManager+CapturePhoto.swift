@@ -9,6 +9,23 @@
 import Photos
 
 extension CameraManager: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        //保存照片
+        if let e = error {
+            fatalError(e.localizedDescription)
+        }
+        if photo.isRawPhoto {
+            do {
+                rawImageFileURL = self.makeUniqueTempFileURL(extension: "dng")
+                try photo.fileDataRepresentation()!.write(to: rawImageFileURL!)
+            } catch {
+                fatalError("couldn't write DNG file to URL")
+            }
+        } else {
+            self.compressedFileData = photo.fileDataRepresentation()!
+        }
+    }
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
         //拍照完毕，但仍然在处理数据，执行动画等
         delegate?.didFinishCapturePhoto()
@@ -38,23 +55,6 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
                     fatalError(e.localizedDescription)
                 }
             })
-        }
-    }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        //保存照片
-        if let e = error {
-            fatalError(e.localizedDescription)
-        }
-        if photo.isRawPhoto {
-            do {
-                rawImageFileURL = self.makeUniqueTempFileURL(extension: "dng")
-                try photo.fileDataRepresentation()!.write(to: rawImageFileURL!)
-            } catch {
-                fatalError("couldn't write DNG file to URL")
-            }
-        } else {
-            self.compressedFileData = photo.fileDataRepresentation()!
         }
     }
     

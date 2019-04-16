@@ -12,6 +12,7 @@ import MediaPlayer
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return !DeviceUtils.isNotchDevice() }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     var mpVolumeView: MPVolumeView?
     @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var btnFlashMode: UIButton!
@@ -27,14 +28,14 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var tvEtCurrentValue: UILabel!
     @IBOutlet weak var tvISOCurrentValue: UILabel!
     @IBOutlet weak var tvFlCurrentValue: UILabel!
+    
     let cameraManager = CameraManager.shared
-    lazy var sliderMode = -1
-    var isPermissionAuthorized = true
+    lazy var manualOptMode = -1
     var focusImageViewTapAnimator: UIViewPropertyAnimator?
     lazy var tapticEngineGenerator = UIImpactFeedbackGenerator.init(style: .light)
     lazy var currentVolume: Float = -1
     lazy var canCaptureWhenPressVolumeButton = true
-    lazy var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
+    var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
     
     override func loadView() {
         super.loadView()
@@ -47,9 +48,9 @@ class CameraViewController: UIViewController {
         Permission.buildPermission(type: .Camera, message: "需要您的授权才能使用照相机进行拍照").request { (status) in
             if status == .authorized {
                 self.cameraManager.buildSession(delegate: self)
+                self.cameraManager.startRunning()
             }
         }
-        cameraManager.startRunning()
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
         UIApplication.shared.beginReceivingRemoteControlEvents()

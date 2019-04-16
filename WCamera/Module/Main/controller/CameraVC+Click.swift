@@ -24,9 +24,7 @@ extension CameraViewController {
         self.btnCapturePhoto?.isEnabled = false
         self.btnSwitchDualCamera?.isEnabled = false
         self.previewView.alpha = 0
-        UIView.transition(with: previewView, duration: 0.2, options: .curveEaseOut, animations: {
-            self.cameraManager.switchDualCamera()
-        }, completion: nil)
+        self.cameraManager.switchDualCamera()
     }
     
     /// 点击拍照按钮
@@ -41,7 +39,7 @@ extension CameraViewController {
     @IBAction func onClickAutoModeButton() {
         ivFocus?.isHidden = true
         uiManualOpt.isHidden = true
-        sliderMode = -1
+        manualOptMode = -1
         tvEvCurrentValue.text = "0"
         tvEtCurrentValue.text = "自动"
         tvISOCurrentValue.text = "自动"
@@ -99,8 +97,8 @@ extension CameraViewController {
     @IBAction func onClickManualOptView(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         let newSliderMode = view.tag
-        if sliderMode != newSliderMode {
-            sliderMode = newSliderMode
+        if manualOptMode != newSliderMode {
+            manualOptMode = newSliderMode
             setManualOptView()
         }
     }
@@ -112,7 +110,7 @@ extension CameraViewController {
     ///   - min: 滑条的最小值
     ///   - max: 滑条的最大值
     func setManualOptView() {
-        switch sliderMode {
+        switch manualOptMode {
         case 0:
             let evValues = cameraManager.getDeivceMinMaxEV()
             setManualOptSliderAndLabe(with: evValues.min, evValues.max, evValues.value, label: "\(lroundf(evValues.min))", "\(lroundf(evValues.max))")
@@ -154,7 +152,7 @@ extension CameraViewController {
     /// - Parameter sender: 滑条
     @IBAction func onSlideManualOptSlider(_ sender: UISlider) {
         let value = sender.value
-        switch sliderMode {
+        switch manualOptMode {
         case 0:
             cameraManager.changeEV(to: value)
         case 1:

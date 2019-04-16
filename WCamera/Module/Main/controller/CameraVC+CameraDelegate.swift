@@ -22,7 +22,6 @@ extension  CameraViewController: CameraManagerDelegate {
         UIView.transition(with: previewView, duration: 0.35, options: .curveEaseIn, animations: {
             self.previewView.alpha = 1
         }, completion: { (_) in
-            self.btnSwitchDualCamera?.isSelected.toggle()
             self.btnCapturePhoto?.isEnabled = true
             self.btnSwitchDualCamera?.isEnabled = true
             //改变图标
