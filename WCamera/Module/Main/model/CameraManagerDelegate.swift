@@ -17,11 +17,11 @@ protocol CameraManagerDelegate: NSObjectProtocol {
     
     func didFinishCapturePhoto()
     
-    func didChangeEvValue(to value: Float)
+    func didChangeEV(to value: Float)
     
-    func didChangeEtValue(to value: CMTime)
+    func didChangeExposureDuration(to value: CMTime)
     
-    func didChangeISOValue(to value: Float)
+    func didChangeISO(to value: Float)
 
-    func didChangeFLValue(to value: Float)
+    func didChangeLensPosition(to value: Float)
 }

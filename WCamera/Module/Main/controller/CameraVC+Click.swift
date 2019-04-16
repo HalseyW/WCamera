@@ -23,7 +23,6 @@ extension CameraViewController {
         onClickAutoModeButton()
         self.btnCapturePhoto?.isEnabled = false
         self.btnSwitchDualCamera?.isEnabled = false
-        self.previewView.alpha = 0
         self.cameraManager.switchDualCamera()
     }
     
@@ -86,7 +85,7 @@ extension CameraViewController {
         ivFocus?.image = image
         ivFocus?.bounds.size = CGSize.init(width: 150, height: 150)
         //执行动画
-        focusImageViewTapAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        focusImageViewTapAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             self.ivFocus?.bounds.size = CGSize.init(width: 90, height: 90)
         }, completion: nil)
     }
@@ -112,17 +111,17 @@ extension CameraViewController {
     func setManualOptView() {
         switch manualOptMode {
         case 0:
-            let evValues = cameraManager.getDeivceMinMaxEV()
-            setManualOptSliderAndLabe(with: evValues.min, evValues.max, evValues.value, label: "\(lroundf(evValues.min))", "\(lroundf(evValues.max))")
+            let evValues = cameraManager.getDeivceLimitEV()
+            setManualOptSliderAndLabe(with: evValues.min, evValues.max, evValues.current, label: "\(lroundf(evValues.min))", "\(lroundf(evValues.max))")
         case 1:
-            let etValues = cameraManager.getDeivceMinMaxEt()
-            setManualOptSliderAndLabe(with: etValues.min, etValues.max, etValues.value, label: etValues.minLabel, etValues.maxLabel)
+            let edValue = cameraManager.getDeivceLimitExposureDuration()
+            setManualOptSliderAndLabe(with: edValue.min, edValue.max, edValue.current, label: edValue.minLabel, edValue.maxLabel)
         case 2:
-            let isoValues = cameraManager.getDeivceMinMaxISO()
-            setManualOptSliderAndLabe(with: isoValues.min, isoValues.max, isoValues.value, label: "\(lroundf(isoValues.min))", "\(lroundf(isoValues.max))")
+            let isoValues = cameraManager.getDeivceLimitISO()
+            setManualOptSliderAndLabe(with: isoValues.min, isoValues.max, isoValues.current, label: "\(lroundf(isoValues.min))", "\(lroundf(isoValues.max))")
         case 3:
-            let flValues = cameraManager.getDeivceMinMaxFL()
-            setManualOptSliderAndLabe(with: flValues.min, flValues.max, flValues.value, label: "\(lroundf(flValues.min))", "\(lroundf(flValues.max))")
+            let lpValue = cameraManager.getDeivceLimitLensPosition()
+            setManualOptSliderAndLabe(with: lpValue.min, lpValue.max, lpValue.current, label: "\(lroundf(lpValue.min))", "\(lroundf(lpValue.max))")
         default:
             break
         }
@@ -161,7 +160,7 @@ extension CameraViewController {
         case 2:
             cameraManager.changeISO(to: value)
         case 3:
-            cameraManager.changeFocusLens(to: value)
+            cameraManager.changeLensPosition(to: value)
         default:
             break
         }

@@ -153,8 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				77190279223F32E7009CA59F /* CameraManager.swift */,
-				77190281223F480A009CA59F /* CameraManager+CapturePhoto.swift */,
 				77133B1F225F178F003082C1 /* CameraManager+ManualOpt.swift */,
+				77190281223F480A009CA59F /* CameraManager+CapturePhoto.swift */,
 				7719027F223F47E2009CA59F /* CameraManagerDelegate.swift */,
 			);
 			path = model;

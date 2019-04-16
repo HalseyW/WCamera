@@ -20,6 +20,7 @@ extension  CameraViewController: CameraManagerDelegate {
     /// 双摄像头切换完成
     func dualCameraSwitchComplete() {
         UIView.transition(with: previewView, duration: 0.35, options: .curveEaseIn, animations: {
+            self.previewView.alpha = 0
             self.previewView.alpha = 1
         }, completion: { (_) in
             self.btnCapturePhoto?.isEnabled = true
@@ -41,7 +42,7 @@ extension  CameraViewController: CameraManagerDelegate {
     /// 当改变EV时的回调
     ///
     /// - Parameter value: 当前的EV值
-    func didChangeEvValue(to value: Float) {
+    func didChangeEV(to value: Float) {
         if value < 0 && value > -1 {
             tvEvCurrentValue.text = "0"
         } else {
@@ -52,21 +53,21 @@ extension  CameraViewController: CameraManagerDelegate {
     /// 当改变曝光时间时的回调
     ///
     /// - Parameter value: 当前的曝光时间
-    func didChangeEtValue(to value: CMTime) {
+    func didChangeExposureDuration(to value: CMTime) {
         tvEtCurrentValue.text = DeviceUtils.getExposureDurationShowValue(value)
     }
     
     /// 当改变ISO时的回调
     ///
     /// - Parameter value: 当前的ISO
-    func didChangeISOValue(to value: Float) {
+    func didChangeISO(to value: Float) {
         tvISOCurrentValue.text = "\(lroundf(value))"
     }
     
     /// 当改变焦距时的回调
     ///
     /// - Parameter value: 当前的焦距
-    func didChangeFLValue(to value: Float) {
+    func didChangeLensPosition(to value: Float) {
         tvFlCurrentValue.text = String(format: "%.2f", value)
     }
 }
