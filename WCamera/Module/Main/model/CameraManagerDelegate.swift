@@ -6,7 +6,6 @@
 //  Copyright © 2019 wushhhhhh. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 /// CameraManager与Controller交互的协议

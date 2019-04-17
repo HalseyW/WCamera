@@ -48,6 +48,7 @@ class CameraManager: NSObject {
             }
             self.captureSession.addOutput(photoOutput)
             self.captureSession.commitConfiguration()
+            self.captureSession.startRunning()
         }
     }
     

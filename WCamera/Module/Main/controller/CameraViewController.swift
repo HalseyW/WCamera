@@ -48,7 +48,6 @@ class CameraViewController: UIViewController {
         Permission.buildPermission(type: .Camera, message: "需要您的授权才能使用照相机进行拍照").request { (status) in
             if status == .authorized {
                 self.cameraManager.buildSession(delegate: self)
-                self.cameraManager.startRunning()
             }
         }
         //按下实体音量键监听

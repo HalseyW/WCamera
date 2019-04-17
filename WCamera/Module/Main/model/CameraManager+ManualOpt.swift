@@ -61,9 +61,8 @@ extension CameraManager {
     /// - Parameter ev: 曝光补偿度
     func changeEV(to ev: Float) {
         guard let device = captureDevice else { return }
-        let value = Float(lroundf(ev))
         device.changeProperty {
-            $0.setExposureTargetBias(value) { _ in
+            $0.setExposureTargetBias(ev) { _ in
                 self.delegate?.didChangeEV(to: ev)
             }
         }

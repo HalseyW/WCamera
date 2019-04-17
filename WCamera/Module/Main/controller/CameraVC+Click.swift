@@ -36,14 +36,14 @@ extension CameraViewController {
     
     /// 恢复自动模式
     @IBAction func onClickAutoModeButton() {
+        cameraManager.changeToAutoMode()
         ivFocus?.isHidden = true
         uiManualOpt.isHidden = true
         manualOptMode = -1
-        tvEvCurrentValue.text = "0"
+        tvEvCurrentValue.text = "0.0"
         tvEtCurrentValue.text = "自动"
         tvISOCurrentValue.text = "自动"
         tvFlCurrentValue.text = "自动"
-        cameraManager.changeToAutoMode()
         tapticEngineGenerator.impactOccurred()
     }
     
@@ -136,7 +136,6 @@ extension CameraViewController {
     ///   - minLabel: 该属性的最小值
     ///   - maxLabel: 该属性的最大值
     func setManualOptSliderAndLabe(with sliderMin: Float, _ sliderMax: Float, _ sliderValue: Float, label minLabel: String, _ maxLabel: String) {
-        uiManualOpt.isHidden = false
         //设置slider
         sliderManualOpt.minimumValue = sliderMin
         sliderManualOpt.maximumValue = sliderMax
@@ -144,6 +143,11 @@ extension CameraViewController {
         //设置UILabel
         tvSliderMinValue.text = minLabel
         tvSliderMaxValue.text = maxLabel
+        UIView.transition(with: uiManualOpt, duration: 0.2, options: [.curveEaseIn], animations: {
+            self.uiManualOpt.isHidden = false
+            self.uiManualOpt.alpha = 0
+            self.uiManualOpt.alpha = 1
+        }, completion: nil)
     }
     
     /// 手动控制时滑动滑条的回调

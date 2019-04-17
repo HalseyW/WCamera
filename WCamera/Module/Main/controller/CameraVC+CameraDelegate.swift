@@ -43,11 +43,7 @@ extension  CameraViewController: CameraManagerDelegate {
     ///
     /// - Parameter value: 当前的EV值
     func didChangeEV(to value: Float) {
-        if value < 0 && value > -1 {
-            tvEvCurrentValue.text = "0"
-        } else {
-            tvEvCurrentValue.text = "\(lroundf(value))"
-        }
+        tvEvCurrentValue.text = String(format: "%.1f", value)
     }
     
     /// 当改变曝光时间时的回调
