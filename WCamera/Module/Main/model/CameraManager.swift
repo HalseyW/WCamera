@@ -19,14 +19,6 @@ class CameraManager: NSObject {
     var cameraQueue = DispatchQueue.init(label: "com.wushhhhhh.WCamera.cameraQueue")
     var rawImageFileURL: URL?
     var compressedFileData: Data?
-    var minEV: Float?
-    var maxEV: Float?
-    var minEt: Float?
-    var maxEt: Float?
-    var minEtForLabel: String?
-    var maxEtForLabel: String?
-    var minISO: Float?
-    var maxISO: Float?
     
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
