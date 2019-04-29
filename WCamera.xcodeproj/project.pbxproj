@@ -22,12 +22,6 @@
 		772CABEA22325C0A00829892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772CABE922325C0A00829892 /* Assets.xcassets */; };
 		772CABF822325C0A00829892 /* WCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CABF722325C0A00829892 /* WCameraTests.swift */; };
 		772CAC0322325C0A00829892 /* WCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC0222325C0A00829892 /* WCameraUITests.swift */; };
-		772CAC1A22325D9900829892 /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1422325D9800829892 /* PermissionType.swift */; };
-		772CAC1B22325D9900829892 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1522325D9800829892 /* Permission.swift */; };
-		772CAC1C22325D9900829892 /* PermissionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1622325D9800829892 /* PermissionStatus.swift */; };
-		772CAC1D22325D9900829892 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1722325D9800829892 /* Other.swift */; };
-		772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1822325D9900829892 /* PermissionAlert.swift */; };
-		772CAC1F22325D9900829892 /* Permission+request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC1922325D9900829892 /* Permission+request.swift */; };
 		772CAC212232641500829892 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CAC202232641500829892 /* CameraViewController.swift */; };
 		773C28852243893900F9B196 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C28842243893900F9B196 /* UserDefaults+static.swift */; };
 		7778AB87224870D100964254 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778AB86224870D100964254 /* UIColor+RGB.swift */; };
@@ -79,12 +73,6 @@
 		772CABFE22325C0A00829892 /* WCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CAC0222325C0A00829892 /* WCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCameraUITests.swift; sourceTree = "<group>"; };
 		772CAC0422325C0A00829892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		772CAC1422325D9800829892 /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
-		772CAC1522325D9800829892 /* Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
-		772CAC1622325D9800829892 /* PermissionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionStatus.swift; sourceTree = "<group>"; };
-		772CAC1722325D9800829892 /* Other.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
-		772CAC1822325D9900829892 /* PermissionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionAlert.swift; sourceTree = "<group>"; };
-		772CAC1922325D9900829892 /* Permission+request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Permission+request.swift"; sourceTree = "<group>"; };
 		772CAC202232641500829892 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		773C28842243893900F9B196 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		7778AB86224870D100964254 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
@@ -226,25 +214,11 @@
 		772CAC1022325D3E00829892 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				772CAC1122325D4600829892 /* Permission */,
 				773C28842243893900F9B196 /* UserDefaults+static.swift */,
 				7778AB86224870D100964254 /* UIColor+RGB.swift */,
 				7778AB892248A06F00964254 /* DeviceUtils.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		772CAC1122325D4600829892 /* Permission */ = {
-			isa = PBXGroup;
-			children = (
-				772CAC1522325D9800829892 /* Permission.swift */,
-				772CAC1922325D9900829892 /* Permission+request.swift */,
-				772CAC1822325D9900829892 /* PermissionAlert.swift */,
-				772CAC1622325D9800829892 /* PermissionStatus.swift */,
-				772CAC1422325D9800829892 /* PermissionType.swift */,
-				772CAC1722325D9800829892 /* Other.swift */,
-			);
-			path = Permission;
 			sourceTree = "<group>";
 		};
 		772CAC1322325D5C00829892 /* Module */ = {
@@ -489,18 +463,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7778AB8A2248A06F00964254 /* DeviceUtils.swift in Sources */,
-				772CAC1D22325D9900829892 /* Other.swift in Sources */,
-				772CAC1C22325D9900829892 /* PermissionStatus.swift in Sources */,
 				773C28852243893900F9B196 /* UserDefaults+static.swift in Sources */,
-				772CAC1E22325D9900829892 /* PermissionAlert.swift in Sources */,
-				772CAC1F22325D9900829892 /* Permission+request.swift in Sources */,
 				77190282223F480A009CA59F /* CameraManager+CapturePhoto.swift in Sources */,
 				772181DF224B4D2400C75EB8 /* CameraVC+Click.swift in Sources */,
 				77133B20225F178F003082C1 /* CameraManager+ManualOpt.swift in Sources */,
 				7719027D223F3FDC009CA59F /* CameraViewController+View.swift in Sources */,
-				772CAC1B22325D9900829892 /* Permission.swift in Sources */,
 				77205ED9223627EC00DB31AD /* PreviewView.swift in Sources */,
-				772CAC1A22325D9900829892 /* PermissionType.swift in Sources */,
 				77190280223F47E2009CA59F /* CameraManagerDelegate.swift in Sources */,
 				772181E1224B4DBE00C75EB8 /* CameraVC+CameraDelegate.swift in Sources */,
 				772181DD224B4AC800C75EB8 /* CameraVC+VolumeButton.swift in Sources */,
@@ -577,7 +545,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -665,6 +633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 82KL4YM2V6;
 				INFOPLIST_FILE = WCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -685,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 82KL4YM2V6;
 				INFOPLIST_FILE = WCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

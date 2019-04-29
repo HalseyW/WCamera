@@ -45,10 +45,18 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //判断权限并构建CameraManager
-        Permission.buildPermission(type: .Camera, message: "需要您的授权才能使用照相机进行拍照").request { (status) in
-            if status == .authorized {
-                self.cameraManager.buildSession(delegate: self)
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            cameraManager.buildSession(delegate: self)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { (granted) in
+                if granted {
+                    self.cameraManager.buildSession(delegate: self)
+                }
             }
+        case .denied, .restricted:
+            self.view.isUserInteractionEnabled = false
+            return
         }
         //按下实体音量键监听
         NotificationCenter.default.addObserver(self, selector: #selector(onPressVolumeButton(notification:)), name: NSNotification.Name.init("AVSystemController_SystemVolumeDidChangeNotification"), object: nil)

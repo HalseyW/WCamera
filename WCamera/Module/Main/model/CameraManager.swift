@@ -22,7 +22,6 @@ class CameraManager: NSObject {
     
     func buildSession(delegate: CameraManagerDelegate) {
         self.delegate = delegate
-        delegate.getPreviewView().videoPreviewLayer.session = captureSession
         cameraQueue.async {
             self.captureSession.beginConfiguration()
             self.captureSession.sessionPreset = .photo
