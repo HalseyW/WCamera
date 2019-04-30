@@ -36,14 +36,10 @@ class CameraViewController: UIViewController {
     lazy var currentVolume: Float = -1
     lazy var canCaptureWhenPressVolumeButton = true
     var flashModeButtonImages = [UIImage.init(named: "flash_off"), UIImage.init(named: "flash_on"), UIImage.init(named: "flash_auto")]
-    
-    override func loadView() {
-        super.loadView()
-        initView()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         //判断权限并构建CameraManager
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
